@@ -3,7 +3,7 @@
 const LOTOPTS=[1,2,3,4,5,10];
 const unitPx=(p,cat)=>Math.max(0,(+p.hi||0)-(cat==='Employee'?(+p.empDisc||0):0));
 const lotAmt=(p,cat,lots)=>(+lots||0)*(+p.lot||0)*unitPx(p,cat);
-const tied=a=>a.allot==='Allotted'&&a.sold!=='yes'?(+a.shares||0)*unitPx(ipo(a.ipo),a.cat):0;
+const tied=a=>a.allot==='Allotted'&&a.sold!=='yes'?(+a.shares||0)*issuePx(ipo(a.ipo),a.cat):0;
 const pref=k=>((db.prefs||[]).find(x=>x.id==='main')||{})[k];
 function setPref(k,v){db.prefs=db.prefs||[];let m=db.prefs.find(x=>x.id==='main');if(!m){m={id:'main'};db.prefs.push(m)}m[k]=v;save()}
 /* Category limits for one IPO. Mainboard (SEBI ICDR): Retail & Shareholder ≤ ₹2L; sHNI = lowest lots > ₹2L up to ≤ ₹10L;
@@ -20,13 +20,13 @@ function acctUse(acctId,exceptIpo){return db.apps.filter(a=>a.acct===acctId&&a.i
 function capitalCards(){const bl=db.apps.reduce((s,a)=>s+blocked(a),0),td=db.apps.reduce((s,a)=>s+tied(a),0),pool=+pref('pool')||0,av=pool-bl-td;
 const per={};db.apps.forEach(a=>{const b=blocked(a);if(b)per[a.ipo]=(per[a.ipo]||0)+b});
 const tiedPer={};db.apps.forEach(a=>{const t=tied(a);if(t)tiedPer[a.ipo]=(tiedPer[a.ipo]||0)+t});
-return`<button class="pri big" id="bulk">➕ Apply to IPO (all accounts)</button>
+return`<div class="btns"><button class="pri big2" id="bulk">➕ Apply to IPO</button><button class="pri big2" id="allotb">🎯 Enter allotment</button></div>
 <div class="card"><div class="row"><b>💰 Capital</b><button id="pool">${pool?'Pool '+inr(pool)+' ✏️':'Set capital pool'}</button></div>
 <div class="grid"><div class="stat">Blocked<b>${inr(bl)}</b></div><div class="stat">In allotted shares<b>${inr(td)}</b></div>
 ${pool?`<div class="stat">Available<b class="${av>=0?'pos':'neg'}">${inr(av)}</b></div><div class="stat">bHNI @ ₹10L<b>${Math.max(0,Math.floor(av/1e6))} acct${Math.floor(av/1e6)===1?'':'s'}</b></div>`:''}</div>
 ${Object.keys(per).length?`<div class="mut" style="margin-top:6px">Blocked per IPO</div>`+Object.entries(per).sort((a,b)=>b[1]-a[1]).map(([i,v])=>`<div class="row"><span>${esc(ipo(i).name)}</span><b>${inr(v)}</b></div>`).join(''):''}
 ${Object.keys(tiedPer).length?`<div class="mut" style="margin-top:6px">Held shares (until marked sold)</div>`+Object.entries(tiedPer).map(([i,v])=>`<div class="row"><span>${esc(ipo(i).name)}</span><b>${inr(v)}</b></div>`).join(''):''}</div>`}
-function bindCapital(){const b=$('#bulk');if(b)b.onclick=()=>openApply();const p=$('#pool');if(p)p.onclick=()=>{const v=prompt('Total capital pool (₹), blank to clear',pref('pool')||'');if(v===null)return;
+function bindCapital(){const b=$('#bulk');if(b)b.onclick=()=>openApply();const ab=$('#allotb');if(ab)ab.onclick=()=>openAllot();const p=$('#pool');if(p)p.onclick=()=>{const v=prompt('Total capital pool (₹), blank to clear',pref('pool')||'');if(v===null)return;
 setPref('pool',String(v).replace(/[^0-9.]/g,''));render()}}
 function markSold(aid){const a=db.apps.find(x=>x.id===aid);if(!a)return;const v=prompt(`Sell price per share for ${a.shares} shares (₹)`,a.sell||a.listp||'');if(v===null||!+v)return;
 a.sell=String(+v);a.sold='yes';save();toast('Marked sold · capital freed');render()}
@@ -68,3 +68,30 @@ sel.forEach(c=>{const r=R(c.id),ex=db.apps.find(a=>a.ipo===AP.ipo&&a.acct===c.id
 if(ex){if(ex.cat!==r.cat||+ex.lots!==r.lots){ex.cat=r.cat;ex.lots=String(r.lots);u++}}
 else{db.apps.push({id:id(),ipo:AP.ipo,acct:c.id,cat:r.cat,lots:String(r.lots),date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'});n++}});
 save();toast(`${n} added · ${u} updated`);go('apps')}}
+/* ---- Bulk allotment entry ---- */
+const issuePx=(p,cat)=>Math.max(0,(+p.finalPx||+p.hi||0)-(cat==='Employee'?(+p.empDisc||0):0));
+const appliedSh=a=>(+a.lots||0)*(+ipo(a.ipo).lot||0);
+let AL={ipo:'',v:{}};
+function openAllot(ipoId){AL={ipo:ipoId||'',v:{}};if(ipoId)initAllot();go('allot')}
+function initAllot(){AL.v={};db.apps.filter(a=>a.ipo===AL.ipo).forEach(a=>AL.v[a.id]=a.allot==='Allotted'?String(+a.shares||0):a.allot==='Not allotted'?'0':'')}
+function alCalc(a){const s=AL.v[a.id],p=ipo(a.ipo),max=appliedSh(a),ap=amt(a);if(s===''||s==null)return{pend:true,ap,max};
+const n=Number(s),bad=!Number.isInteger(n)||n<0||n>max;const deb=bad?0:n*issuePx(p,a.cat);return{n,bad,ap,max,deb,rel:bad?0:ap-deb}}
+function alFoot(L){let sh=0,deb=0,rel=0,k=0,bad=0;L.forEach(a=>{const c=alCalc(a);if(c.pend)return;if(c.bad){bad++;return}sh+=c.n;deb+=c.deb;rel+=c.rel;if(c.n>0)k++});
+return`<div><b>${k}</b> of ${L.length} allotted · ${sh} sh<div class="mut">Debited <b>${inr(deb)}</b> · Released <b>${inr(rel)}</b></div>${bad?`<div class="neg mut">${bad} invalid</div>`:''}</div><button class="pri" id="alsave"${bad?' disabled':''}>Save</button>`}
+function renderAllot(v){const ips=[...db.ipos].filter(p=>db.apps.some(a=>a.ipo===p.id)).sort((a,b)=>(b.close||'').localeCompare(a.close||''));
+const p=AL.ipo?ipo(AL.ipo):null,L=p?db.apps.filter(a=>a.ipo===AL.ipo).sort((a,b)=>acc(a.acct).name.localeCompare(acc(b.acct).name)):[];
+let h=`<div class="card"><label>IPO</label><select id="ali"><option value="">Choose IPO…</option>${ips.map(q=>`<option value="${q.id}"${q.id===AL.ipo?' selected':''}>${esc(q.name)}</option>`).join('')}</select>
+${p?`<div class="mut">Lot ${esc(p.lot)} · issue price ₹${esc(issuePx(p,''))}${+p.finalPx?' (final)':' (upper band)'}${+p.empDisc?' · emp. ₹'+esc(issuePx(p,'Employee')):''}</div><div class="mut">Enter shares allotted. Blank = pending.</div>`:''}</div>`;
+if(p)h+=L.map(a=>{const c=alCalc(a),lot=+p.lot||0;return`<div class="card alrow" data-row="${a.id}"><div class="row"><b>${esc(acc(a.acct).name)}</b><span class="badge">${esc(a.cat)}</span></div>
+<div class="mut">${a.lots} lot(s) · ${c.max} sh · applied ${inr(c.ap)}</div>
+<div class="alin"><input type="number" inputmode="numeric" min="0" max="${c.max}" step="1" placeholder="Shares" data-sh="${a.id}" value="${esc(AL.v[a.id])}"><button data-q="${a.id}" data-n="0">0</button><button data-q="${a.id}" data-n="${lot}">1 lot</button></div>
+<div class="mut" data-out="${a.id}">${alOut(c)}</div></div>`}).join('')+`<div class="apfoot" id="alf">${alFoot(L)}</div>`;
+v.innerHTML=h;$('#ali').onchange=e=>{AL.ipo=e.target.value;if(AL.ipo)initAllot();render()};if(!p)return;
+const upd=id=>{const a=db.apps.find(x=>x.id===id);v.querySelector(`[data-out="${id}"]`).innerHTML=alOut(alCalc(a));$('#alf').innerHTML=alFoot(L);bindS()};
+v.querySelectorAll('[data-sh]').forEach(e=>e.oninput=()=>{AL.v[e.dataset.sh]=e.value.trim();upd(e.dataset.sh)});
+v.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{AL.v[b.dataset.q]=b.dataset.n;v.querySelector(`[data-sh="${b.dataset.q}"]`).value=b.dataset.n;upd(b.dataset.q)});
+const bindS=()=>{$('#alsave').onclick=()=>{let n=0;L.forEach(a=>{const c=alCalc(a);if(c.bad)return;
+if(c.pend){if(a.allot!=='Awaiting'){a.allot='Awaiting';a.shares='';a.allotSrc='';n++}return}
+const st=c.n>0?'Allotted':'Not allotted';if(a.allot!==st||String(+a.shares||0)!==String(c.n)||a.allotSrc!=='manual'){a.allot=st;a.shares=String(c.n);a.allotSrc='manual';if(a.mandate==='Pending')a.mandate='Accepted';n++}});
+save();toast(n+' application'+(n===1?'':'s')+' updated');go('dash')}};bindS()}
+function alOut(c){return c.pend?'Pending':c.bad?`<span class="neg">⚠️ Enter 0–${c.max} whole shares</span>`:`Debited <b>${inr(c.deb)}</b> · Released <b>${inr(c.rel)}</b>`}

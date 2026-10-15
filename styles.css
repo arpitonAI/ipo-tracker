@@ -25,3 +25,4 @@ button.big{width:100%;font-size:18px;min-height:52px;margin-bottom:10px}
 .apfoot{position:fixed;left:0;right:0;bottom:calc(60px + env(safe-area-inset-bottom));background:var(--card);border-top:2px solid var(--ac);display:flex;justify-content:space-between;align-items:center;padding:8px 16px;z-index:3}
 body:has(.apfoot){padding-bottom:150px}
 #api{width:100%}
+.big2{flex:1;font-size:17px;min-height:52px}#ali{width:100%}.alin{display:flex;gap:6px;margin:6px 0}.alin input{flex:1;min-width:0;font-size:18px}
