@@ -21,3 +21,12 @@ public NSE IPO data (`data/ipos.json`, updated by GitHub Actions) and encrypted 
 
 The private key is in the phone's IndexedDB and in JSON backups. Keep backups private; losing both means the
 old results can't be read (just set up a new key and re-publish).
+
+## Cloud sync (Firebase)
+
+- Google sign-in (popup, redirect fallback) in the **Backup** tab; ☁️ in the header when signed in.
+- Data: `users/{uid}` (vault: PBKDF2 salt + verifier), `users/{uid}/accounts|ipos|applications/{id}`,
+  `users/{uid}/settings/keys` (RSA results key, encrypted) and `settings/results` (results, encrypted).
+- PAN, full PAN and demat/DP ID are AES-GCM encrypted on the phone with a key derived from the sync passcode
+  (PBKDF2-SHA256, 310,000 iterations). Without the passcode they show 🔒 and are never uploaded in plaintext.
+- Rules: `firestore.rules` (owner-only). Deploy: `scripts/deploy_rules.sh` (or paste into the console).

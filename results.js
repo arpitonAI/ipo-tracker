@@ -35,7 +35,7 @@ t.textContent=m;t.className='show';clearTimeout(t._h);t._h=setTimeout(()=>t.clas
 async function loadResults(quiet){try{const priv=await kget('priv');if(!priv){R.msg='Set up private results in the Backup tab to receive allotment results automatically.';return}
 const r=await fetch('data/results.enc.json?t='+Date.now(),{cache:'no-store'});if(!r.ok){R.msg='No private results published yet.';return}
 const enc=await r.json();if(!enc||!enc.ciphertext){R.msg='No private results published yet.';return}
-const d=await decryptResults(enc,priv);R.updated=d.updated||enc.updated||'';R.msg='';
+const d=await decryptResults(enc,priv);if(window.Cloud)Cloud.results(d);R.updated=d.updated||enc.updated||'';R.msg='';
 const n=applyResults(d.results||[]);if(n)toast(n+' result'+(n>1?'s':'')+' updated');if(n||!quiet)render()}
 catch(e){R.msg='Could not unlock the published results (key mismatch?). If you reinstalled, import your JSON backup to restore your key.'}}
 const fdt=s=>{try{return new Date(s).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch(_){return s}};
@@ -46,7 +46,7 @@ el.innerHTML=`<div class="card"><b>Private results setup</b>${k?`<p class="mut">
 ${resNote()}<p class="mut">⚠️ Your JSON backup now contains this private key and your full PANs. Keep it private.</p></div>
 ${R.unmatched.length?`<div class="card"><b>Unmatched results</b>${R.unmatched.map((e,i)=>`<div class="row"><span>${esc(e.account)} · ${esc(e.ipo)} · ${e.status==='allotted'?'✅ '+esc(e.shares)+' sh':'❌'}</span></div>
 <select data-u="${i}"><option value="">Assign to application…</option>${db.apps.map(a=>`<option value="${a.id}">${esc(acc(a.acct).name)} · ${esc(ipo(a.ipo).name)}</option>`).join('')}</select>`).join('')}</div>`:''}`;
-const g=el.querySelector('#gk');if(g)g.onclick=async()=>{g.disabled=true;try{await genKey();toast('Private key created');renderResults(el)}catch(_){alert('Could not create key on this browser')}};
+const g=el.querySelector('#gk');if(g)g.onclick=async()=>{g.disabled=true;try{await genKey();if(window.Cloud)Cloud.keyChanged();toast('Private key created');renderResults(el)}catch(_){alert('Could not create key on this browser')}};
 const c=el.querySelector('#cpk');if(c)c.onclick=async()=>{try{await navigator.clipboard.writeText(k.spki);toast('Public key copied – paste it to Tech Help')}catch(_){prompt('Copy this public key:',k.spki)}};
 const ck=el.querySelector('#rck');if(ck)ck.onclick=()=>loadResults(false).then(()=>{toast(R.msg||'Results checked');renderResults(el)});
 el.querySelectorAll('[data-u]').forEach(s=>s.onchange=()=>{const e=R.unmatched[+s.dataset.u],a=db.apps.find(x=>x.id===s.value);if(!e||!a)return;

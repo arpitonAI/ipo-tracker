@@ -1,7 +1,7 @@
 'use strict';
 const K='ipoTracker.v1';
 let db=load();function load(){try{return JSON.parse(localStorage.getItem(K))||{accounts:[],ipos:[],apps:[]}}catch(e){return{accounts:[],ipos:[],apps:[]}}}
-function save(){localStorage.setItem(K,JSON.stringify(db))}
+function save(){localStorage.setItem(K,JSON.stringify(db));if(window.Cloud)Cloud.dirty()}
 const $=s=>document.querySelector(s),id=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const inr=n=>'₹'+Math.round(+n||0).toLocaleString('en-IN');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -79,8 +79,8 @@ ${Object.keys(sb).length?`<table><tr>${SUBK.filter(([k])=>k in sb).map(([k,l])=>
 ${`<div class="btns"><button class="pri" data-l="${esc(x.id)}">+ Add application</button></div>`}</div>`}).join('')||'<div class="card mut">None</div>')+`<div class="mut">NSE-listed issues only (BSE-only SME IPOs not included). Upcoming IPOs appear once NSE lists them.</div>`;
 v.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{lf=b.dataset.f;render()});
 v.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>appForm(null,null,b.dataset.l));return}
-if(tab==='accts'){v.innerHTML=`<button class="pri" id="add">+ Add account</button>`+db.accounts.map(a=>`<div class="card"><div class="row"><b>${esc(a.name)}</b><span class="mut">PAN ${a.panFull?esc(maskPan(a.panFull)):'…'+esc(a.pan)}</span></div>
-<div class="mut">${esc(a.broker)}${a.upi?' · '+esc(a.upi):''}</div><div class="btns"><button data-e="${a.id}">Edit</button><button class="del" data-d="${a.id}">Delete</button></div></div>`).join('');
+if(tab==='accts'){v.innerHTML=`<button class="pri" id="add">+ Add account</button>`+db.accounts.map(a=>`<div class="card"><div class="row"><b>${esc(a.name)}</b><span class="mut">PAN ${a.panLocked?'🔒 locked':a.panFull?esc(maskPan(a.panFull)):'…'+esc(a.pan)}</span></div>
+<div class="mut">${esc(a.broker)}${a.demat&&!a.panLocked?' · DP …'+esc(String(a.demat).slice(-4)):''}${a.upi?' · '+esc(a.upi):''}</div><div class="btns"><button data-e="${a.id}">Edit</button><button class="del" data-d="${a.id}">Delete</button></div></div>`).join('');
 $('#add').onclick=()=>accForm();v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>accForm(b.dataset.e));
 v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const n=db.apps.filter(x=>x.acct===b.dataset.d).length;if(confirm(`Delete account${n?` and its ${n} applications`:''}?`)){db.accounts=db.accounts.filter(x=>x.id!==b.dataset.d);db.apps=db.apps.filter(x=>x.acct!==b.dataset.d);save();render()}});return}
 if(tab==='ipos'){const s=[...db.ipos].sort((a,b)=>(b.open||'').localeCompare(a.open||''));
@@ -98,8 +98,8 @@ ${a.allot==='Awaiting'?`<div class="mut">${esc(rta(ipo(a.ipo).registrar).name)} 
 bindF();v.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>checkAllot(b.dataset.k));$('#add').onclick=()=>appForm();v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>appForm(b.dataset.e));
 v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Delete application?')){db.apps=db.apps.filter(x=>x.id!==b.dataset.d);save();render()}});return}
 if(tab==='data'){v.innerHTML=`<div class="card"><p>Your data lives only on this device. Back up regularly.</p><div class="btns"><button class="pri" id="ej">Export JSON backup</button><button id="ec">Export CSV</button>
-<button id="ij">Import JSON</button></div><input type="file" id="fi" accept=".json,application/json" hidden></div><div id="resbox"></div><div class="card mut">${db.accounts.length} accounts · ${db.ipos.length} IPOs · ${db.apps.length} applications</div>`;
-renderResults($('#resbox'));$('#ej').onclick=async()=>{const k=await keyBackup();dl('ipo-tracker-backup-'+t+'.json',JSON.stringify(k?{...db,resultsKey:k}:db,null,1),'application/json')};
+<button id="ij">Import JSON</button></div><input type="file" id="fi" accept=".json,application/json" hidden></div><div id="cloudbox"></div><div id="resbox"></div><div class="card mut">${db.accounts.length} accounts · ${db.ipos.length} IPOs · ${db.apps.length} applications</div>`;
+renderCloud($('#cloudbox'));renderResults($('#resbox'));$('#ej').onclick=async()=>{const k=await keyBackup();dl('ipo-tracker-backup-'+t+'.json',JSON.stringify(k?{...db,resultsKey:k}:db,null,1),'application/json')};
 $('#ec').onclick=()=>{const h=['IPO','Type','Account','PAN4','Category','Lots','Amount','Applied','Mandate','Allotment','Shares','Refund','ListingPrice','SellPrice','PnL'];
 const r=db.apps.map(a=>{const p=ipo(a.ipo),c=acc(a.acct);return[p.name,p.type,c.name,c.pan,a.cat,a.lots,amt(a),a.date,a.mandate,a.allot,a.shares,a.refund,a.listp,a.sell,pnl(a)]});
 dl('ipo-applications-'+t+'.csv',[h,...r].map(x=>x.map(y=>'"'+String(y??'').replace(/"/g,'""')+'"').join(',')).join('\n'),'text/csv')};
@@ -109,7 +109,7 @@ function dl(n,s,t){const a=document.createElement('a');a.href=URL.createObjectUR
 function form(title,fields,obj,onSave,extra){const f=$('#frm');f.innerHTML=`<h2>${title}</h2>`+fields.map(([k,l,ty,opt])=>`<label>${l}</label>`+(ty==='sel'?`<select name="${k}">${opt.map(o=>Array.isArray(o)?o:[o,o]).map(([v,t])=>`<option value="${esc(v)}"${obj[k]===v?' selected':''}>${esc(t)}</option>`).join('')}</select>`
 :`<input name="${k}" type="${ty||'text'}" ${ty==='number'?'step="any" inputmode="decimal"':''} value="${esc(obj[k])}" ${opt||''}>`)).join('')+`<p id="hint" class="mut"></p><div class="btns"><button value="cancel" formnovalidate>Cancel</button><button class="pri" value="ok">Save</button></div>`;
 const d=$('#dlg');if(extra)extra(f);f.onsubmit=e=>{if(e.submitter&&e.submitter.value==='cancel')return;const o={};new FormData(f).forEach((v,k)=>o[k]=v.trim());onSave(o);save();render()};d.showModal()}
-function accForm(i){const a=db.accounts.find(x=>x.id===i)||{};form(i?'Edit account':'Add account',[['name','Name','text','required'],['pan','PAN last 4','text','maxlength=4 required'],['panFull','Full PAN (optional, stays on this phone only – used to copy for allotment checks)','text','maxlength=10 pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]" autocomplete="off"'],['broker','Broker / Demat','text','required'],['upi','UPI ID (optional)']],a,o=>{o.panFull=(o.panFull||'').toUpperCase();if(o.panFull)o.pan=o.panFull.slice(6);o.pan=o.pan.toUpperCase();i?Object.assign(a,o):db.accounts.push({id:id(),...o})})}
+function accForm(i){const a=db.accounts.find(x=>x.id===i)||{};form(i?'Edit account':'Add account',[['name','Name','text','required'],['pan','PAN last 4','text','maxlength=4 required'],['panFull','Full PAN (optional, stays on this phone only – used to copy for allotment checks)','text','maxlength=10 pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]" autocomplete="off"'],['broker','Broker / Demat','text','required'],['demat','Demat / DP ID (optional, encrypted before cloud sync)','text','autocomplete="off"'],['upi','UPI ID (optional)']],a,o=>{o.panFull=(o.panFull||'').toUpperCase();if(o.panFull)o.pan=o.panFull.slice(6);o.pan=o.pan.toUpperCase();i?Object.assign(a,o):db.accounts.push({id:id(),...o})})}
 function ipoForm(i){const p=db.ipos.find(x=>x.id===i)||{type:'Mainboard'};form(i?'Edit IPO':'Add IPO',[['name','IPO name','text','required'],['type','Type','sel',['Mainboard','SME']],['open','Open date','date','required'],['close','Close date','date','required'],['allotd','Allotment date','date'],['listd','Listing date','date'],['lo','Price band low (₹)','number'],['hi','Price band high (₹)','number','required min=0'],['lot','Lot size (shares)','number','required min=1'],['registrar','Registrar','sel',[['','Unknown'],...RTA.map(r=>[r[1],r[1]])]]],p,o=>{i?Object.assign(p,o):db.ipos.push({id:id(),...o})})}
 function appForm(i,ipoId,liveId){const opts=[...(live?live.ipos.filter(x=>!db.ipos.some(p=>p.liveId===x.id)).map(x=>['live:'+x.id,'🔴 '+x.name+' ('+liveStatus(x)+')']):[]),...db.ipos.map(p=>[p.id,p.name])];
 if(!db.accounts.length||!opts.length){alert(db.accounts.length?'No IPOs available yet.':'Add an account first (Accounts tab).');return}
@@ -122,4 +122,6 @@ const n=+f.lots.value||0,r=catRules(p.type,p.lot,p.hi),c=r&&r[f.cat.value];let w
 $('#hint').textContent=`Lot ${p.lot||'?'} × ₹${p.hi||'?'} · Amount: ${inr(n*(+p.lot||0)*(+p.hi||0))}`+w+(r?`\n${ruleTxt(r)}`:'');$('#hint').style.whiteSpace='pre-line'};
 f.oninput=h;f.onchange=h;h()})}
 if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('service-worker.js');
-db.ipos.forEach(p=>{if(!('liveId'in p))p.liveId=null});go('dash');loadLive();loadResults(true);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadResults(true)});setInterval(()=>{if(tab==='live'&&!document.hidden)loadLive()},5*60*1000);
+db.ipos.forEach(p=>{if(!('liveId'in p))p.liveId=null});
+const cfgOk=window.FIREBASE_CONFIG&&!/REPLACE/.test(FIREBASE_CONFIG.apiKey+FIREBASE_CONFIG.projectId);
+if(cfgOk)import('./cloud.js').catch(()=>{window.CLOUD_OFF=true});else window.CLOUD_OFF=true;go('dash');loadLive();loadResults(true);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadResults(true)});setInterval(()=>{if(tab==='live'&&!document.hidden)loadLive()},5*60*1000);
