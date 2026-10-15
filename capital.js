@@ -142,7 +142,7 @@ const cats=[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(
 const used=new Set(L.map(a=>a.acct)),miss=db.accounts.filter(c=>!used.has(c.id)).sort((a,b)=>a.name.localeCompare(b.name));
 v.innerHTML=`<div class="chips"><button class="ipochip" data-w="">◀ All</button>${P.map(q=>`<button class="ipochip${q.id===sel?' on':''}" data-w="${q.id}">${esc(q.name.replace(/\s+(ltd|limited)\.?$/i,''))}</button>`).join('')}</div>
 <div class="card"><div class="sumline">${esc(cats.map(c=>L.filter(a=>a.cat===c).length+' '+c).join(' + ')+' = '+L.length)}</div><div class="mut">${esc(p.name)}</div></div>
-${cats.map(c=>`<div class="whoh">${esc(c)} · ${L.filter(a=>a.cat===c).length}</div><div class="card whol">${L.filter(a=>a.cat===c).map(a=>acc(a.acct).name).sort((x,y)=>x.localeCompare(y)).map(n=>`<div class="whor"><span>${esc(n)}</span>${chip(c)}</div>`).join('')}</div>`).join('')}
+${cats.map(c=>`<div class="whoh">${esc(c)} · ${L.filter(a=>a.cat===c).length}</div><div class="card whol">${L.filter(a=>a.cat===c).sort((x,y)=>acc(x.acct).name.localeCompare(acc(y.acct).name)).map(a=>`<div class="whor" data-app="${a.id}"><span>${esc(acc(a.acct).name)}</span>${chip(c)}</div>`).join('')}</div>`).join('')}
 ${miss.length?`<div class="whoh mut">Not applied · ${miss.length}</div><div class="card whol mut">${miss.map(c=>`<div class="whor"><span>${esc(c.name)}</span></div>`).join('')}</div>`:''}`;
 v.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{b.dataset.w?sessionStorage.setItem('ipoTracker.who',b.dataset.w):sessionStorage.removeItem('ipoTracker.who');render()});
-const on=v.querySelector('.ipochip.on');if(on)on.scrollIntoView({inline:'center',block:'nearest'})}
+v.querySelectorAll('[data-app]').forEach(e=>e.onclick=()=>appForm(e.dataset.app));const on=v.querySelector('.ipochip.on');if(on)on.scrollIntoView({inline:'center',block:'nearest'})}

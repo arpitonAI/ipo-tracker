@@ -47,19 +47,32 @@ function quickAllot(aid,msg){const a=db.apps.find(x=>x.id===aid),p=ipo(a.ipo),f=
 f.innerHTML=`<h2>Allotment result</h2><p class="mut">${esc(msg)}</p><label>Shares allotted (number of shares, not lots)</label><input name="sh" type="number" inputmode="numeric" value="${esc(a.shares||p.lot||'')}">
 <div class="btns"><button value="ok" class="pri" data-r="Allotted">✅ Allotted</button><button value="ok" data-r="Not allotted">❌ Not allotted</button><button value="cancel">Later</button></div>`;
 f.onsubmit=e=>{const b=e.submitter;if(!b||!b.dataset.r)return;a.allot=b.dataset.r;a.allotSrc='manual';a.shares=a.allot==='Allotted'?(f.sh.value||p.lot):'0';if(a.mandate==='Pending')a.mandate='Accepted';save();render()};$('#dlg').showModal()}
-let tab='dash',flt={acct:'',cat:'',st:''};
-function go(t){tab=t;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
-$('#title').textContent={live:'Live IPOs',dash:'Dashboard',ipos:'IPOs',apps:'Applications',accts:'Accounts',data:'Backup & Export',apply:'Apply to IPO',allot:'Enter allotment',who:'Who applied'}[t];render()}
+let tab='dash',flt={acct:'',cat:'',st:'',ipo:'',q:''};
+function go(t){if(t==='live'){t='ipos';if(lf==='mine')lf='open'}else if(t==='accts'||t==='data'){moreSub=t;t='more'}tab=t;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+$('#title').textContent={live:'Live IPOs',dash:'Dashboard',ipos:'IPOs',apps:'Applications',more:'More',accts:'Accounts',data:'Backup & Export',apply:'Apply to IPO',allot:'Enter allotment',who:'Who applied'}[t];render()}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
 function filters(){const o=(v,l,s)=>`<option value="${esc(v)}"${s===v?' selected':''}>${esc(l)}</option>`;
 return `<div class="filters"><select id="fa">${o('','All accounts',flt.acct)}${db.accounts.map(a=>o(a.id,a.name,flt.acct)).join('')}</select>
 <select id="fc">${o('','All categories',flt.cat)}${CATS.map(c=>o(c,c,flt.cat)).join('')}</select>
 <select id="fs">${o('','All statuses',flt.st)}${ALLOT.map(c=>o(c,c,flt.st)).join('')}</select></div>`}
 function bindF(){['fa','fc','fs'].forEach((k,i)=>{const e=$('#'+k);if(e)e.onchange=()=>{flt[['acct','cat','st'][i]]=e.value;render()}})}
-const fApps=()=>db.apps.filter(a=>(!flt.acct||a.acct===flt.acct)&&(!flt.cat||a.cat===flt.cat)&&(!flt.st||a.allot===flt.st));
+const fApps=()=>db.apps.filter(a=>(!flt.ipo||a.ipo===flt.ipo)&&(!flt.q||(acc(a.acct).name+' '+ipo(a.ipo).name+' '+a.cat).toLowerCase().includes(flt.q.toLowerCase()))&&(!flt.acct||a.acct===flt.acct)&&(!flt.cat||a.cat===flt.cat)&&(!flt.st||a.allot===flt.st));
 function rate(list,key,name){const g={};list.filter(a=>a.allot!=='Awaiting'&&a.mandate!=='Rejected').forEach(a=>{const k=a[key];g[k]=g[k]||[0,0];g[k][1]++;if(a.allot==='Allotted')g[k][0]++});
 return Object.entries(g).map(([k,[h,n]])=>`<tr><td>${esc(name(k))}</td><td>${h}/${n}</td><td>${Math.round(h*100/n)}%</td></tr>`).join('')||'<tr><td colspan=3 class=mut>No results yet</td></tr>'}
+let moreSub='accts';
+function ipoTab(v){const st=x=>liveStatus(x),cnt=k=>k==='mine'?db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id)).length:(live?live.ipos.filter(x=>st(x)===k).length:0)+db.ipos.filter(p=>!p.liveId&&st(p)===k).length;
+v.innerHTML=`<div class="fchips">${['open','upcoming','closed','mine'].map(k=>`<button class="${lf===k?'pri':''}" data-f="${k}">${k==='mine'?'Mine':k[0].toUpperCase()+k.slice(1)} (${cnt(k)})</button>`).join('')}</div>
+<div class="btns"><button id="add">+ Add IPO manually</button></div>${lf==='mine'?'':'<div id="lv"></div>'}<div id="mv"></div>`;
+v.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{lf=b.dataset.f;render()});$('#add').onclick=()=>ipoForm();
+if(lf!=='mine')renderLive($('#lv'));
+const M=lf==='mine'?db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id)):db.ipos.filter(p=>!p.liveId&&st(p)===lf);
+const mv=$('#mv');if(M.length){renderIpoList(mv,M);if(lf!=='mine')mv.insertAdjacentHTML('afterbegin','<h3 class="sec">Added manually</h3>')}else if(lf==='mine')mv.innerHTML='<div class="card mut">You haven\'t applied to any IPO yet.</div>'}
+function moreTab(v){v.innerHTML=`<div class="fchips">${[['accts','👤 Accounts'],['data','☁️ Backup & sync']].map(([k,l])=>`<button class="${moreSub===k?'pri':''}" data-ms="${k}">${l}</button>`).join('')}</div><div id="mb"></div>`;
+v.querySelectorAll('[data-ms]').forEach(b=>b.onclick=()=>{moreSub=b.dataset.ms;render()});const mb=$('#mb');
+if(moreSub==='accts')renderAccts(mb);else{renderData(mb);const pool=+pref('pool')||0;mb.insertAdjacentHTML('afterbegin',`<div class="card"><div class="row"><b>💰 Capital pool</b><button id="pool2">${pool?inr(pool)+' ✏️':'Set'}</button></div></div>`);
+$('#pool2').onclick=()=>{const x=prompt('Total capital pool (₹), blank to clear',pref('pool')||'');if(x===null)return;setPref('pool',String(x).replace(/[^0-9.]/g,''));render()}}}
 function render(){const v=$('#view'),t=today();
+if(tab==='ipos'){ipoTab(v);return}if(tab==='more'){moreTab(v);return}
 if(tab==='apply'){renderApply(v);return}if(tab==='allot'){renderAllot(v);return}if(tab==='who'){renderWho(v);return}
 if(tab==='dash'){const L=fApps(),tp=L.reduce((s,a)=>s+pnl(a),0);
 const active=db.ipos.filter(p=>p.close>=t&&p.open<=t),up=db.ipos.filter(p=>p.allotd&&p.allotd>=t).sort((a,b)=>a.allotd.localeCompare(b.allotd));
@@ -69,10 +82,19 @@ v.innerHTML=capitalCards()+ipoSection()+filters()+`<div class="grid"><div class=
 ${resNote()}<div class="card"><b>Upcoming allotments</b>${up.map(p=>`<div class="row"><span>${esc(p.name)}</span><span class="mut">${fd(p.allotd)} · ${db.apps.filter(a=>a.ipo===p.id).length} apps</span></div>`).join('')||'<div class=mut>None</div>'}</div>
 <div class="card"><b>Hit rate by account</b><table>${rate(L,'acct',k=>acc(k).name)}</table></div>
 <div class="card"><b>Hit rate by category</b><table>${rate(L,'cat',k=>k)}</table></div>`;bindF();bindCapital();bindBan(v);return}
-if(tab==='live'){if(!live){v.innerHTML='<div class=card>Loading live IPO data… (needs internet the first time)</div>';return}
+if(tab==='apps'){const L=fApps().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+const ipoOpts=[...db.ipos].filter(p=>db.apps.some(x=>x.ipo===p.id)).sort((a,b)=>(b.open||'').localeCompare(a.open||''));
+v.innerHTML=`<input type="search" id="fq" placeholder="🔍 Search name, IPO, category" value="${esc(flt.q)}" autocomplete="off"><select id="fi2"><option value="">All IPOs</option>${ipoOpts.map(p=>`<option value="${p.id}"${flt.ipo===p.id?' selected':''}>${esc(p.name)}</option>`).join('')}</select>`+filters()+`<div class="mut" style="margin:0 4px 6px">${L.length} of ${db.apps.length} applications</div>`+`<div class="btns"><button class="pri" id="bulk">➕ Apply to IPO</button><button class="pri" id="allotb">🎯 Enter allotment</button><button id="add">+ Single application</button></div>`+L.map(a=>{const p=pnl(a);return `<div class="card"><div class="row"><b>${esc(ipo(a.ipo).name)}</b><span class="badge">${esc(a.cat)}</span></div>
+<div class="mut">${esc(acc(a.acct).name)} · ${a.lots} lot(s) · ${inr(amt(a))} · ${fd(a.date)}</div>
+<div class="row"><span>UPI: ${esc(a.mandate)} · ${esc(a.allot)}${a.allot==='Allotted'?` (${a.shares} sh)${a.sold==='yes'?' · sold @₹'+esc(a.sell):''}`:''}${a.allot==='Not allotted'?` · Refund ${a.refund==='yes'?'✓':'✗'}`:''}</span>${a.allot==='Allotted'?`<b class="${p>=0?'pos':'neg'}">${inr(p)}</b>`:''}</div>
+<div class="btns">${a.allot==='Awaiting'?`<button class="pri" data-k="${a.id}">🔍 Check allotment</button>`:''}${a.allot==='Allotted'&&a.sold!=='yes'?`<button data-sold="${a.id}">💰 Mark sold</button>`:''}<button data-e="${a.id}">Edit</button><button class="del" data-d="${a.id}">Delete</button></div>
+${a.allot==='Awaiting'?`<div class="mut">${esc(rta(ipo(a.ipo).registrar).name)} · allotment ${ipo(a.ipo).allotd?fd(ipo(a.ipo).allotd):'~'+fd(estAllot(ipo(a.ipo)))+' (est.)'}</div>`:''}</div>`}).join('');
+bindF();const fq=$('#fq');fq.oninput=()=>{flt.q=fq.value;const pos=fq.selectionStart;render();const n=$('#fq');n.focus();n.setSelectionRange(pos,pos)};$('#fi2').onchange=e=>{flt.ipo=e.target.value;render()};v.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>checkAllot(b.dataset.k));$('#add').onclick=()=>appForm();$('#bulk').onclick=()=>openApply();$('#allotb').onclick=()=>openAllot();v.querySelectorAll('[data-sold]').forEach(b=>b.onclick=()=>markSold(b.dataset.sold));v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>appForm(b.dataset.e));
+v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Delete application?')){db.apps=db.apps.filter(x=>x.id!==b.dataset.d);save();render()}});return}
+}
+function renderLive(v){const t=today();if(!live){v.innerHTML='<div class="card mut">Loading live NSE data… (needs internet the first time)</div>';return}
 const L=live.ipos.filter(x=>liveStatus(x)===lf),cnt=k=>live.ipos.filter(x=>liveStatus(x)===k).length;
-v.innerHTML=`<div class="btns">${['open','upcoming','closed'].map(k=>`<button class="${lf===k?'pri':''}" data-f="${k}">${k[0].toUpperCase()+k.slice(1)} (${cnt(k)})</button>`).join('')}</div>
-<div class="mut" style="margin-bottom:8px">Data checked ${ist(live.generated)} (your time) · Source: NSE</div>`+(L.map(x=>{const r=catRules(x.type,x.lot,x.priceHigh),sb=x.subscription||{};
+v.innerHTML=`<div class="mut" style="margin-bottom:8px">Data checked ${ist(live.generated)} (your time) · Source: NSE</div>`+(L.map(x=>{const r=catRules(x.type,x.lot,x.priceHigh),sb=x.subscription||{};
 return `<div class="card"><div class="row"><b>${esc(x.name)}</b><span class="badge">${esc(x.type)}</span></div>
 <div class="mut">${fd(x.open)} – ${fd(x.close)}${x.listing?' · List '+fd(x.listing):''}</div>
 <div>₹${esc(x.priceLow??'?')}–${esc(x.priceHigh??'?')} · Lot ${esc(x.lot??'?')}${x.lot&&x.priceHigh?' ('+inr(x.lot*x.priceHigh)+')':''}</div>
@@ -80,34 +102,25 @@ ${r?`<div class="mut">${ruleTxt(r)}</div>`:''}<div class="mut">Registrar: ${esc(
 ${Object.keys(sb).length?`<table><tr>${SUBK.filter(([k])=>k in sb).map(([k,l])=>`<th>${l}</th>`).join('')}</tr><tr>${SUBK.filter(([k])=>k in sb).map(([k])=>`<td>${sb[k]}x</td>`).join('')}</tr></table>
 <div class="mut">Subscription as of ${ist(x.subscriptionUpdated)}${x.type==='SME'?' · category split not published by NSE for SME':''}</div>`:'<div class="mut">No subscription data yet</div>'}
 ${`<div class="btns"><button class="pri" data-bl="${esc(x.id)}">➕ Apply (all accounts)</button><button data-l="${esc(x.id)}">+ Single</button></div>`}</div>`}).join('')||'<div class="card mut">None</div>')+`<div class="mut">NSE-listed issues only (BSE-only SME IPOs not included). Upcoming IPOs appear once NSE lists them.</div>`;
-v.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{lf=b.dataset.f;render()});
 v.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>appForm(null,null,b.dataset.l));v.querySelectorAll('[data-bl]').forEach(b=>b.onclick=()=>{const k=linkLive(b.dataset.bl);save();openApply(k)});return}
-if(tab==='accts'){v.innerHTML=`<button class="pri" id="add">+ Add account</button>`+db.accounts.map(a=>`<div class="card"><div class="row"><b>${esc(a.name)}</b><span class="mut">PAN ${a.panLocked?'🔒 locked':a.panFull?esc(maskPan(a.panFull)):'…'+esc(a.pan)}</span></div>
+function renderAccts(v){const t=today();v.innerHTML=`<button class="pri" id="add">+ Add account</button>`+db.accounts.map(a=>`<div class="card"><div class="row"><b>${esc(a.name)}</b><span class="mut">PAN ${a.panLocked?'🔒 locked':a.panFull?esc(maskPan(a.panFull)):'…'+esc(a.pan)}</span></div>
 <div class="mut">${esc(a.broker)}${a.demat&&!a.panLocked?' · DP …'+esc(String(a.demat).slice(-4)):''}${a.upi?' · '+esc(a.upi):''}</div><div class="btns"><button data-e="${a.id}">Edit</button><button class="del" data-d="${a.id}">Delete</button></div></div>`).join('');
 $('#add').onclick=()=>accForm();v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>accForm(b.dataset.e));
 v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const n=db.apps.filter(x=>x.acct===b.dataset.d).length;if(confirm(`Delete account${n?` and its ${n} applications`:''}?`)){db.accounts=db.accounts.filter(x=>x.id!==b.dataset.d);db.apps=db.apps.filter(x=>x.acct!==b.dataset.d);save();render()}});return}
-if(tab==='ipos'){const s=[...db.ipos].sort((a,b)=>(b.open||'').localeCompare(a.open||''));
-v.innerHTML=`<button class="pri" id="add">+ Add IPO</button>`+s.map(p=>`<div class="card"><div class="row"><b>${esc(p.name)}</b><span class="badge">${esc(p.type)}</span></div>
+function renderIpoList(v,list){const t=today();const s=[...list].sort((a,b)=>(b.open||'').localeCompare(a.open||''));
+v.innerHTML=s.map(p=>`<div class="card"><div class="row"><b>${esc(p.name)}</b><span class="badge">${esc(p.type)}</span></div>
 <div class="mut">${fd(p.open)} – ${fd(p.close)} · Allot ${fd(p.allotd)} · List ${fd(p.listd)}</div><div class="mut">₹${esc(p.lo)}–${esc(p.hi)} · Lot ${esc(p.lot)} (${inr(p.lot*p.hi)})</div>
 ${ipoSumCard(p,'i:',true)}<div class="btns"><button class="pri" data-ba="${p.id}">➕ Apply (all)</button><button data-a="${p.id}">+ Single</button>${db.apps.some(x=>x.ipo===p.id)?`<button data-al="${p.id}">🎯 Allotment</button>`:''}<button data-e="${p.id}">Edit</button><button class="del" data-d="${p.id}">Delete</button></div></div>`).join('');
 $('#add').onclick=()=>ipoForm();v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>ipoForm(b.dataset.e));v.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>appForm(null,b.dataset.a));v.querySelectorAll('[data-ba]').forEach(b=>b.onclick=()=>openApply(b.dataset.ba));v.querySelectorAll('[data-al]').forEach(b=>b.onclick=()=>openAllot(b.dataset.al));bindBan(v);
 v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Delete IPO and its applications?')){db.ipos=db.ipos.filter(x=>x.id!==b.dataset.d);db.apps=db.apps.filter(x=>x.ipo!==b.dataset.d);save();render()}});return}
-if(tab==='apps'){const L=fApps().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-v.innerHTML=filters()+`<div class="btns"><button class="pri" id="bulk">➕ Apply to IPO</button><button class="pri" id="allotb">🎯 Enter allotment</button><button id="add">+ Single application</button></div>`+L.map(a=>{const p=pnl(a);return `<div class="card"><div class="row"><b>${esc(ipo(a.ipo).name)}</b><span class="badge">${esc(a.cat)}</span></div>
-<div class="mut">${esc(acc(a.acct).name)} · ${a.lots} lot(s) · ${inr(amt(a))} · ${fd(a.date)}</div>
-<div class="row"><span>UPI: ${esc(a.mandate)} · ${esc(a.allot)}${a.allot==='Allotted'?` (${a.shares} sh)${a.sold==='yes'?' · sold @₹'+esc(a.sell):''}`:''}${a.allot==='Not allotted'?` · Refund ${a.refund==='yes'?'✓':'✗'}`:''}</span>${a.allot==='Allotted'?`<b class="${p>=0?'pos':'neg'}">${inr(p)}</b>`:''}</div>
-<div class="btns">${a.allot==='Awaiting'?`<button class="pri" data-k="${a.id}">🔍 Check allotment</button>`:''}${a.allot==='Allotted'&&a.sold!=='yes'?`<button data-sold="${a.id}">💰 Mark sold</button>`:''}<button data-e="${a.id}">Edit</button><button class="del" data-d="${a.id}">Delete</button></div>
-${a.allot==='Awaiting'?`<div class="mut">${esc(rta(ipo(a.ipo).registrar).name)} · allotment ${ipo(a.ipo).allotd?fd(ipo(a.ipo).allotd):'~'+fd(estAllot(ipo(a.ipo)))+' (est.)'}</div>`:''}</div>`}).join('');
-bindF();v.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>checkAllot(b.dataset.k));$('#add').onclick=()=>appForm();$('#bulk').onclick=()=>openApply();$('#allotb').onclick=()=>openAllot();v.querySelectorAll('[data-sold]').forEach(b=>b.onclick=()=>markSold(b.dataset.sold));v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>appForm(b.dataset.e));
-v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Delete application?')){db.apps=db.apps.filter(x=>x.id!==b.dataset.d);save();render()}});return}
-if(tab==='data'){v.innerHTML=`<div class="card"><p>Your data lives only on this device. Back up regularly.</p><div class="btns"><button class="pri" id="ej">Export JSON backup</button><button id="ec">Export CSV</button>
+function renderData(v){const t=today();v.innerHTML=`<div class="card"><p>Your data is saved on this phone (and synced to your Google account when signed in). Keep a backup too.</p><div class="btns"><button class="pri" id="ej">Export JSON backup</button><button id="ec">Export CSV</button>
 <button id="ij">Import JSON</button></div><input type="file" id="fi" accept=".json,application/json" hidden></div><div id="cloudbox"></div><div id="resbox"></div><div class="card mut">${db.accounts.length} accounts · ${db.ipos.length} IPOs · ${db.apps.length} applications</div>`;
 renderCloud($('#cloudbox'));renderResults($('#resbox'));$('#ej').onclick=async()=>{const k=await keyBackup();dl('ipo-tracker-backup-'+t+'.json',JSON.stringify(k?{...db,resultsKey:k}:db,null,1),'application/json')};
 $('#ec').onclick=()=>{const h=['IPO','Type','Account','PAN4','Category','Lots','Amount','Applied','Mandate','Allotment','Shares','Refund','ListingPrice','SellPrice','PnL'];
 const r=db.apps.map(a=>{const p=ipo(a.ipo),c=acc(a.acct);return[p.name,p.type,c.name,c.pan,a.cat,a.lots,amt(a),a.date,a.mandate,a.allot,a.shares,a.refund,a.listp,a.sell,pnl(a)]});
 dl('ipo-applications-'+t+'.csv',[h,...r].map(x=>x.map(y=>'"'+String(y??'').replace(/"/g,'""')+'"').join(',')).join('\n'),'text/csv')};
 $('#ij').onclick=()=>$('#fi').click();$('#fi').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(s=>{try{const d=JSON.parse(s);if(!Array.isArray(d.accounts)||!Array.isArray(d.ipos)||!Array.isArray(d.apps))throw 0;
-if(confirm('Replace all current data with this backup?')){if(!Array.isArray(d.prefs))d.prefs=[];const k=d.resultsKey;delete d.resultsKey;db=d;save();restoreKey(k).catch(()=>{}).then(()=>{render();loadResults(true)})}}catch(_){alert('Invalid backup file')}})}}}
+if(confirm('Replace all current data with this backup?')){if(!Array.isArray(d.prefs))d.prefs=[];const k=d.resultsKey;delete d.resultsKey;db=d;save();restoreKey(k).catch(()=>{}).then(()=>{render();loadResults(true)})}}catch(_){alert('Invalid backup file')}})}}
 function dl(n,s,t){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:t}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function form(title,fields,obj,onSave,extra){const f=$('#frm');f.innerHTML=`<h2>${title}</h2>`+fields.map(([k,l,ty,opt])=>`<label>${l}</label>`+(ty==='sel'?`<select name="${k}">${opt.map(o=>Array.isArray(o)?o:[o,o]).map(([v,t])=>`<option value="${esc(v)}"${obj[k]===v?' selected':''}>${esc(t)}</option>`).join('')}</select>`
 :`<input name="${k}" type="${ty||'text'}" ${ty==='number'?'step="any" inputmode="decimal"':''} value="${esc(obj[k])}" ${opt||''}>`)).join('')+`<p id="hint" class="mut"></p><div class="btns"><button value="cancel" formnovalidate>Cancel</button><button class="pri" value="ok">Save</button></div>`;
@@ -127,4 +140,4 @@ f.oninput=h;f.onchange=h;h()})}
 if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('service-worker.js');
 db.ipos.forEach(p=>{if(!('liveId'in p))p.liveId=null});
 const cfgOk=window.FIREBASE_CONFIG&&!/REPLACE/.test(FIREBASE_CONFIG.apiKey+FIREBASE_CONFIG.projectId);
-if(cfgOk)import('./cloud.js').catch(()=>{window.CLOUD_OFF=true});else window.CLOUD_OFF=true;go('dash');loadLive();loadResults(true);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadResults(true)});setInterval(()=>{if(tab==='live'&&!document.hidden)loadLive()},5*60*1000);
+if(cfgOk)import('./cloud.js').catch(()=>{window.CLOUD_OFF=true});else window.CLOUD_OFF=true;go('dash');loadLive();loadResults(true);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadResults(true)});setInterval(()=>{if(tab==='ipos'&&!document.hidden)loadLive()},5*60*1000);

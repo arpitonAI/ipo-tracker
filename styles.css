@@ -42,3 +42,12 @@ body:has(.apfoot){padding-bottom:150px}
 .kp{display:flex;justify-content:space-between;align-items:center;gap:4px;font-size:14px;padding:2px 0}.kp span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kc{font-style:normal;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:99px;flex:none}
 .kmore{min-height:32px;padding:2px 8px;font-size:13px;margin-top:4px;width:100%}.kpast{width:100%;margin:6px 0 10px}
+/* layout hardening: never wider than the screen */
+html,body{overflow-x:hidden;max-width:100vw}main,.card,dialog{max-width:100%;min-width:0}
+.card,.row>*,.per,.kp,.whor span{overflow-wrap:anywhere;min-width:0}.row b,.row span{min-width:0}
+table{display:block;overflow-x:auto;max-width:100%}
+nav{display:flex;overflow:hidden;max-width:100vw}nav button{flex:1 1 0;min-width:0;padding:6px 2px}nav span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}.fchips button{flex:1 1 auto;min-width:0;padding:6px 10px}
+#fq,#fi2{width:100%;margin-bottom:6px}.filters select{min-width:0;width:100%}.whor{cursor:pointer}
+.btns>button{min-width:0;max-width:100%;white-space:normal}
+.apgrid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}.apgrid select{min-width:0;width:100%;padding:8px 6px}.step button{padding:0 10px;flex:none}
