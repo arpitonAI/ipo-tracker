@@ -1,0 +1,31 @@
+name: Update IPO data
+on:
+  schedule:
+    # GitHub cron is UTC and may run late. IST = UTC+5:30.
+    - cron: '*/15 3-11 * * 1-5'   # every 15 min, ~08:30-17:15 IST Mon-Fri
+    - cron: '0,15,30 12 * * 1-5'  # until ~18:00 IST
+    - cron: '0 13-23,0-2 * * *'   # hourly otherwise
+    - cron: '0 3-12 * * 0,6'      # hourly on weekends
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: update-ipos
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python scripts/fetch_ipos.py
+      - name: Commit if changed
+        run: |
+          git config user.name "ipo-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ipos.json
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -m "Update IPO data $(date -u +%FT%TZ)"
+          git pull --rebase -q && git push

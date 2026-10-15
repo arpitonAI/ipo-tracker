@@ -12,9 +12,26 @@ const acc=i=>db.accounts.find(a=>a.id===i)||{name:'(deleted)'},ipo=i=>db.ipos.fi
 const amt=a=>{const p=ipo(a.ipo);return (+a.lots||0)*(+p.lot||0)*(+p.hi||0)};
 const pnl=a=>{if(a.allot!=='Allotted')return 0;const p=ipo(a.ipo),px=+a.sell||+a.listp||0;return px?(px-(+p.hi||0))*(+a.shares||0):0};
 const blocked=a=>a.mandate==='Accepted'&&(a.allot==='Awaiting'||(a.allot==='Not allotted'&&a.refund!=='yes'))?amt(a):0;
+let live=null;try{live=JSON.parse(localStorage.getItem('ipoTracker.live'))}catch(e){}
+function loadLive(){return fetch('data/ipos.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{live=j;localStorage.setItem('ipoTracker.live',JSON.stringify(j));syncLinked();render()}).catch(()=>{})}
+function liveStatus(x){const t=today();return x.open&&x.open>t?'upcoming':x.close&&x.close<t?'closed':'open'}
+function syncLinked(){if(!live)return;let ch=0;db.ipos.forEach(p=>{const x=p.liveId&&live.ipos.find(y=>y.id===p.liveId);if(!x)return;
+const m={name:x.name,type:x.type,open:x.open||p.open,close:x.close||p.close,listd:x.listing||p.listd,lo:x.priceLow??p.lo,hi:x.priceHigh??p.hi,lot:x.lot??p.lot};
+for(const k in m)if(m[k]!=null&&String(p[k]??'')!==String(m[k])){p[k]=String(m[k]);ch=1}});if(ch)save()}
+function linkLive(lid){let p=db.ipos.find(q=>q.liveId===lid);if(p)return p.id;const x=live.ipos.find(y=>y.id===lid);
+p={id:id(),liveId:lid,name:x.name,type:x.type,open:x.open||'',close:x.close||'',allotd:'',listd:x.listing||'',lo:String(x.priceLow??''),hi:String(x.priceHigh??''),lot:String(x.lot??'')};db.ipos.push(p);return p.id}
+// Category lot limits (approx. SEBI rules): Mainboard Retail <=2L, sHNI >2L-10L, bHNI >10L, Employee <=5L.
+// SME (2025 rules): individual/Retail = 2 lots, HNI >= 3 lots.
+function catRules(type,lot,hi){const L=(+lot||0)*(+hi||0);if(!L)return null;const f=v=>Math.floor(v/L),sme=type==='SME';
+const r=sme?{Retail:[2,2],sHNI:[3,Math.max(3,f(1e6))],bHNI:[Math.max(3,f(1e6))+1,null]}
+:{Retail:[1,Math.max(1,f(2e5))],sHNI:[f(2e5)+1,f(1e6)],bHNI:[f(1e6)+1,null],Employee:[1,Math.max(1,f(5e5))],Shareholder:[1,Math.max(1,f(2e5))]};return r}
+const ruleTxt=r=>r?Object.entries(r).map(([k,[a,b]])=>`${k}: ${a}${b==null?'+':a===b?'':'–'+b} lot${b===1?'':'s'}`).join(' · '):'';
+const ist=s=>s?new Date(s).toLocaleString(undefined,{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'—';
+const SUBK=[['qib','QIB'],['nii','NII'],['shni','sHNI'],['bhni','bHNI'],['retail','Retail'],['employee','Emp'],['total','Total']];
+let lf='open';
 let tab='dash',flt={acct:'',cat:'',st:''};
 function go(t){tab=t;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
-$('#title').textContent={dash:'Dashboard',ipos:'IPOs',apps:'Applications',accts:'Accounts',data:'Backup & Export'}[t];render()}
+$('#title').textContent={live:'Live IPOs',dash:'Dashboard',ipos:'IPOs',apps:'Applications',accts:'Accounts',data:'Backup & Export'}[t];render()}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
 function filters(){const o=(v,l,s)=>`<option value="${esc(v)}"${s===v?' selected':''}>${esc(l)}</option>`;
 return `<div class="filters"><select id="fa">${o('','All accounts',flt.acct)}${db.accounts.map(a=>o(a.id,a.name,flt.acct)).join('')}</select>
@@ -34,6 +51,19 @@ v.innerHTML=filters()+`<div class="grid"><div class="card stat">Blocked<b>${inr(
 <div class="card"><b>Upcoming allotments</b>${up.map(p=>`<div class="row"><span>${esc(p.name)}</span><span class="mut">${fd(p.allotd)} · ${db.apps.filter(a=>a.ipo===p.id).length} apps</span></div>`).join('')||'<div class=mut>None</div>'}</div>
 <div class="card"><b>Hit rate by account</b><table>${rate(L,'acct',k=>acc(k).name)}</table></div>
 <div class="card"><b>Hit rate by category</b><table>${rate(L,'cat',k=>k)}</table></div>`;bindF();return}
+if(tab==='live'){if(!live){v.innerHTML='<div class=card>Loading live IPO data… (needs internet the first time)</div>';return}
+const L=live.ipos.filter(x=>liveStatus(x)===lf),cnt=k=>live.ipos.filter(x=>liveStatus(x)===k).length;
+v.innerHTML=`<div class="btns">${['open','upcoming','closed'].map(k=>`<button class="${lf===k?'pri':''}" data-f="${k}">${k[0].toUpperCase()+k.slice(1)} (${cnt(k)})</button>`).join('')}</div>
+<div class="mut" style="margin-bottom:8px">Data checked ${ist(live.generated)} (your time) · Source: NSE</div>`+(L.map(x=>{const r=catRules(x.type,x.lot,x.priceHigh),sb=x.subscription||{};
+return `<div class="card"><div class="row"><b>${esc(x.name)}</b><span class="badge">${esc(x.type)}</span></div>
+<div class="mut">${fd(x.open)} – ${fd(x.close)}${x.listing?' · List '+fd(x.listing):''}</div>
+<div>₹${esc(x.priceLow??'?')}–${esc(x.priceHigh??'?')} · Lot ${esc(x.lot??'?')}${x.lot&&x.priceHigh?' ('+inr(x.lot*x.priceHigh)+')':''}</div>
+${r?`<div class="mut">${ruleTxt(r)}</div>`:''}
+${Object.keys(sb).length?`<table><tr>${SUBK.filter(([k])=>k in sb).map(([k,l])=>`<th>${l}</th>`).join('')}</tr><tr>${SUBK.filter(([k])=>k in sb).map(([k])=>`<td>${sb[k]}x</td>`).join('')}</tr></table>
+<div class="mut">Subscription as of ${ist(x.subscriptionUpdated)}${x.type==='SME'?' · category split not published by NSE for SME':''}</div>`:'<div class="mut">No subscription data yet</div>'}
+${`<div class="btns"><button class="pri" data-l="${esc(x.id)}">+ Add application</button></div>`}</div>`}).join('')||'<div class="card mut">None</div>')+`<div class="mut">NSE-listed issues only (BSE-only SME IPOs not included). Upcoming IPOs appear once NSE lists them.</div>`;
+v.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{lf=b.dataset.f;render()});
+v.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>appForm(null,null,b.dataset.l));return}
 if(tab==='accts'){v.innerHTML=`<button class="pri" id="add">+ Add account</button>`+db.accounts.map(a=>`<div class="card"><div class="row"><b>${esc(a.name)}</b><span class="mut">PAN …${esc(a.pan)}</span></div>
 <div class="mut">${esc(a.broker)}${a.upi?' · '+esc(a.upi):''}</div><div class="btns"><button data-e="${a.id}">Edit</button><button class="del" data-d="${a.id}">Delete</button></div></div>`).join('');
 $('#add').onclick=()=>accForm();v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>accForm(b.dataset.e));
@@ -65,10 +95,15 @@ function form(title,fields,obj,onSave,extra){const f=$('#frm');f.innerHTML=`<h2>
 const d=$('#dlg');if(extra)extra(f);f.onsubmit=e=>{if(e.submitter&&e.submitter.value==='cancel')return;const o={};new FormData(f).forEach((v,k)=>o[k]=v.trim());onSave(o);save();render()};d.showModal()}
 function accForm(i){const a=db.accounts.find(x=>x.id===i)||{};form(i?'Edit account':'Add account',[['name','Name','text','required'],['pan','PAN last 4','text','maxlength=4 required'],['broker','Broker / Demat','text','required'],['upi','UPI ID (optional)']],a,o=>{o.pan=o.pan.toUpperCase();i?Object.assign(a,o):db.accounts.push({id:id(),...o})})}
 function ipoForm(i){const p=db.ipos.find(x=>x.id===i)||{type:'Mainboard'};form(i?'Edit IPO':'Add IPO',[['name','IPO name','text','required'],['type','Type','sel',['Mainboard','SME']],['open','Open date','date','required'],['close','Close date','date','required'],['allotd','Allotment date','date'],['listd','Listing date','date'],['lo','Price band low (₹)','number'],['hi','Price band high (₹)','number','required min=0'],['lot','Lot size (shares)','number','required min=1']],p,o=>{i?Object.assign(p,o):db.ipos.push({id:id(),...o})})}
-function appForm(i,ipoId){if(!db.accounts.length||!db.ipos.length){alert('Add at least one account and one IPO first.');return}
-const a=db.apps.find(x=>x.id===i)||{ipo:ipoId||db.ipos[0].id,acct:db.accounts[0].id,cat:'Retail',lots:1,date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'};
-form(i?'Edit application':'Add application',[['ipo','IPO','sel',db.ipos.map(p=>[p.id,p.name])],['acct','Account','sel',db.accounts.map(c=>[c.id,c.name+' (…'+c.pan+')'])],['cat','Category','sel',CATS],['lots','Lots','number','required min=1'],['date','Applied date','date'],['mandate','UPI mandate','sel',MAND],['allot','Allotment','sel',ALLOT],['shares','Shares allotted','number','min=0'],['refund','Refund received','sel',[['no','No'],['yes','Yes']]],['listp','Listing price (₹)','number'],['sell','Sell price (₹)','number']],a,
-o=>{if(o.allot==='Allotted'&&!o.shares)o.shares=ipo(o.ipo).lot;i?Object.assign(a,o):db.apps.push({id:id(),...o})},
-f=>{const h=()=>{const p=ipo(f.ipo.value);$('#hint').textContent='Amount: '+inr((+f.lots.value||0)*(+p.lot||0)*(+p.hi||0))};f.oninput=h;h()})}
+function appForm(i,ipoId,liveId){const opts=[...(live?live.ipos.filter(x=>!db.ipos.some(p=>p.liveId===x.id)).map(x=>['live:'+x.id,'🔴 '+x.name+' ('+liveStatus(x)+')']):[]),...db.ipos.map(p=>[p.id,p.name])];
+if(!db.accounts.length||!opts.length){alert(db.accounts.length?'No IPOs available yet.':'Add an account first (Accounts tab).');return}
+if(liveId){const p=db.ipos.find(q=>q.liveId===liveId);ipoId=p?p.id:'live:'+liveId}
+const a=db.apps.find(x=>x.id===i)||{ipo:ipoId||opts[0][0],acct:db.accounts[0].id,cat:'Retail',lots:1,date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'};
+form(i?'Edit application':'Add application',[['ipo','IPO','sel',opts],['acct','Account','sel',db.accounts.map(c=>[c.id,c.name+' (…'+c.pan+')'])],['cat','Category','sel',CATS],['lots','Lots','number','required min=1'],['date','Applied date','date'],['mandate','UPI mandate','sel',MAND],['allot','Allotment','sel',ALLOT],['shares','Shares allotted','number','min=0'],['refund','Refund received','sel',[['no','No'],['yes','Yes']]],['listp','Listing price (₹)','number'],['sell','Sell price (₹)','number']],a,
+o=>{if(o.ipo.startsWith('live:'))o.ipo=linkLive(o.ipo.slice(5));if(o.allot==='Allotted'&&!o.shares)o.shares=ipo(o.ipo).lot;i?Object.assign(a,o):db.apps.push({id:id(),...o})},
+f=>{const h=()=>{const v=f.ipo.value,x=v.startsWith('live:')?live.ipos.find(y=>y.id===v.slice(5)):null,p=x?{type:x.type,lot:x.lot,hi:x.priceHigh}:ipo(v);
+const n=+f.lots.value||0,r=catRules(p.type,p.lot,p.hi),c=r&&r[f.cat.value];let w='';if(c&&n&&(n<c[0]||(c[1]!=null&&n>c[1])))w=` ⚠️ ${f.cat.value} needs ${c[0]}${c[1]==null?'+':'–'+c[1]} lots`;
+$('#hint').textContent=`Lot ${p.lot||'?'} × ₹${p.hi||'?'} · Amount: ${inr(n*(+p.lot||0)*(+p.hi||0))}`+w+(r?`\n${ruleTxt(r)}`:'');$('#hint').style.whiteSpace='pre-line'};
+f.oninput=h;f.onchange=h;h()})}
 if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('service-worker.js');
-go('dash');
+db.ipos.forEach(p=>{if(!('liveId'in p))p.liveId=null});go('dash');loadLive();setInterval(()=>{if(tab==='live'&&!document.hidden)loadLive()},5*60*1000);
