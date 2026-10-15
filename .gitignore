@@ -1,0 +1,8 @@
+# Never commit plaintext allotment results or backups
+*results*.json
+!data/results.enc.json
+*.plain.json
+ipo-tracker-backup-*.json
+*.png.tmp
+/tmp/
+*.tmp

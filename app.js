@@ -43,7 +43,7 @@ window.open(r.url,'_blank','noopener');setTimeout(()=>quickAllot(aid,msg+'Search
 function quickAllot(aid,msg){const a=db.apps.find(x=>x.id===aid),p=ipo(a.ipo),f=$('#frm');
 f.innerHTML=`<h2>Allotment result</h2><p class="mut">${esc(msg)}</p><label>Shares allotted (if allotted)</label><input name="sh" type="number" inputmode="numeric" value="${esc(a.shares||p.lot||'')}">
 <div class="btns"><button value="ok" class="pri" data-r="Allotted">✅ Allotted</button><button value="ok" data-r="Not allotted">❌ Not allotted</button><button value="cancel">Later</button></div>`;
-f.onsubmit=e=>{const b=e.submitter;if(!b||!b.dataset.r)return;a.allot=b.dataset.r;a.shares=a.allot==='Allotted'?(f.sh.value||p.lot):'0';if(a.mandate==='Pending')a.mandate='Accepted';save();render()};$('#dlg').showModal()}
+f.onsubmit=e=>{const b=e.submitter;if(!b||!b.dataset.r)return;a.allot=b.dataset.r;a.allotSrc='manual';a.shares=a.allot==='Allotted'?(f.sh.value||p.lot):'0';if(a.mandate==='Pending')a.mandate='Accepted';save();render()};$('#dlg').showModal()}
 let tab='dash',flt={acct:'',cat:'',st:''};
 function go(t){tab=t;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
 $('#title').textContent={live:'Live IPOs',dash:'Dashboard',ipos:'IPOs',apps:'Applications',accts:'Accounts',data:'Backup & Export'}[t];render()}
@@ -63,7 +63,7 @@ v.innerHTML=filters()+`<div class="grid"><div class="card stat">Blocked<b>${inr(
 <div class="card stat">Total P&amp;L<b class="${tp>=0?'pos':'neg'}">${inr(tp)}</b></div><div class="card stat">Applications<b>${L.length}</b></div>
 <div class="card stat">Allotted<b>${L.filter(a=>a.allot==='Allotted').length}</b></div></div>
 <div class="card"><b>Open now</b>${active.map(p=>`<div class="row"><span>${esc(p.name)} <span class="badge">${esc(p.type)}</span></span><span class="mut">closes ${fd(p.close)}</span></div>`).join('')||'<div class=mut>None</div>'}</div>
-<div class="card"><b>Upcoming allotments</b>${up.map(p=>`<div class="row"><span>${esc(p.name)}</span><span class="mut">${fd(p.allotd)} · ${db.apps.filter(a=>a.ipo===p.id).length} apps</span></div>`).join('')||'<div class=mut>None</div>'}</div>
+${resNote()}<div class="card"><b>Upcoming allotments</b>${up.map(p=>`<div class="row"><span>${esc(p.name)}</span><span class="mut">${fd(p.allotd)} · ${db.apps.filter(a=>a.ipo===p.id).length} apps</span></div>`).join('')||'<div class=mut>None</div>'}</div>
 <div class="card"><b>Hit rate by account</b><table>${rate(L,'acct',k=>acc(k).name)}</table></div>
 <div class="card"><b>Hit rate by category</b><table>${rate(L,'cat',k=>k)}</table></div>`;bindF();return}
 if(tab==='live'){if(!live){v.innerHTML='<div class=card>Loading live IPO data… (needs internet the first time)</div>';return}
@@ -98,13 +98,13 @@ ${a.allot==='Awaiting'?`<div class="mut">${esc(rta(ipo(a.ipo).registrar).name)} 
 bindF();v.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>checkAllot(b.dataset.k));$('#add').onclick=()=>appForm();v.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>appForm(b.dataset.e));
 v.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Delete application?')){db.apps=db.apps.filter(x=>x.id!==b.dataset.d);save();render()}});return}
 if(tab==='data'){v.innerHTML=`<div class="card"><p>Your data lives only on this device. Back up regularly.</p><div class="btns"><button class="pri" id="ej">Export JSON backup</button><button id="ec">Export CSV</button>
-<button id="ij">Import JSON</button></div><input type="file" id="fi" accept=".json,application/json" hidden></div><div class="card mut">${db.accounts.length} accounts · ${db.ipos.length} IPOs · ${db.apps.length} applications</div>`;
-$('#ej').onclick=()=>dl('ipo-tracker-backup-'+t+'.json',JSON.stringify(db,null,1),'application/json');
+<button id="ij">Import JSON</button></div><input type="file" id="fi" accept=".json,application/json" hidden></div><div id="resbox"></div><div class="card mut">${db.accounts.length} accounts · ${db.ipos.length} IPOs · ${db.apps.length} applications</div>`;
+renderResults($('#resbox'));$('#ej').onclick=async()=>{const k=await keyBackup();dl('ipo-tracker-backup-'+t+'.json',JSON.stringify(k?{...db,resultsKey:k}:db,null,1),'application/json')};
 $('#ec').onclick=()=>{const h=['IPO','Type','Account','PAN4','Category','Lots','Amount','Applied','Mandate','Allotment','Shares','Refund','ListingPrice','SellPrice','PnL'];
 const r=db.apps.map(a=>{const p=ipo(a.ipo),c=acc(a.acct);return[p.name,p.type,c.name,c.pan,a.cat,a.lots,amt(a),a.date,a.mandate,a.allot,a.shares,a.refund,a.listp,a.sell,pnl(a)]});
 dl('ipo-applications-'+t+'.csv',[h,...r].map(x=>x.map(y=>'"'+String(y??'').replace(/"/g,'""')+'"').join(',')).join('\n'),'text/csv')};
 $('#ij').onclick=()=>$('#fi').click();$('#fi').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(s=>{try{const d=JSON.parse(s);if(!Array.isArray(d.accounts)||!Array.isArray(d.ipos)||!Array.isArray(d.apps))throw 0;
-if(confirm('Replace all current data with this backup?')){db=d;save();render()}}catch(_){alert('Invalid backup file')}})}}}
+if(confirm('Replace all current data with this backup?')){const k=d.resultsKey;delete d.resultsKey;db=d;save();restoreKey(k).catch(()=>{}).then(()=>{render();loadResults(true)})}}catch(_){alert('Invalid backup file')}})}}}
 function dl(n,s,t){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:t}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function form(title,fields,obj,onSave,extra){const f=$('#frm');f.innerHTML=`<h2>${title}</h2>`+fields.map(([k,l,ty,opt])=>`<label>${l}</label>`+(ty==='sel'?`<select name="${k}">${opt.map(o=>Array.isArray(o)?o:[o,o]).map(([v,t])=>`<option value="${esc(v)}"${obj[k]===v?' selected':''}>${esc(t)}</option>`).join('')}</select>`
 :`<input name="${k}" type="${ty||'text'}" ${ty==='number'?'step="any" inputmode="decimal"':''} value="${esc(obj[k])}" ${opt||''}>`)).join('')+`<p id="hint" class="mut"></p><div class="btns"><button value="cancel" formnovalidate>Cancel</button><button class="pri" value="ok">Save</button></div>`;
@@ -116,10 +116,10 @@ if(!db.accounts.length||!opts.length){alert(db.accounts.length?'No IPOs availabl
 if(liveId){const p=db.ipos.find(q=>q.liveId===liveId);ipoId=p?p.id:'live:'+liveId}
 const a=db.apps.find(x=>x.id===i)||{ipo:ipoId||opts[0][0],acct:db.accounts[0].id,cat:'Retail',lots:1,date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'};
 form(i?'Edit application':'Add application',[['ipo','IPO','sel',opts],['acct','Account','sel',db.accounts.map(c=>[c.id,c.name+' (…'+c.pan+')'])],['cat','Category','sel',CATS],['lots','Lots','number','required min=1'],['date','Applied date','date'],['mandate','UPI mandate','sel',MAND],['allot','Allotment','sel',ALLOT],['shares','Shares allotted','number','min=0'],['refund','Refund received','sel',[['no','No'],['yes','Yes']]],['listp','Listing price (₹)','number'],['sell','Sell price (₹)','number']],a,
-o=>{if(o.ipo.startsWith('live:'))o.ipo=linkLive(o.ipo.slice(5));if(o.allot==='Allotted'&&!o.shares)o.shares=ipo(o.ipo).lot;i?Object.assign(a,o):db.apps.push({id:id(),...o})},
+o=>{if(o.ipo.startsWith('live:'))o.ipo=linkLive(o.ipo.slice(5));if(o.allot==='Allotted'&&!o.shares)o.shares=ipo(o.ipo).lot;if(i&&(o.allot!==a.allot||String(o.shares)!==String(a.shares)))o.allotSrc=o.allot==='Awaiting'?'':'manual';i?Object.assign(a,o):db.apps.push({id:id(),...o})},
 f=>{const h=()=>{const v=f.ipo.value,x=v.startsWith('live:')?live.ipos.find(y=>y.id===v.slice(5)):null,p=x?{type:x.type,lot:x.lot,hi:x.priceHigh}:ipo(v);
 const n=+f.lots.value||0,r=catRules(p.type,p.lot,p.hi),c=r&&r[f.cat.value];let w='';if(c&&n&&(n<c[0]||(c[1]!=null&&n>c[1])))w=` ⚠️ ${f.cat.value} needs ${c[0]}${c[1]==null?'+':'–'+c[1]} lots`;
 $('#hint').textContent=`Lot ${p.lot||'?'} × ₹${p.hi||'?'} · Amount: ${inr(n*(+p.lot||0)*(+p.hi||0))}`+w+(r?`\n${ruleTxt(r)}`:'');$('#hint').style.whiteSpace='pre-line'};
 f.oninput=h;f.onchange=h;h()})}
 if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('service-worker.js');
-db.ipos.forEach(p=>{if(!('liveId'in p))p.liveId=null});go('dash');loadLive();setInterval(()=>{if(tab==='live'&&!document.hidden)loadLive()},5*60*1000);
+db.ipos.forEach(p=>{if(!('liveId'in p))p.liveId=null});go('dash');loadLive();loadResults(true);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadResults(true)});setInterval(()=>{if(tab==='live'&&!document.hidden)loadLive()},5*60*1000);

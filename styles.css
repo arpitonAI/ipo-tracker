@@ -14,3 +14,5 @@ dialog{width:min(560px,96vw);border:0;border-radius:14px;background:var(--card);
 label{display:block;margin:8px 0 2px;font-size:14px;color:var(--mut)}form input,form select{width:100%}
 .badge{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--bd)}.filters{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px}
 table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:6px;border-bottom:1px solid var(--bd);text-align:left}
+#toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:99;max-width:90vw;text-align:center}
+#toast.show{opacity:1}
