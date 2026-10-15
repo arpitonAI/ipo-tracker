@@ -4,10 +4,10 @@ const [{initializeApp},A,F]=await Promise.all([import(U+'firebase-app.js'),impor
 const app=initializeApp(window.FIREBASE_CONFIG),auth=A.getAuth(app);
 const fs=F.initializeFirestore(app,{localCache:F.persistentLocalCache({tabManager:F.persistentMultipleTabManager()})});
 if(window.FIREBASE_EMULATOR){A.connectAuthEmulator(auth,'http://127.0.0.1:9099',{disableWarnings:true});F.connectFirestoreEmulator(fs,'127.0.0.1',8080)}
-const COLS={accounts:'accounts',ipos:'ipos',apps:'applications'};
+const COLS={accounts:'accounts',ipos:'ipos',apps:'applications',prefs:'prefs'};
 let user=null,uref=null,key=null,vault=null,rsaEnc=null,resEnc=null,err='',unsubs=[],timer=null;
 let last={},raw={},firstServer={};
-const reset=()=>{last={accounts:{},ipos:{},apps:{}};raw={};firstServer={}};reset();
+const reset=()=>{last={accounts:{},ipos:{},apps:{},prefs:{}};raw={};firstServer={}};reset();
 const sj=o=>JSON.stringify(Object.keys(o).sort().reduce((r,k)=>(r[k]=o[k],r),{}));
 const clean=o=>JSON.parse(JSON.stringify(o));
 const persist=()=>localStorage.setItem(K,JSON.stringify(db));

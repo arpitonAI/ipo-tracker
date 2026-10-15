@@ -18,3 +18,10 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:6px;borde
 #toast.show{opacity:1}
 header{display:flex;align-items:center;justify-content:space-between}#sync{font-size:16px;cursor:pointer}
 input[type=password]{width:100%;box-sizing:border-box;margin:6px 0;padding:10px;font-size:16px;border:1px solid #ccc;border-radius:8px}.neg{color:#b91c1c}
+button.big{width:100%;font-size:18px;min-height:52px;margin-bottom:10px}
+.chk{display:flex;align-items:center;gap:8px;margin:0;color:var(--fg);font-size:16px}.chk input{width:22px;height:22px;min-height:0}
+.aprow{opacity:.75}.aprow.on{opacity:1;border-color:var(--ac)}.apgrid{display:grid;grid-template-columns:1fr 1.3fr;gap:6px;margin:6px 0}
+.step{display:flex;gap:4px}.step select{flex:1;min-width:0}.step button{padding:0 12px}
+.apfoot{position:fixed;left:0;right:0;bottom:calc(60px + env(safe-area-inset-bottom));background:var(--card);border-top:2px solid var(--ac);display:flex;justify-content:space-between;align-items:center;padding:8px 16px;z-index:3}
+body:has(.apfoot){padding-bottom:150px}
+#api{width:100%}
