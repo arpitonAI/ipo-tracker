@@ -1,52 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-15T17:42:46+00:00",
+ "generated": "2026-10-15T21:11:50+00:00",
  "ipos": [
-  {
-   "id": "HDFIRE",
-   "symbol": "HDFIRE",
-   "series": "EQ",
-   "name": "HD Fire Protect Limited",
-   "type": "Mainboard",
-   "open": "2026-10-13",
-   "close": "2026-10-15",
-   "priceLow": 258.0,
-   "priceHigh": 271.0,
-   "issueSizeShares": 18420492.0,
-   "lot": 55,
-   "subscription": {
-    "qib": 256.65,
-    "nii": 203.21,
-    "bhni": 236.17,
-    "shni": 137.28,
-    "retail": 30.49,
-    "employee": 23.61,
-    "total": 131.7
-   },
-   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
-  },
-  {
-   "id": "LOANFRONT",
-   "symbol": "LOANFRONT",
-   "series": "SME",
-   "name": "Vaibhav Vyapaar Limited",
-   "type": "SME",
-   "open": "2026-10-13",
-   "close": "2026-10-15",
-   "priceLow": 51.0,
-   "priceHigh": 54.0,
-   "issueSizeShares": null,
-   "lot": 2000,
-   "subscription": {
-    "total": 0.56
-   },
-   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
-   "registrar": "Kfin Technologies Limited",
-   "status": "open"
-  },
   {
    "id": "FUSIONCX",
    "symbol": "FUSIONCX",
@@ -206,44 +161,10 @@
    "priceLow": 1065.0,
    "priceHigh": 1119.0,
    "issueSizeShares": 270000000.0,
-   "status": "upcoming",
    "lot": 12,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "Kfin Technologies Limited "
-  },
-  {
-   "id": "PAPADMALJI",
-   "symbol": "PAPADMALJI",
-   "series": "SME",
-   "name": "Papadmalji Agro Foods Limited",
-   "type": "SME",
-   "open": "2026-09-29",
-   "close": "2026-10-01",
-   "listing": "2026-10-07",
-   "priceLow": 69.0,
-   "priceHigh": 72.0,
-   "issuePrice": 72.0,
-   "lot": 1600,
-   "subscriptionUpdated": "2026-10-01T19:00:00+05:30",
-   "registrar": "MAS Services Limited",
-   "status": "closed"
-  },
-  {
-   "id": "GREENASIA",
-   "symbol": "GREENASIA",
-   "series": "SME",
-   "name": "Green Asia Impex Limited",
-   "type": "SME",
-   "open": "2026-09-24",
-   "close": "2026-10-01",
-   "listing": "2026-10-07",
-   "priceLow": 84.0,
-   "priceHigh": 89.0,
-   "issuePrice": 89.0,
-   "lot": 1600,
-   "subscriptionUpdated": "2026-10-01T19:00:00+05:30",
-   "registrar": "Bigshare Services Private Limited",
-   "status": "closed"
+   "registrar": "Kfin Technologies Limited ",
+   "status": "upcoming"
   },
   {
    "id": "NITYAS",
@@ -330,6 +251,52 @@
    "lot": 1600,
    "subscriptionUpdated": "2026-10-07T17:42:00+05:30",
    "registrar": "Cameo Corporate Service Limited",
+   "status": "closed"
+  },
+  {
+   "id": "HDFIRE",
+   "symbol": "HDFIRE",
+   "series": "EQ",
+   "name": "HD Fire Protect Limited",
+   "type": "Mainboard",
+   "open": "2026-10-13",
+   "close": "2026-10-15",
+   "priceLow": 258.0,
+   "priceHigh": 271.0,
+   "issueSizeShares": 18420492.0,
+   "lot": 55,
+   "subscription": {
+    "qib": 256.65,
+    "nii": 203.21,
+    "bhni": 236.17,
+    "shni": 137.28,
+    "retail": 30.49,
+    "employee": 23.61,
+    "total": 131.7
+   },
+   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "LOANFRONT",
+   "symbol": "LOANFRONT",
+   "series": "SME",
+   "name": "Vaibhav Vyapaar Limited",
+   "type": "SME",
+   "open": "2026-10-13",
+   "close": "2026-10-15",
+   "listing": null,
+   "priceLow": 51.0,
+   "priceHigh": 54.0,
+   "issuePrice": null,
+   "lot": 2000,
+   "subscription": {
+    "total": 0.56
+   },
+   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
+   "registrar": "Kfin Technologies Limited",
    "status": "closed"
   }
  ]
