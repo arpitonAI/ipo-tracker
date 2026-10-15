@@ -95,3 +95,28 @@ if(c.pend){if(a.allot!=='Awaiting'){a.allot='Awaiting';a.shares='';a.allotSrc=''
 const st=c.n>0?'Allotted':'Not allotted';if(a.allot!==st||String(+a.shares||0)!==String(c.n)||a.allotSrc!=='manual'){a.allot=st;a.shares=String(c.n);a.allotSrc='manual';if(a.mandate==='Pending')a.mandate='Accepted';n++}});
 save();toast(n+' application'+(n===1?'':'s')+' updated');go('dash')}};bindS()}
 function alOut(c){return c.pend?'Pending':c.bad?`<span class="neg">⚠️ Enter 0–${c.max} whole shares</span>`:`Debited <b>${inr(c.deb)}</b> · Released <b>${inr(c.rel)}</b>`}
+/* ---- Applications by IPO ---- */
+const CATORD=['bHNI','sHNI','Retail','Shareholder','Employee'],CATCLR={bHNI:'#7c3aed',sHNI:'#2563eb',Retail:'#059669',Shareholder:'#d97706',Employee:'#db2777'};
+const XS=new Set(JSON.parse(sessionStorage.getItem('ipoTracker.x')||'[]'));const xsave=()=>sessionStorage.setItem('ipoTracker.x',JSON.stringify([...XS]));
+const chip=c=>`<span class="chip" style="background:${CATCLR[c]||'#64748b'}">${esc(c)}</span>`;
+function ipoStatus(p,L){const t=today();if(p.open&&p.open>t)return'Upcoming';if(!p.close||p.close>=t)return'Open';
+if(L.some(a=>a.allot==='Awaiting'))return'Closed · awaiting allotment';return p.listd&&p.listd<=t?'Listed':'Allotted'}
+function ipoSumCard(p,pre,inner){const L=db.apps.filter(a=>a.ipo===p.id);if(!L.length)return'';const k=pre+p.id;
+const cats=[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(CATORD.indexOf(b)+99)%99||a.localeCompare(b));
+const bl=L.reduce((s,a)=>s+blocked(a),0),ap=L.reduce((s,a)=>s+amt(a),0),known=L.filter(a=>a.allot!=='Awaiting'),got=L.filter(a=>a.allot==='Allotted');
+const line=cats.map(c=>L.filter(a=>a.cat===c).length+' '+c).join(' + ')+' = '+L.length+' application'+(L.length>1?'s':'');
+const used=new Set(L.map(a=>a.acct)),miss=db.accounts.filter(c=>!used.has(c.id));
+const ban=(id,head,body)=>`<div class="ban${XS.has(id)?' open':''}" data-x="${esc(id)}"><div class="banh">${head}<span class="car">▸</span></div><div class="banb">${body}</div></div>`;
+return(inner?'<div class="ipos">':`<div class="card ipos"><div class="row"><b>${esc(p.name)}</b><span class="badge">${esc(ipoStatus(p,L))}</span></div>
+<div class="mut">${fd(p.open)} – ${fd(p.close)}${p.allotd?' · Allot '+fd(p.allotd):''}${p.listd?' · List '+fd(p.listd):''}</div>
+`)+`<div class="sumline">${esc(line)}</div><div class="mut">Applied <b>${inr(ap)}</b>${bl?` · Blocked <b>${inr(bl)}</b>`:''}${known.length?` · Allotted <b>${got.length}</b> of ${L.length}${known.length<L.length?` (${L.length-known.length} pending)`:''}`:''}</div>
+${cats.map(c=>{const C=L.filter(a=>a.cat===c).sort((a,b)=>acc(a.acct).name.localeCompare(acc(b.acct).name)),sub=C.reduce((s,a)=>s+amt(a),0),g=C.filter(a=>a.allot==='Allotted').length;
+return ban(k+'|'+c,`${chip(c)}<span class="bant"><b>${C.length}</b> · ${inr(sub)}${g?` · ✅ ${g}`:''}</span>`,C.map(a=>`<div class="per"><div class="row"><span>${esc(acc(a.acct).name)}</span><b>${inr(amt(a))}</b></div>
+<div class="mut">${a.lots} lot${+a.lots>1?'s':''} · ${appliedSh(a)} sh · ${a.allot==='Allotted'?`✅ ${+a.shares||0} sh allotted`:a.allot==='Not allotted'?'❌ Not allotted':'⏳ Awaiting'}</div></div>`).join(''))}).join('')}
+${ban(k+'|acc',`<span class="bant">👥 Accounts used <b>${used.size}</b> of ${db.accounts.length}</span>`,miss.length?`<div class="mut">Not applied:</div>`+miss.map(c=>`<div class="per">${esc(c.name)}</div>`).join(''):'<div class="mut">All accounts applied</div>')}</div>`}
+function ipoSection(){const t=today(),P=db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id));
+const act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Awaiting');
+const A=P.filter(act).sort((a,b)=>(a.close||'9').localeCompare(b.close||'9')),Z=P.filter(p=>!act(p)).sort((a,b)=>(b.close||'').localeCompare(a.close||''));
+if(!P.length)return'';return`<h3 class="sec">Applications by IPO</h3>${A.map(p=>ipoSumCard(p,'d:')).join('')||'<div class="card mut">No active IPOs</div>'}
+${Z.length?`<div class="ban card${XS.has('past')?' open':''}" data-x="past"><div class="banh"><b>Past IPOs (${Z.length})</b><span class="car">▸</span></div><div class="banb">${Z.map(p=>ipoSumCard(p,'d:')).join('')}</div></div>`:''}`}
+function bindBan(v){v.querySelectorAll('[data-x]').forEach(e=>{e.querySelector('.banh').onclick=ev=>{ev.stopPropagation();const k=e.dataset.x;e.classList.toggle('open');e.classList.contains('open')?XS.add(k):XS.delete(k);xsave()}})}
