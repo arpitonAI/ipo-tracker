@@ -32,3 +32,13 @@ body:has(.apfoot){padding-bottom:150px}
 .banh{display:flex;align-items:center;gap:8px;padding:10px;cursor:pointer;min-height:44px}.bant{flex:1}.car{transition:transform .2s;color:var(--mut)}
 .ban.open>.banh .car{transform:rotate(90deg)}.banb{display:none;padding:0 10px 8px}.ban.open>.banb{display:block}.ban.card>.banb{padding:0 8px 8px}
 .per{border-top:1px solid var(--bd);padding:8px 0}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.ipochip{white-space:nowrap;border-radius:99px;min-height:40px}.ipochip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.whoh{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:12px 4px 4px;color:var(--mut)}
+.whol{padding:0 12px}.whor{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--bd);font-size:16px}.whor:last-child{border-bottom:0}
+.ipos .sumline{font-size:16px}
+.kgrid{columns:2;column-gap:8px}.kcard{break-inside:avoid;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px;cursor:pointer;display:inline-block;width:100%}
+.kt{display:block;font-size:15px;line-height:1.25}.ks{font-size:13px;font-weight:600;color:var(--ac);margin:3px 0 6px}
+.kp{display:flex;justify-content:space-between;align-items:center;gap:4px;font-size:14px;padding:2px 0}.kp span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kc{font-style:normal;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:99px;flex:none}
+.kmore{min-height:32px;padding:2px 8px;font-size:13px;margin-top:4px;width:100%}.kpast{width:100%;margin:6px 0 10px}

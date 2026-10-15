@@ -113,10 +113,36 @@ return(inner?'<div class="ipos">':`<div class="card ipos"><div class="row"><b>${
 ${cats.map(c=>{const C=L.filter(a=>a.cat===c).sort((a,b)=>acc(a.acct).name.localeCompare(acc(b.acct).name)),sub=C.reduce((s,a)=>s+amt(a),0),g=C.filter(a=>a.allot==='Allotted').length;
 return ban(k+'|'+c,`${chip(c)}<span class="bant"><b>${C.length}</b> · ${inr(sub)}${g?` · ✅ ${g}`:''}</span>`,C.map(a=>`<div class="per"><div class="row"><span>${esc(acc(a.acct).name)}</span><b>${inr(amt(a))}</b></div>
 <div class="mut">${a.lots} lot${+a.lots>1?'s':''} · ${appliedSh(a)} sh · ${a.allot==='Allotted'?`✅ ${+a.shares||0} sh allotted`:a.allot==='Not allotted'?'❌ Not allotted':'⏳ Awaiting'}</div></div>`).join(''))}).join('')}
-${ban(k+'|acc',`<span class="bant">👥 Accounts used <b>${used.size}</b> of ${db.accounts.length}</span>`,miss.length?`<div class="mut">Not applied:</div>`+miss.map(c=>`<div class="per">${esc(c.name)}</div>`).join(''):'<div class="mut">All accounts applied</div>')}</div>`}
+${pre==='d:'?'':ban(k+'|acc',`<span class="bant">👥 Accounts used <b>${used.size}</b> of ${db.accounts.length}</span>`,miss.length?`<div class="mut">Not applied:</div>`+miss.map(c=>`<div class="per">${esc(c.name)}</div>`).join(''):'<div class="mut">All accounts applied</div>')}</div>`}
 function ipoSection(){const t=today(),P=db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id));
 const act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Awaiting');
 const A=P.filter(act).sort((a,b)=>(a.close||'9').localeCompare(b.close||'9')),Z=P.filter(p=>!act(p)).sort((a,b)=>(b.close||'').localeCompare(a.close||''));
 if(!P.length)return'';return`<h3 class="sec">Applications by IPO</h3>${A.map(p=>ipoSumCard(p,'d:')).join('')||'<div class="card mut">No active IPOs</div>'}
 ${Z.length?`<div class="ban card${XS.has('past')?' open':''}" data-x="past"><div class="banh"><b>Past IPOs (${Z.length})</b><span class="car">▸</span></div><div class="banb">${Z.map(p=>ipoSumCard(p,'d:')).join('')}</div></div>`:''}`}
 function bindBan(v){v.querySelectorAll('[data-x]').forEach(e=>{e.querySelector('.banh').onclick=ev=>{ev.stopPropagation();const k=e.dataset.x;e.classList.toggle('open');e.classList.contains('open')?XS.add(k):XS.delete(k);xsave()}})}
+/* ---- Who applied tab ---- */
+function whoIpos(){const t=today(),P=db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id));const act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Awaiting');
+return[...P.filter(act).sort((a,b)=>(b.open||'').localeCompare(a.open||'')),...P.filter(p=>!act(p)).sort((a,b)=>(b.close||'').localeCompare(a.close||''))]}
+const catsOf=L=>[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(CATORD.indexOf(b)+99)%99||a.localeCompare(b));
+const WX=new Set();let whoPast=false;
+function whoCard(p){const L=db.apps.filter(a=>a.ipo===p.id),cats=catsOf(L),ppl=cats.flatMap(c=>L.filter(a=>a.cat===c).map(a=>[acc(a.acct).name,c]).sort((x,y)=>x[0].localeCompare(y[0]))),
+N=8,open=WX.has(p.id),show=open?ppl:ppl.slice(0,N);
+return`<div class="kcard" data-k="${p.id}"><b class="kt">${esc(p.name.replace(/\s+(ltd|limited)\.?$/i,''))}</b><div class="ks">${esc(cats.map(c=>L.filter(a=>a.cat===c).length+' '+c).join(' + '))}</div>
+${show.map(([n,c])=>`<div class="kp"><span>${esc(n)}</span><i class="kc" style="background:${CATCLR[c]||'#64748b'}">${esc(c)}</i></div>`).join('')}
+${ppl.length>N?`<button class="kmore" data-kx="${p.id}">${open?'Show less':'… +'+(ppl.length-N)}</button>`:''}</div>`}
+function renderWho(v){const P=whoIpos();if(!P.length){v.innerHTML='<div class="card mut">No applications yet.</div>';return}
+let sel=sessionStorage.getItem('ipoTracker.who');
+if(!sel||!P.some(p=>p.id===sel)){const t=today(),act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Awaiting'),A=P.filter(act),Z=P.filter(p=>!act(p));
+v.innerHTML=`<div class="kgrid">${A.map(whoCard).join('')}</div>${A.length?'':'<div class="card mut">No active IPOs</div>'}
+${Z.length?`<button class="kpast" id="kpast">${whoPast?'Hide':'Show'} past IPOs (${Z.length})</button>${whoPast?`<div class="kgrid">${Z.map(whoCard).join('')}</div>`:''}`:''}`;
+v.querySelectorAll('[data-k]').forEach(e=>e.onclick=()=>{sessionStorage.setItem('ipoTracker.who',e.dataset.k);render();scrollTo(0,0)});
+v.querySelectorAll('[data-kx]').forEach(b=>b.onclick=ev=>{ev.stopPropagation();const k=b.dataset.kx;WX.has(k)?WX.delete(k):WX.add(k);render()});
+const kp=$('#kpast');if(kp)kp.onclick=()=>{whoPast=!whoPast;render()};return}const p=ipo(sel),L=db.apps.filter(a=>a.ipo===sel);
+const cats=[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(CATORD.indexOf(b)+99)%99||a.localeCompare(b));
+const used=new Set(L.map(a=>a.acct)),miss=db.accounts.filter(c=>!used.has(c.id)).sort((a,b)=>a.name.localeCompare(b.name));
+v.innerHTML=`<div class="chips"><button class="ipochip" data-w="">◀ All</button>${P.map(q=>`<button class="ipochip${q.id===sel?' on':''}" data-w="${q.id}">${esc(q.name.replace(/\s+(ltd|limited)\.?$/i,''))}</button>`).join('')}</div>
+<div class="card"><div class="sumline">${esc(cats.map(c=>L.filter(a=>a.cat===c).length+' '+c).join(' + ')+' = '+L.length)}</div><div class="mut">${esc(p.name)}</div></div>
+${cats.map(c=>`<div class="whoh">${esc(c)} · ${L.filter(a=>a.cat===c).length}</div><div class="card whol">${L.filter(a=>a.cat===c).map(a=>acc(a.acct).name).sort((x,y)=>x.localeCompare(y)).map(n=>`<div class="whor"><span>${esc(n)}</span>${chip(c)}</div>`).join('')}</div>`).join('')}
+${miss.length?`<div class="whoh mut">Not applied · ${miss.length}</div><div class="card whol mut">${miss.map(c=>`<div class="whor"><span>${esc(c.name)}</span></div>`).join('')}</div>`:''}`;
+v.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{b.dataset.w?sessionStorage.setItem('ipoTracker.who',b.dataset.w):sessionStorage.removeItem('ipoTracker.who');render()});
+const on=v.querySelector('.ipochip.on');if(on)on.scrollIntoView({inline:'center',block:'nearest'})}

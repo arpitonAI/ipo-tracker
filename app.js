@@ -49,7 +49,7 @@ f.innerHTML=`<h2>Allotment result</h2><p class="mut">${esc(msg)}</p><label>Share
 f.onsubmit=e=>{const b=e.submitter;if(!b||!b.dataset.r)return;a.allot=b.dataset.r;a.allotSrc='manual';a.shares=a.allot==='Allotted'?(f.sh.value||p.lot):'0';if(a.mandate==='Pending')a.mandate='Accepted';save();render()};$('#dlg').showModal()}
 let tab='dash',flt={acct:'',cat:'',st:''};
 function go(t){tab=t;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
-$('#title').textContent={live:'Live IPOs',dash:'Dashboard',ipos:'IPOs',apps:'Applications',accts:'Accounts',data:'Backup & Export',apply:'Apply to IPO',allot:'Enter allotment'}[t];render()}
+$('#title').textContent={live:'Live IPOs',dash:'Dashboard',ipos:'IPOs',apps:'Applications',accts:'Accounts',data:'Backup & Export',apply:'Apply to IPO',allot:'Enter allotment',who:'Who applied'}[t];render()}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
 function filters(){const o=(v,l,s)=>`<option value="${esc(v)}"${s===v?' selected':''}>${esc(l)}</option>`;
 return `<div class="filters"><select id="fa">${o('','All accounts',flt.acct)}${db.accounts.map(a=>o(a.id,a.name,flt.acct)).join('')}</select>
@@ -60,7 +60,7 @@ const fApps=()=>db.apps.filter(a=>(!flt.acct||a.acct===flt.acct)&&(!flt.cat||a.c
 function rate(list,key,name){const g={};list.filter(a=>a.allot!=='Awaiting'&&a.mandate!=='Rejected').forEach(a=>{const k=a[key];g[k]=g[k]||[0,0];g[k][1]++;if(a.allot==='Allotted')g[k][0]++});
 return Object.entries(g).map(([k,[h,n]])=>`<tr><td>${esc(name(k))}</td><td>${h}/${n}</td><td>${Math.round(h*100/n)}%</td></tr>`).join('')||'<tr><td colspan=3 class=mut>No results yet</td></tr>'}
 function render(){const v=$('#view'),t=today();
-if(tab==='apply'){renderApply(v);return}if(tab==='allot'){renderAllot(v);return}
+if(tab==='apply'){renderApply(v);return}if(tab==='allot'){renderAllot(v);return}if(tab==='who'){renderWho(v);return}
 if(tab==='dash'){const L=fApps(),tp=L.reduce((s,a)=>s+pnl(a),0);
 const active=db.ipos.filter(p=>p.close>=t&&p.open<=t),up=db.ipos.filter(p=>p.allotd&&p.allotd>=t).sort((a,b)=>a.allotd.localeCompare(b.allotd));
 v.innerHTML=capitalCards()+ipoSection()+filters()+`<div class="grid"><div class="card stat">Total P&amp;L<b class="${tp>=0?'pos':'neg'}">${inr(tp)}</b></div><div class="card stat">Applications<b>${L.length}</b></div>
