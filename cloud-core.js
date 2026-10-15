@@ -22,7 +22,8 @@ if(localPrev)SENS.forEach(k=>{if(localPrev[k])o[k]=localPrev[k]});return o}
 /* Backup tab card */
 function renderCloud(el){const C=window.Cloud;if(!el)return;
 if(!C){el.innerHTML=`<div class="card"><b>☁️ Cloud sync</b><p class="mut">${window.CLOUD_OFF?'Not set up yet. Your data stays on this phone.':'Loading…'}</p></div>`;return}
-const s=C.state();if(!s.user){el.innerHTML=`<div class="card"><b>☁️ Cloud sync</b><p class="mut">Sign in to keep your accounts, applications and results on every phone you use.</p>
+const s=C.state();if(!s.ready){el.innerHTML=`<div class="card"><b>☁️ Cloud sync</b><p class="mut">Checking sign-in…</p></div>`;return}
+if(!s.user){el.innerHTML=`<div class="card"><b>☁️ Cloud sync</b><p class="mut">Sign in to keep your accounts, applications and results on every phone you use.</p>
 <div class="btns"><button class="pri" id="gsi">Sign in with Google</button></div>${s.err?`<p class="neg">${esc(s.err)}</p>`:''}</div>`;$('#gsi').onclick=()=>C.signIn();return}
 const lock=!s.vault?`<p class="mut">Set a <b>sync passcode</b> to lock PANs and demat IDs before they go to the cloud. It can't be recovered, so note it safely. You'll enter it once on each phone.</p>`
 :!s.unlocked?`<p class="mut">🔒 PANs are locked on this phone. Enter your sync passcode to unlock.</p>`:`<p class="mut">🔓 PANs unlocked on this phone (stored encrypted in the cloud).</p>`;

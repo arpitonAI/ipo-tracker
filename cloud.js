@@ -1,11 +1,14 @@
 // Cloud sync (Firebase Auth + Firestore). Loaded only when firebase-config.js has a real config.
 const V='13.0.0',U=`https://www.gstatic.com/firebasejs/${V}/`;
 const [{initializeApp},A,F]=await Promise.all([import(U+'firebase-app.js'),import(U+'firebase-auth.js'),import(U+'firebase-firestore.js')]);
-const app=initializeApp(window.FIREBASE_CONFIG),auth=A.getAuth(app);
+const app=initializeApp(window.FIREBASE_CONFIG);
+// IndexedDB first: Android Chrome clears localStorage for installed PWAs (on close / after days idle),
+// which silently signs the user out. IndexedDB survives. localStorage stays as a fallback.
+const auth=A.initializeAuth(app,{persistence:[A.indexedDBLocalPersistence,A.browserLocalPersistence],popupRedirectResolver:A.browserPopupRedirectResolver});
 const fs=F.initializeFirestore(app,{localCache:F.persistentLocalCache({tabManager:F.persistentMultipleTabManager()})});
 if(window.FIREBASE_EMULATOR){A.connectAuthEmulator(auth,'http://127.0.0.1:9099',{disableWarnings:true});F.connectFirestoreEmulator(fs,'127.0.0.1',8080)}
 const COLS={accounts:'accounts',ipos:'ipos',apps:'applications',prefs:'prefs'};
-let user=null,uref=null,key=null,vault=null,rsaEnc=null,resEnc=null,err='',unsubs=[],timer=null;
+let user=null,authReady=false,uref=null,key=null,vault=null,rsaEnc=null,resEnc=null,err='',unsubs=[],timer=null;
 let last={},raw={},firstServer={};
 const reset=()=>{last={accounts:{},ipos:{},apps:{},prefs:{}};raw={};firstServer={}};reset();
 const sj=o=>JSON.stringify(Object.keys(o).sort().reduce((r,k)=>(r[k]=o[k],r),{}));
@@ -57,13 +60,14 @@ for(const k in COLS)unsubs.push(F.onSnapshot(F.collection(uref,COLS[k]),{include
 function stop(){unsubs.forEach(u=>u());unsubs=[];reset();key=vault=rsaEnc=resEnc=null;uref=null}
 
 window.Cloud={
-state:()=>({user:user&&{email:user.email,name:user.displayName},vault:!!vault,unlocked:!!(key&&vault),online:navigator.onLine,err}),
+state:()=>({ready:authReady,user:user&&{email:user.email,name:user.displayName},vault:!!vault,unlocked:!!(key&&vault),online:navigator.onLine,err}),
 dirty:queue,
 async signIn(){err='';const p=new A.GoogleAuthProvider();p.setCustomParameters({prompt:'select_account'});
+// Popup only, and only from this direct tap: a redirect to authDomain (firebaseapp.com) lands its
+// session in partitioned third-party storage that github.io can't read, so it looks signed out.
 try{await A.signInWithPopup(auth,p)}catch(e){const c=e.code||'';
 if(c==='auth/popup-closed-by-user'||c==='auth/cancelled-popup-request')return;
-const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
-if(standalone||/popup-blocked|operation-not-supported|web-storage-unsupported/.test(c)){try{await A.signInWithRedirect(auth,p)}catch(e2){err=e2.message}}else err=e.message;changed()}},
+err=c==='auth/popup-blocked'?'Sign-in popup was blocked. Allow popups for this site and tap again.':(e.message||'Sign-in failed');changed()}},
 async signOut(){await A.signOut(auth)},
 async passcode(p){err='';let k;
 if(vault)k=await openVault(p,vault);
@@ -77,4 +81,4 @@ F.setDoc(F.doc(uref,'settings','keys'),{rsaEnc},{merge:true}).catch(()=>{})},
 async results(d){if(!user||!key)return;F.setDoc(F.doc(uref,'settings','results'),{enc:await aesEnc(key,JSON.stringify(d)),updated:d.updated||''}).catch(()=>{})}};
 if(window.FIREBASE_EMULATOR)Cloud._test=(sub,email)=>A.signInWithCredential(auth,A.GoogleAuthProvider.credential(JSON.stringify({sub,email,email_verified:true})));
 A.getRedirectResult(auth).catch(e=>{err=e.message;changed()});
-A.onAuthStateChanged(auth,u=>{stop();user=u;if(u)start();changed();rerender()});
+A.onAuthStateChanged(auth,u=>{authReady=true;stop();user=u;if(u)start();changed();rerender()});
