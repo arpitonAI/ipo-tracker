@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-15T06:03:31+00:00",
+ "generated": "2026-10-15T06:05:22+00:00",
  "ipos": [
   {
    "id": "HDFIRE",
@@ -13,20 +13,20 @@
    "priceLow": 258.0,
    "priceHigh": 271.0,
    "issueSizeShares": 18420492.0,
-   "status": "open",
    "lot": 55,
+   "subscription": {
+    "qib": 3.27,
+    "nii": 99.2,
+    "bhni": 111.28,
+    "shni": 75.05,
+    "retail": 17.21,
+    "employee": 12.65,
+    "total": 30.73
+   },
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "subscription": {
-    "qib": 3.16,
-    "nii": 97.43,
-    "bhni": 109.22,
-    "shni": 73.86,
-    "retail": 16.93,
-    "employee": 12.45,
-    "total": 30.18
-   },
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30"
+   "status": "open"
   },
   {
    "id": "LOANFRONT",
@@ -39,13 +39,13 @@
    "priceLow": 51.0,
    "priceHigh": 54.0,
    "issueSizeShares": null,
-   "status": "open",
    "lot": 2000,
-   "registrar": "Kfin Technologies Limited",
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30",
    "subscription": {
     "total": 0.56
-   }
+   },
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "registrar": "Kfin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "FUSIONCX",
@@ -58,19 +58,19 @@
    "priceLow": 275.0,
    "priceHigh": 289.0,
    "issueSizeShares": 14040000.0,
-   "status": "open",
    "lot": 51,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "subscription": {
     "qib": 0.0,
-    "nii": 0.81,
-    "bhni": 0.66,
-    "shni": 1.1,
-    "retail": 2.39,
+    "nii": 0.82,
+    "bhni": 0.67,
+    "shni": 1.11,
+    "retail": 2.42,
     "total": 0.66
    },
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30"
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "RAVITA",
@@ -83,13 +83,13 @@
    "priceLow": 105.0,
    "priceHigh": 112.0,
    "issueSizeShares": null,
-   "status": "open",
    "lot": 1200,
-   "registrar": "MUFG Intime India Private Limited",
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30",
    "subscription": {
     "total": 1.27
-   }
+   },
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
   },
   {
    "id": "TONBO",
@@ -102,20 +102,20 @@
    "priceLow": 665.0,
    "priceHigh": 700.0,
    "issueSizeShares": 8526033.0,
-   "status": "open",
    "lot": 21,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "subscription": {
     "qib": 0.0,
-    "nii": 1.54,
-    "bhni": 1.03,
-    "shni": 2.54,
-    "retail": 1.04,
-    "employee": 2.31,
-    "total": 0.85
+    "nii": 1.62,
+    "bhni": 1.1,
+    "shni": 2.67,
+    "retail": 1.09,
+    "employee": 2.42,
+    "total": 0.9
    },
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30"
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "SMT",
@@ -128,20 +128,20 @@
    "priceLow": 327.0,
    "priceHigh": 344.0,
    "issueSizeShares": 9750482.0,
-   "status": "open",
    "lot": 43,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "subscription": {
     "qib": 0.0,
     "nii": 0.04,
-    "bhni": 0.01,
+    "bhni": 0.02,
     "shni": 0.09,
     "retail": 0.13,
     "employee": 0.03,
-    "total": 0.07
+    "total": 0.08
    },
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30"
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
   },
   {
    "id": "ZETWERK",
@@ -154,10 +154,7 @@
    "priceLow": 143.0,
    "priceHigh": 151.0,
    "issueSizeShares": 185066845.0,
-   "status": "open",
    "lot": 99,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "subscription": {
     "qib": 0.0,
     "nii": 0.02,
@@ -167,7 +164,10 @@
     "employee": 0.1,
     "total": 0.02
    },
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30"
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "BONFIG",
@@ -180,20 +180,20 @@
    "priceLow": 558.0,
    "priceHigh": 586.0,
    "issueSizeShares": 30282330.0,
-   "status": "open",
    "lot": 25,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "subscription": {
     "qib": 0.0,
     "nii": 0.2,
-    "bhni": 0.15,
-    "shni": 0.29,
-    "retail": 0.18,
-    "employee": 0.44,
-    "total": 0.13
+    "bhni": 0.16,
+    "shni": 0.3,
+    "retail": 0.19,
+    "employee": 0.46,
+    "total": 0.14
    },
-   "subscriptionUpdated": "2026-10-15T11:27:00+05:30"
+   "subscriptionUpdated": "2026-10-15T11:33:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
   },
   {
    "id": "PAPADMALJI",
@@ -207,10 +207,10 @@
    "priceLow": 69.0,
    "priceHigh": 72.0,
    "issuePrice": 72.0,
-   "status": "closed",
    "lot": 1600,
+   "subscriptionUpdated": "2026-10-01T19:00:00+05:30",
    "registrar": "MAS Services Limited",
-   "subscriptionUpdated": "2026-10-01T19:00:00+05:30"
+   "status": "closed"
   },
   {
    "id": "GREENASIA",
@@ -224,10 +224,10 @@
    "priceLow": 84.0,
    "priceHigh": 89.0,
    "issuePrice": 89.0,
-   "status": "closed",
    "lot": 1600,
+   "subscriptionUpdated": "2026-10-01T19:00:00+05:30",
    "registrar": "Bigshare Services Private Limited",
-   "subscriptionUpdated": "2026-10-01T19:00:00+05:30"
+   "status": "closed"
   },
   {
    "id": "NITYAS",
@@ -241,10 +241,7 @@
    "priceLow": 70.0,
    "priceHigh": 75.0,
    "issuePrice": 75.0,
-   "status": "closed",
    "lot": 200,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "Bigshare Services Private Limited",
    "subscription": {
     "qib": 1.06,
     "nii": 2.05,
@@ -254,7 +251,10 @@
     "employee": 2.82,
     "total": 2.25
    },
-   "subscriptionUpdated": "2026-10-05T19:00:00+05:30"
+   "subscriptionUpdated": "2026-10-05T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "Bigshare Services Private Limited",
+   "status": "closed"
   },
   {
    "id": "VNL",
@@ -268,10 +268,7 @@
    "priceLow": 208.0,
    "priceHigh": 220.0,
    "issuePrice": 220.0,
-   "status": "closed",
    "lot": 68,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited ",
    "subscription": {
     "qib": 1.27,
     "nii": 1.81,
@@ -280,7 +277,10 @@
     "retail": 1.67,
     "total": 1.71
    },
-   "subscriptionUpdated": "2026-10-05T19:00:00+05:30"
+   "subscriptionUpdated": "2026-10-05T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited ",
+   "status": "closed"
   },
   {
    "id": "EVENTIONS",
@@ -294,10 +294,10 @@
    "priceLow": 112.0,
    "priceHigh": 118.0,
    "issuePrice": 118.0,
-   "status": "closed",
    "lot": 1200,
+   "subscriptionUpdated": "2026-10-05T19:00:00+05:30",
    "registrar": "Mudra RTA Ventures Private Limited",
-   "subscriptionUpdated": "2026-10-05T19:00:00+05:30"
+   "status": "closed"
   },
   {
    "id": "RKFAL",
@@ -311,10 +311,10 @@
    "priceLow": 77.0,
    "priceHigh": 82.0,
    "issuePrice": 82.0,
-   "status": "closed",
    "lot": 1600,
+   "subscriptionUpdated": "2026-10-07T17:42:00+05:30",
    "registrar": "Cameo Corporate Service Limited",
-   "subscriptionUpdated": "2026-10-07T17:42:00+05:30"
+   "status": "closed"
   }
  ]
 }
