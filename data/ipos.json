@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-16T07:45:26+00:00",
+ "generated": "2026-10-16T12:45:35+00:00",
  "ipos": [
   {
    "id": "FUSIONCX",
@@ -15,14 +15,14 @@
    "issueSizeShares": 14040000.0,
    "lot": 51,
    "subscription": {
-    "qib": 0.23,
-    "nii": 2.61,
-    "bhni": 2.38,
-    "shni": 3.07,
-    "retail": 4.87,
-    "total": 1.72
+    "qib": 4.01,
+    "nii": 4.5,
+    "bhni": 4.49,
+    "shni": 4.52,
+    "retail": 5.7,
+    "total": 4.45
    },
-   "subscriptionUpdated": "2026-10-16T13:12:00+05:30",
+   "subscriptionUpdated": "2026-10-16T18:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -42,32 +42,32 @@
    "subscription": {
     "total": 1.27
    },
-   "subscriptionUpdated": "2026-10-16T13:12:00+05:30",
+   "subscriptionUpdated": "2026-10-16T18:00:00+05:30",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
   },
   {
-   "id": "BONFIG",
-   "symbol": "BONFIG",
+   "id": "SMT",
+   "symbol": "SMT",
    "series": "EQ",
-   "name": "Bonfiglioli Transmissions Limited",
+   "name": "Sahajanand Medical Technologies Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "priceLow": 558.0,
-   "priceHigh": 586.0,
-   "issueSizeShares": 30282330.0,
-   "lot": 25,
+   "priceLow": 327.0,
+   "priceHigh": 344.0,
+   "issueSizeShares": 9750482.0,
+   "lot": 43,
    "subscription": {
-    "qib": 0.08,
-    "nii": 1.22,
-    "bhni": 1.02,
-    "shni": 1.63,
-    "retail": 0.9,
-    "employee": 1.83,
-    "total": 0.74
+    "qib": 1.12,
+    "nii": 0.51,
+    "bhni": 0.38,
+    "shni": 0.77,
+    "retail": 0.82,
+    "employee": 0.14,
+    "total": 0.82
    },
-   "subscriptionUpdated": "2026-10-16T13:12:00+05:30",
+   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -85,41 +85,41 @@
    "issueSizeShares": 185066845.0,
    "lot": 99,
    "subscription": {
-    "qib": 0.3,
-    "nii": 0.12,
-    "bhni": 0.12,
-    "shni": 0.12,
-    "retail": 0.31,
-    "employee": 0.38,
-    "total": 0.25
+    "qib": 0.37,
+    "nii": 0.16,
+    "bhni": 0.17,
+    "shni": 0.15,
+    "retail": 0.35,
+    "employee": 0.48,
+    "total": 0.31
    },
-   "subscriptionUpdated": "2026-10-16T13:12:00+05:30",
+   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
   },
   {
-   "id": "SMT",
-   "symbol": "SMT",
+   "id": "BONFIG",
+   "symbol": "BONFIG",
    "series": "EQ",
-   "name": "Sahajanand Medical Technologies Limited",
+   "name": "Bonfiglioli Transmissions Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "priceLow": 327.0,
-   "priceHigh": 344.0,
-   "issueSizeShares": 9750482.0,
-   "lot": 43,
+   "priceLow": 558.0,
+   "priceHigh": 586.0,
+   "issueSizeShares": 30282330.0,
+   "lot": 25,
    "subscription": {
-    "qib": 0.37,
-    "nii": 0.36,
-    "bhni": 0.26,
-    "shni": 0.56,
-    "retail": 0.65,
-    "employee": 0.12,
-    "total": 0.5
+    "qib": 0.16,
+    "nii": 1.71,
+    "bhni": 1.44,
+    "shni": 2.25,
+    "retail": 1.16,
+    "employee": 2.1,
+    "total": 0.99
    },
-   "subscriptionUpdated": "2026-10-16T13:09:00+05:30",
+   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -137,15 +137,15 @@
    "issueSizeShares": 8526033.0,
    "lot": 21,
    "subscription": {
-    "qib": 3.94,
-    "nii": 10.54,
-    "bhni": 8.26,
-    "shni": 15.11,
-    "retail": 5.53,
-    "employee": 10.99,
-    "total": 6.16
+    "qib": 3.95,
+    "nii": 14.35,
+    "bhni": 11.48,
+    "shni": 20.08,
+    "retail": 7.12,
+    "employee": 13.12,
+    "total": 7.77
    },
-   "subscriptionUpdated": "2026-10-16T13:12:00+05:30",
+   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -165,6 +165,22 @@
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "upcoming"
+  },
+  {
+   "id": "PARASHLTH",
+   "symbol": "PARASHLTH",
+   "series": "EQ",
+   "name": "Paras Healthcare Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "priceLow": 660.0,
+   "priceHigh": 693.0,
+   "issueSizeShares": 21969695.0,
+   "status": "upcoming",
+   "lot": 21,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited"
   },
   {
    "id": "NITYAS",
@@ -261,9 +277,10 @@
    "type": "Mainboard",
    "open": "2026-10-13",
    "close": "2026-10-15",
+   "listing": null,
    "priceLow": 258.0,
    "priceHigh": 271.0,
-   "issueSizeShares": 18420492.0,
+   "issuePrice": null,
    "lot": 55,
    "subscription": {
     "qib": 256.65,
