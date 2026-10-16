@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-16T15:48:42+00:00",
+ "generated": "2026-10-16T17:17:10+00:00",
  "ipos": [
   {
    "id": "FUSIONCX",
@@ -183,6 +183,32 @@
    "status": "upcoming"
   },
   {
+   "id": "VNL",
+   "symbol": "VNL",
+   "series": "EQ",
+   "name": "Vishal Nirmiti Limited",
+   "type": "Mainboard",
+   "open": "2026-09-30",
+   "close": "2026-10-05",
+   "listing": "2026-10-08",
+   "priceLow": 208.0,
+   "priceHigh": 220.0,
+   "issuePrice": 220.0,
+   "lot": 68,
+   "subscription": {
+    "qib": 1.27,
+    "nii": 1.81,
+    "bhni": 1.71,
+    "shni": 2.0,
+    "retail": 1.67,
+    "total": 1.71
+   },
+   "subscriptionUpdated": "2026-10-05T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited ",
+   "status": "closed"
+  },
+  {
    "id": "NITYAS",
    "symbol": "NITYAS",
    "series": "EQ",
@@ -207,32 +233,6 @@
    "subscriptionUpdated": "2026-10-05T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "VNL",
-   "symbol": "VNL",
-   "series": "EQ",
-   "name": "Vishal Nirmiti Limited",
-   "type": "Mainboard",
-   "open": "2026-09-30",
-   "close": "2026-10-05",
-   "listing": "2026-10-08",
-   "priceLow": 208.0,
-   "priceHigh": 220.0,
-   "issuePrice": 220.0,
-   "lot": 68,
-   "subscription": {
-    "qib": 1.27,
-    "nii": 1.81,
-    "bhni": 1.71,
-    "shni": 2.0,
-    "retail": 1.67,
-    "total": 1.71
-   },
-   "subscriptionUpdated": "2026-10-05T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited ",
    "status": "closed"
   },
   {
@@ -270,6 +270,32 @@
    "status": "closed"
   },
   {
+   "id": "HDFIRE",
+   "symbol": "HDFIRE",
+   "series": "EQ",
+   "name": "HD Fire Protect Limited",
+   "type": "Mainboard",
+   "open": "2026-10-13",
+   "close": "2026-10-15",
+   "priceLow": 258.0,
+   "priceHigh": 271.0,
+   "issueSizeShares": 18420492.0,
+   "status": "closed",
+   "lot": 55,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "subscription": {
+    "qib": 256.65,
+    "nii": 203.21,
+    "bhni": 236.17,
+    "shni": 137.28,
+    "retail": 30.49,
+    "employee": 23.61,
+    "total": 131.7
+   },
+   "subscriptionUpdated": "2026-10-15T19:00:00+05:30"
+  },
+  {
    "id": "LOANFRONT",
    "symbol": "LOANFRONT",
    "series": "SME",
@@ -277,10 +303,9 @@
    "type": "SME",
    "open": "2026-10-13",
    "close": "2026-10-15",
-   "listing": null,
    "priceLow": 51.0,
    "priceHigh": 54.0,
-   "issuePrice": null,
+   "issueSizeShares": null,
    "lot": 2000,
    "subscription": {
     "total": 0.56
