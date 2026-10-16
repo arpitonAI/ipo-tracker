@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-16T12:45:35+00:00",
+ "generated": "2026-10-16T15:48:42+00:00",
  "ipos": [
   {
    "id": "FUSIONCX",
@@ -22,7 +22,7 @@
     "retail": 5.7,
     "total": 4.45
    },
-   "subscriptionUpdated": "2026-10-16T18:00:00+05:30",
+   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -42,30 +42,30 @@
    "subscription": {
     "total": 1.27
    },
-   "subscriptionUpdated": "2026-10-16T18:00:00+05:30",
+   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
   },
   {
-   "id": "SMT",
-   "symbol": "SMT",
+   "id": "BONFIG",
+   "symbol": "BONFIG",
    "series": "EQ",
-   "name": "Sahajanand Medical Technologies Limited",
+   "name": "Bonfiglioli Transmissions Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "priceLow": 327.0,
-   "priceHigh": 344.0,
-   "issueSizeShares": 9750482.0,
-   "lot": 43,
+   "priceLow": 558.0,
+   "priceHigh": 586.0,
+   "issueSizeShares": 30282330.0,
+   "lot": 25,
    "subscription": {
-    "qib": 1.12,
-    "nii": 0.51,
-    "bhni": 0.38,
-    "shni": 0.77,
-    "retail": 0.82,
-    "employee": 0.14,
-    "total": 0.82
+    "qib": 0.16,
+    "nii": 1.71,
+    "bhni": 1.44,
+    "shni": 2.25,
+    "retail": 1.16,
+    "employee": 2.1,
+    "total": 0.99
    },
    "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
@@ -99,25 +99,25 @@
    "status": "open"
   },
   {
-   "id": "BONFIG",
-   "symbol": "BONFIG",
+   "id": "SMT",
+   "symbol": "SMT",
    "series": "EQ",
-   "name": "Bonfiglioli Transmissions Limited",
+   "name": "Sahajanand Medical Technologies Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "priceLow": 558.0,
-   "priceHigh": 586.0,
-   "issueSizeShares": 30282330.0,
-   "lot": 25,
+   "priceLow": 327.0,
+   "priceHigh": 344.0,
+   "issueSizeShares": 9750482.0,
+   "lot": 43,
    "subscription": {
-    "qib": 0.16,
-    "nii": 1.71,
-    "bhni": 1.44,
-    "shni": 2.25,
-    "retail": 1.16,
-    "employee": 2.1,
-    "total": 0.99
+    "qib": 1.12,
+    "nii": 0.51,
+    "bhni": 0.38,
+    "shni": 0.77,
+    "retail": 0.82,
+    "employee": 0.14,
+    "total": 0.82
    },
    "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
@@ -177,10 +177,10 @@
    "priceLow": 660.0,
    "priceHigh": 693.0,
    "issueSizeShares": 21969695.0,
-   "status": "upcoming",
    "lot": 21,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "NITYAS",
@@ -267,33 +267,6 @@
    "lot": 1600,
    "subscriptionUpdated": "2026-10-07T17:42:00+05:30",
    "registrar": "Cameo Corporate Service Limited",
-   "status": "closed"
-  },
-  {
-   "id": "HDFIRE",
-   "symbol": "HDFIRE",
-   "series": "EQ",
-   "name": "HD Fire Protect Limited",
-   "type": "Mainboard",
-   "open": "2026-10-13",
-   "close": "2026-10-15",
-   "listing": null,
-   "priceLow": 258.0,
-   "priceHigh": 271.0,
-   "issuePrice": null,
-   "lot": 55,
-   "subscription": {
-    "qib": 256.65,
-    "nii": 203.21,
-    "bhni": 236.17,
-    "shni": 137.28,
-    "retail": 30.49,
-    "employee": 23.61,
-    "total": 131.7
-   },
-   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   },
   {
