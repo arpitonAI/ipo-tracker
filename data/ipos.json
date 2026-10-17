@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-17T07:29:30+00:00",
+ "generated": "2026-10-17T11:57:25+00:00",
  "ipos": [
   {
    "id": "SMT",
@@ -133,10 +133,10 @@
    "priceLow": 660.0,
    "priceHigh": 693.0,
    "issueSizeShares": 21969695.0,
-   "status": "upcoming",
    "lot": 21,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "VNL",
