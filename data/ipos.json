@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-17T15:05:21+00:00",
+ "generated": "2026-10-17T16:16:37+00:00",
  "ipos": [
   {
    "id": "SMT",
@@ -121,6 +121,22 @@
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "upcoming"
+  },
+  {
+   "id": "PARASHLTH",
+   "symbol": "PARASHLTH",
+   "series": "EQ",
+   "name": "Paras Healthcare Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "priceLow": 660.0,
+   "priceHigh": 693.0,
+   "issueSizeShares": 21969695.0,
+   "status": "upcoming",
+   "lot": 21,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited"
   },
   {
    "id": "VNL",
