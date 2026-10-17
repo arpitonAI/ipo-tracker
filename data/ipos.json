@@ -1,7 +1,59 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-17T16:16:37+00:00",
+ "generated": "2026-10-17T19:10:00+00:00",
  "ipos": [
+  {
+   "id": "TONBO",
+   "symbol": "TONBO",
+   "series": "EQ",
+   "name": "Tonbo Imaging India Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "priceLow": 665.0,
+   "priceHigh": 700.0,
+   "issueSizeShares": 8526033.0,
+   "lot": 21,
+   "subscription": {
+    "qib": 3.95,
+    "nii": 14.35,
+    "bhni": 11.48,
+    "shni": 20.08,
+    "retail": 7.12,
+    "employee": 13.12,
+    "total": 7.77
+   },
+   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
+  },
+  {
+   "id": "BONFIG",
+   "symbol": "BONFIG",
+   "series": "EQ",
+   "name": "Bonfiglioli Transmissions Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "priceLow": 558.0,
+   "priceHigh": 586.0,
+   "issueSizeShares": 30282330.0,
+   "lot": 25,
+   "subscription": {
+    "qib": 0.16,
+    "nii": 1.71,
+    "bhni": 1.44,
+    "shni": 2.25,
+    "retail": 1.16,
+    "employee": 2.1,
+    "total": 0.99
+   },
+   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
+  },
   {
    "id": "SMT",
    "symbol": "SMT",
@@ -55,58 +107,6 @@
    "status": "open"
   },
   {
-   "id": "BONFIG",
-   "symbol": "BONFIG",
-   "series": "EQ",
-   "name": "Bonfiglioli Transmissions Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "priceLow": 558.0,
-   "priceHigh": 586.0,
-   "issueSizeShares": 30282330.0,
-   "lot": 25,
-   "subscription": {
-    "qib": 0.16,
-    "nii": 1.71,
-    "bhni": 1.44,
-    "shni": 2.25,
-    "retail": 1.16,
-    "employee": 2.1,
-    "total": 0.99
-   },
-   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
-  },
-  {
-   "id": "TONBO",
-   "symbol": "TONBO",
-   "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issueSizeShares": 8526033.0,
-   "lot": 21,
-   "subscription": {
-    "qib": 3.95,
-    "nii": 14.35,
-    "bhni": 11.48,
-    "shni": 20.08,
-    "retail": 7.12,
-    "employee": 13.12,
-    "total": 7.77
-   },
-   "subscriptionUpdated": "2026-10-16T17:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "open"
-  },
-  {
    "id": "JPL",
    "symbol": "JPL",
    "series": "EQ",
@@ -133,10 +133,10 @@
    "priceLow": 660.0,
    "priceHigh": 693.0,
    "issueSizeShares": 21969695.0,
-   "status": "upcoming",
    "lot": 21,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "VNL",
@@ -270,50 +270,6 @@
    },
    "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
    "registrar": "Kfin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "FUSIONCX",
-   "symbol": "FUSIONCX",
-   "series": "EQ",
-   "name": "Fusion CX Limited",
-   "type": "Mainboard",
-   "open": "2026-10-14",
-   "close": "2026-10-16",
-   "priceLow": 275.0,
-   "priceHigh": 289.0,
-   "issueSizeShares": 14040000.0,
-   "lot": 51,
-   "subscription": {
-    "qib": 4.01,
-    "nii": 4.5,
-    "bhni": 4.49,
-    "shni": 4.52,
-    "retail": 5.7,
-    "total": 4.45
-   },
-   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "RAVITA",
-   "symbol": "RAVITA",
-   "series": "SME",
-   "name": "Ravita Engineering Services Limited",
-   "type": "SME",
-   "open": "2026-10-14",
-   "close": "2026-10-16",
-   "priceLow": 105.0,
-   "priceHigh": 112.0,
-   "issueSizeShares": null,
-   "lot": 1200,
-   "subscription": {
-    "total": 1.27
-   },
-   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
-   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   }
  ]
