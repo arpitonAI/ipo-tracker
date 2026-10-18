@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-18T19:21:41+00:00",
+ "generated": "2026-10-18T22:20:26+00:00",
  "ipos": [
   {
    "id": "TONBO",
@@ -284,10 +284,7 @@
    "priceLow": 275.0,
    "priceHigh": 289.0,
    "issuePrice": null,
-   "status": "closed",
    "lot": 51,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "subscription": {
     "qib": 4.01,
     "nii": 4.5,
@@ -296,7 +293,10 @@
     "retail": 5.7,
     "total": 4.45
    },
-   "subscriptionUpdated": "2026-10-16T19:00:00+05:30"
+   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "closed"
   },
   {
    "id": "RAVITA",
@@ -310,10 +310,10 @@
    "priceLow": 105.0,
    "priceHigh": 112.0,
    "issuePrice": null,
-   "status": "closed",
    "lot": 1200,
+   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
    "registrar": "MUFG Intime India Private Limited",
-   "subscriptionUpdated": "2026-10-16T19:00:00+05:30"
+   "status": "closed"
   }
  ]
 }
