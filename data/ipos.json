@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-18T16:26:11+00:00",
+ "generated": "2026-10-18T19:21:41+00:00",
  "ipos": [
   {
    "id": "TONBO",
@@ -271,6 +271,49 @@
    "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
    "registrar": "Kfin Technologies Limited",
    "status": "closed"
+  },
+  {
+   "id": "FUSIONCX",
+   "symbol": "FUSIONCX",
+   "series": "EQ",
+   "name": "Fusion CX Limited",
+   "type": "Mainboard",
+   "open": "2026-10-14",
+   "close": "2026-10-16",
+   "listing": null,
+   "priceLow": 275.0,
+   "priceHigh": 289.0,
+   "issuePrice": null,
+   "status": "closed",
+   "lot": 51,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "subscription": {
+    "qib": 4.01,
+    "nii": 4.5,
+    "bhni": 4.49,
+    "shni": 4.52,
+    "retail": 5.7,
+    "total": 4.45
+   },
+   "subscriptionUpdated": "2026-10-16T19:00:00+05:30"
+  },
+  {
+   "id": "RAVITA",
+   "symbol": "RAVITA",
+   "series": "SME",
+   "name": "Ravita Engineering Services Limited",
+   "type": "SME",
+   "open": "2026-10-14",
+   "close": "2026-10-16",
+   "listing": null,
+   "priceLow": 105.0,
+   "priceHigh": 112.0,
+   "issuePrice": null,
+   "status": "closed",
+   "lot": 1200,
+   "registrar": "MUFG Intime India Private Limited",
+   "subscriptionUpdated": "2026-10-16T19:00:00+05:30"
   }
  ]
 }
