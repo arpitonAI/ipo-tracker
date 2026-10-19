@@ -8,7 +8,7 @@ const inr=n=>'₹'+Math.round(+n||0).toLocaleString('en-IN');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fd=d=>d?new Date(d+'T00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'2-digit'}):'—';
 const today=()=>new Date().toISOString().slice(0,10);
-const CATS=['Retail','sHNI','bHNI','Employee','Shareholder'],MAND=['Pending','Accepted','Rejected'],ALLOT=['Awaiting','Allotted','Not allotted'];
+const CATS=['Retail','sHNI','bHNI','Employee','Shareholder','Policyholder'],MAND=['Pending','Accepted','Rejected'],ALLOT=['Awaiting','Allotted','Not allotted'];
 const acc=i=>db.accounts.find(a=>a.id===i)||{name:'(deleted)'},ipo=i=>db.ipos.find(a=>a.id===i)||{name:'(deleted)',lot:0,hi:0};
 const amt=a=>lotAmt(ipo(a.ipo),a.cat,a.lots);
 const pnl=a=>{if(a.allot!=='Allotted')return 0;const p=ipo(a.ipo),px=+a.sell||+a.listp||0;return px?(px-issuePx(p,a.cat))*(+a.shares||0):0};

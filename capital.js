@@ -13,6 +13,7 @@ function setPref(k,v){db.prefs=db.prefs||[];let m=db.prefs.find(x=>x.id==='main'
 function limits(p,cat){const L=(+p.lot||0)*(+p.hi||0);if(!L)return{min:1,max:null};
 const r=catRules(p.type,p.lot,p.hi)||{};
 if(cat==='Employee'){const le=(+p.lot||0)*unitPx(p,'Employee');return{min:1,max:p.type==='SME'?null:Math.max(1,Math.floor(5e5/le)),cap:5e5}}
+if(cat==='Policyholder'){return{min:1,max:p.type==='SME'?null:Math.max(1,Math.floor(2e5/L)),cap:2e5}}
 if(r[cat])return{min:r[cat][0],max:r[cat][1],cap:cat==='Retail'||cat==='Shareholder'?2e5:cat==='sHNI'?1e6:null};
 return{min:1,max:null}}
 const defLots=(p,cat)=>limits(p,cat).min;
@@ -99,13 +100,14 @@ const st=c.n>0?'Allotted':'Not allotted';if(a.allot!==st||String(+a.shares||0)!=
 save();toast(n+' application'+(n===1?'':'s')+' updated');go('dash')}};bindS()}
 function alOut(c){return c.pend?'Pending':c.bad?`<span class="neg">⚠️ Enter 0–${c.max} whole shares</span>`:`Debited <b>${inr(c.deb)}</b> · Released <b>${inr(c.rel)}</b>`}
 /* ---- Applications by IPO ---- */
-const CATORD=['bHNI','sHNI','Retail','Shareholder','Employee'],CATCLR={bHNI:'#7c3aed',sHNI:'#2563eb',Retail:'#059669',Shareholder:'#d97706',Employee:'#db2777'};
+const CATORD=['bHNI','sHNI','Retail','Shareholder','Employee','Policyholder'],CATCLR={bHNI:'#7c3aed',sHNI:'#2563eb',Retail:'#059669',Shareholder:'#d97706',Employee:'#db2777',Policyholder:'#0891b2'};
+const catSort=(a,b)=>((CATORD.indexOf(a)+99)%99)-((CATORD.indexOf(b)+99)%99)||cmpN(a,b);
 const XS=new Set(JSON.parse(sessionStorage.getItem('ipoTracker.x')||'[]'));const xsave=()=>sessionStorage.setItem('ipoTracker.x',JSON.stringify([...XS]));
 const chip=c=>`<span class="chip" style="background:${CATCLR[c]||'#64748b'}">${esc(c)}</span>`;
 function ipoStatus(p,L){const t=today();if(p.open&&p.open>t)return'Upcoming';if(!p.close||p.close>=t)return'Open';
 if(L.some(a=>a.allot==='Awaiting'))return'Closed · awaiting allotment';return p.listd&&p.listd<=t?'Listed':'Allotted'}
 function ipoSumCard(p,pre,inner){const L=db.apps.filter(a=>a.ipo===p.id);if(!L.length)return'';const k=pre+p.id;
-const cats=[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(CATORD.indexOf(b)+99)%99||a.localeCompare(b));
+const cats=[...new Set(L.map(a=>a.cat))].sort(catSort);
 const bl=L.reduce((s,a)=>s+blocked(a),0),ap=L.reduce((s,a)=>s+amt(a),0),known=L.filter(a=>a.allot!=='Awaiting'),got=L.filter(a=>a.allot==='Allotted');
 const line=cats.map(c=>L.filter(a=>a.cat===c).length+' '+c).join(' + ')+' = '+L.length+' application'+(L.length>1?'s':'');
 const used=new Set(L.map(a=>a.acct)),miss=accs().filter(c=>!used.has(c.id));
@@ -126,7 +128,7 @@ function bindBan(v){v.querySelectorAll('[data-open]').forEach(e=>e.onclick=()=>o
 /* ---- Who applied tab ---- */
 function whoIpos(){const t=today(),P=db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id));const act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Awaiting');
 return[...P.filter(act).sort((a,b)=>(b.open||'').localeCompare(a.open||'')),...P.filter(p=>!act(p)).sort((a,b)=>(b.close||'').localeCompare(a.close||''))]}
-const catsOf=L=>[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(CATORD.indexOf(b)+99)%99||a.localeCompare(b));
+const catsOf=L=>[...new Set(L.map(a=>a.cat))].sort(catSort);
 const WX=new Set();let whoPast=false;
 function whoCard(p){const L=db.apps.filter(a=>a.ipo===p.id),cats=catsOf(L),ppl=cats.flatMap(c=>L.filter(a=>a.cat===c).map(a=>[acc(a.acct).name,c]).sort((x,y)=>cmpN(x[0],y[0]))),
 N=8,open=WX.has(p.id),show=open?ppl:ppl.slice(0,N);
@@ -141,7 +143,7 @@ ${Z.length?`<button class="kpast" id="kpast">${whoPast?'Hide':'Show'} past IPOs 
 v.querySelectorAll('[data-k]').forEach(e=>e.onclick=()=>{openApply(e.dataset.k);scrollTo(0,0)});
 v.querySelectorAll('[data-kx]').forEach(b=>b.onclick=ev=>{ev.stopPropagation();const k=b.dataset.kx;WX.has(k)?WX.delete(k):WX.add(k);render()});
 const kp=$('#kpast');if(kp)kp.onclick=()=>{whoPast=!whoPast;render()};return}const p=ipo(sel),L=db.apps.filter(a=>a.ipo===sel);
-const cats=[...new Set(L.map(a=>a.cat))].sort((a,b)=>(CATORD.indexOf(a)+99)%99-(CATORD.indexOf(b)+99)%99||a.localeCompare(b));
+const cats=[...new Set(L.map(a=>a.cat))].sort(catSort);
 const used=new Set(L.map(a=>a.acct)),miss=accs().filter(c=>!used.has(c.id)).sort((a,b)=>cmpN(a.name,b.name));
 v.innerHTML=`<div class="chips"><button class="ipochip" data-w="">◀ All</button>${P.map(q=>`<button class="ipochip${q.id===sel?' on':''}" data-w="${q.id}">${esc(q.name.replace(/\s+(ltd|limited)\.?$/i,''))}</button>`).join('')}</div>
 <div class="card"><div class="sumline">${esc(cats.map(c=>L.filter(a=>a.cat===c).length+' '+c).join(' + ')+' = '+L.length)}</div><div class="mut">${esc(p.name)}</div></div>
@@ -150,11 +152,19 @@ ${miss.length?`<div class="whoh mut">Not applied · ${miss.length}</div><div cla
 v.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{b.dataset.w?sessionStorage.setItem('ipoTracker.who',b.dataset.w):sessionStorage.removeItem('ipoTracker.who');render()});
 v.querySelectorAll('[data-app]').forEach(e=>e.onclick=()=>appForm(e.dataset.app));const on=v.querySelector('.ipochip.on');if(on)on.scrollIntoView({inline:'center',block:'nearest'})}
 /* ---- Tick grid (default Apply view): Keep-style checklist, autosaves each tick ---- */
-const EXCL=['bHNI','sHNI','Retail'],GSHORT={bHNI:'bHNI',sHNI:'sHNI',Retail:'Retail',Shareholder:'Shr',Employee:'Emp'};
+const EXCL=['bHNI','sHNI','Retail'],GSHORT={bHNI:'bHNI',sHNI:'sHNI',Retail:'Retail',Shareholder:'Shr',Employee:'Emp',Policyholder:'Pol'};
+const gshort=c=>GSHORT[c]||(c.length>5?c.slice(0,4)+'.':c);
 function gridInit(){AP.g={};accs().forEach(c=>AP.g[c.id]={});db.apps.filter(a=>a.ipo===AP.ipo).forEach(a=>{(AP.g[a.acct]=AP.g[a.acct]||{})[a.cat]=+a.lots||1})}
-function gridCols(p){const emp=+p.empDisc>0||p.empQuota==='yes'||db.apps.some(a=>a.ipo===AP.ipo&&a.cat==='Employee');return['Retail','sHNI','bHNI','Shareholder',...(emp?['Employee']:[])]}
+function gridCols(p){const base=['Retail','sHNI','bHNI','Shareholder'],extra=new Set(Array.isArray(p.quotas)?p.quotas:[]);
+if(+p.empDisc>0||p.empQuota==='yes')extra.add('Employee');db.apps.forEach(a=>{if(a.ipo===AP.ipo&&!base.includes(a.cat))extra.add(a.cat)});return[...base,...[...extra].sort(catSort)]}
+function addQuota(p){const f=$('#frm'),have=gridCols(p);f.innerHTML=`<h2>Add quota for ${esc(p.name)}</h2><p class="mut">Combinable with Retail, sHNI or bHNI. Default 1 lot.</p>
+<div class="btns">${['Employee','Policyholder'].filter(q=>!have.includes(q)).map(q=>`<button value="ok" data-q="${q}" class="pri">${q}</button>`).join('')}</div>
+<label>Or a custom quota name</label><input name="cq" maxlength="20" placeholder="e.g. NRI"><div class="btns"><button value="ok" data-q="">Add custom</button><button value="cancel">Cancel</button></div>`;
+f.onsubmit=e=>{const b=e.submitter;if(!b||b.value!=='ok')return;let q=b.dataset.q||f.cq.value.trim();if(!q)return;
+const known={retail:'Retail',shni:'sHNI',bhni:'bHNI',shareholder:'Shareholder',employee:'Employee',policyholder:'Policyholder'};q=known[q.toLowerCase()]||q;
+if(gridCols(p).includes(q))return;p.quotas=[...(Array.isArray(p.quotas)?p.quotas:[]),q];save();toast(q+' column added');render()};$('#dlg').showModal()}
 function gridSum(p){const L=db.apps.filter(a=>a.ipo===AP.ipo),cnt={};L.forEach(a=>cnt[a.cat]=(cnt[a.cat]||0)+1);const tot=L.reduce((s,a)=>s+blocked(a),0);
-const line=CATORD.filter(c=>cnt[c]).map(c=>cnt[c]+' '+c).join(' + ');
+const line=Object.keys(cnt).sort(catSort).map(c=>cnt[c]+' '+c).join(' + ');
 return`<div class="gsum"><b>${line?esc(line)+' = '+L.length:'Tick to apply'}</b>${L.length?` <span class="mut">· ${inr(tot)} blocked</span>`:''}</div><span class="saved" id="gsaved"></span>`}
 const appOf=(id,k)=>db.apps.find(a=>a.ipo===AP.ipo&&a.acct===id&&a.cat===k);
 const hasResult=a=>a&&a.allot&&a.allot!=='Awaiting';
@@ -167,8 +177,8 @@ let savedT=null;function gridSaved(p){save();const f=$('#gfoot');if(f)f.innerHTM
 function cellHtml(p,id,k){const r=AP.g[id]||{},on=r[k]!=null,nd=on&&r[k]!==defLots(p,k);return`<span class="gx${on?' on':''}"></span>${nd?`<span class="lb" data-lb="1">${r[k]}</span>`:''}`}
 function renderGrid(v,p){const cols=gridCols(p);
 v.innerHTML=`<div class="ghead"><select id="api">${applyOpts().map(([k,l])=>`<option value="${esc(k)}"${k===AP.ipo?' selected':''}>${esc(l)}</option>`).join('')}</select>
-<div class="glinks"><button class="lnk" data-mode="cards">Cards view</button><button class="lnk" id="gwho">Who list</button></div></div>
-<table class="tgrid"><thead><tr><th class="gn"></th>${cols.map(c=>`<th>${GSHORT[c]}</th>`).join('')}</tr></thead><tbody>
+<div class="glinks"><button class="lnk" id="gq">+ Quota</button><button class="lnk" data-mode="cards">Cards view</button><button class="lnk" id="gwho">Who list</button></div></div>
+<table class="tgrid c${cols.length}"><thead><tr><th class="gn"></th>${cols.map(c=>`<th title="${esc(c)}">${esc(gshort(c))}</th>`).join('')}</tr></thead><tbody>
 ${accs().map(c=>`<tr><td class="gn">${esc(c.name)}</td>${cols.map(k=>`<td class="gc" data-gc="${c.id}|${k}" role="checkbox" aria-checked="${(AP.g[c.id]||{})[k]!=null}" aria-label="${esc(c.name)} ${k}">${cellHtml(p,c.id,k)}</td>`).join('')}</tr>`).join('')}</tbody></table>
 <div class="mut gtip">Long-press a ticked box to change lots.</div><div class="apfoot gfoot" id="gfoot">${gridSum(p)}</div>`;
 document.documentElement.style.setProperty('--hh',($('header').offsetHeight||56)+'px');
@@ -186,6 +196,6 @@ td.addEventListener('contextmenu',e=>e.preventDefault());
 td.onclick=ev=>{if(long){long=false;return}if(ev.target.dataset.lb){lots(id,k);return}toggle(id,k)}});
 $('#api').onchange=e=>{let k=e.target.value;if(k.startsWith('live:')){k=linkLive(k.slice(5));save()}AP.ipo=k;if(k){initRows();gridInit()}render()};
 v.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{AP.mode='cards';initRows();render()});
-$('#gwho').onclick=()=>{sessionStorage.setItem('ipoTracker.who',AP.ipo);go('who')}}
+$('#gq').onclick=()=>addQuota(p);$('#gwho').onclick=()=>{sessionStorage.setItem('ipoTracker.who',AP.ipo);go('who')}}
 function applyOpts(){return[...(live?live.ipos.filter(x=>liveStatus(x)!=='closed'&&!db.ipos.some(p=>p.liveId===x.id)).map(x=>['live:'+x.id,'🔴 '+x.name+' ('+liveStatus(x)+')']):[]),
 ...[...db.ipos].sort((a,b)=>(b.open||'').localeCompare(a.open||'')).map(p=>[p.id,p.name])]}
