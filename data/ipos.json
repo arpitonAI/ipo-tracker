@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-19T07:34:31+00:00",
+ "generated": "2026-10-19T08:20:17+00:00",
  "ipos": [
   {
    "id": "TONBO",
@@ -15,15 +15,15 @@
    "issueSizeShares": 8526033.0,
    "lot": 21,
    "subscription": {
-    "qib": 27.11,
-    "nii": 93.28,
-    "bhni": 96.53,
-    "shni": 86.8,
-    "retail": 19.59,
-    "employee": 36.94,
-    "total": 37.53
+    "qib": 46.26,
+    "nii": 114.1,
+    "bhni": 120.31,
+    "shni": 101.69,
+    "retail": 21.88,
+    "employee": 40.46,
+    "total": 48.59
    },
-   "subscriptionUpdated": "2026-10-19T13:00:00+05:30",
+   "subscriptionUpdated": "2026-10-19T13:45:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -41,15 +41,15 @@
    "issueSizeShares": 30282330.0,
    "lot": 25,
    "subscription": {
-    "qib": 4.71,
-    "nii": 18.66,
-    "bhni": 20.69,
-    "shni": 14.6,
-    "retail": 3.38,
-    "employee": 4.88,
-    "total": 7.03
+    "qib": 12.09,
+    "nii": 22.83,
+    "bhni": 25.63,
+    "shni": 17.24,
+    "retail": 3.79,
+    "employee": 5.31,
+    "total": 10.23
    },
-   "subscriptionUpdated": "2026-10-19T13:00:00+05:30",
+   "subscriptionUpdated": "2026-10-19T13:45:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -67,15 +67,15 @@
    "issueSizeShares": 9750482.0,
    "lot": 43,
    "subscription": {
-    "qib": 1.58,
-    "nii": 3.63,
-    "bhni": 3.71,
-    "shni": 3.48,
-    "retail": 1.63,
+    "qib": 1.59,
+    "nii": 4.59,
+    "bhni": 4.79,
+    "shni": 4.21,
+    "retail": 1.75,
     "employee": 0.25,
-    "total": 2.0
+    "total": 2.26
    },
-   "subscriptionUpdated": "2026-10-19T13:00:00+05:30",
+   "subscriptionUpdated": "2026-10-19T13:45:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -93,15 +93,15 @@
    "issueSizeShares": 185066845.0,
    "lot": 99,
    "subscription": {
-    "qib": 1.32,
-    "nii": 0.57,
-    "bhni": 0.69,
-    "shni": 0.32,
-    "retail": 0.49,
-    "employee": 1.03,
-    "total": 0.95
+    "qib": 1.44,
+    "nii": 0.73,
+    "bhni": 0.91,
+    "shni": 0.36,
+    "retail": 0.51,
+    "employee": 1.2,
+    "total": 1.07
    },
-   "subscriptionUpdated": "2026-10-19T13:00:00+05:30",
+   "subscriptionUpdated": "2026-10-19T13:45:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -121,6 +121,22 @@
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "upcoming"
+  },
+  {
+   "id": "PARASHLTH",
+   "symbol": "PARASHLTH",
+   "series": "EQ",
+   "name": "Paras Healthcare Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "priceLow": 660.0,
+   "priceHigh": 693.0,
+   "issueSizeShares": 21969695.0,
+   "status": "upcoming",
+   "lot": 21,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited"
   },
   {
    "id": "VNL",
