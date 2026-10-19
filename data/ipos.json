@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-19T15:46:48+00:00",
+ "generated": "2026-10-19T17:58:38+00:00",
  "ipos": [
   {
    "id": "TONBO",
@@ -116,7 +116,7 @@
    "close": "2026-10-23",
    "priceLow": 1065.0,
    "priceHigh": 1119.0,
-   "issueSizeShares": 270000000.0,
+   "issueSizeShares": 197525934.0,
    "lot": 12,
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
