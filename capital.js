@@ -17,6 +17,14 @@ if(cat==='Policyholder'){return{min:1,max:p.type==='SME'?null:Math.max(1,Math.fl
 if(r[cat])return{min:r[cat][0],max:r[cat][1],cap:cat==='Retail'||cat==='Shareholder'?2e5:cat==='sHNI'?1e6:null};
 return{min:1,max:null}}
 const defLots=(p,cat)=>limits(p,cat).min;
+const HNI=['sHNI','bHNI'],priced=p=>!!(p&&+p.lot>0&&+p.hi>0);
+/* Fill a linked IPO's missing lot/upper price from the live NSE feed (generic, any IPO). */
+function ipoFill(p){if(!p||priced(p)||!p.liveId||typeof live==='undefined'||!live)return false;const x=live.ipos.find(y=>y.id===p.liveId);if(!x)return false;let ch=false;
+if(!(+p.lot>0)&&+x.lot>0){p.lot=String(x.lot);ch=true}if(!(+p.hi>0)&&+x.priceHigh>0){p.hi=String(x.priceHigh);ch=true}return ch}
+/* Migration: raise sHNI/bHNI applications below their IPO's minimum lots. Never lowers. Returns count changed. */
+function fixMinLots(){let n=0,ch=false;(db.ipos||[]).forEach(p=>{if(ipoFill(p))ch=true});
+(db.apps||[]).forEach(a=>{if(!HNI.includes(a.cat))return;const p=db.ipos.find(x=>x.id===a.ipo);if(!priced(p))return;const m=defLots(p,a.cat);
+if((+a.lots||0)<m){a.lots=String(m);n++}});if(n||ch)save();return n}
 function lotWarn(p,cat,n){const l=limits(p,cat);if(n<l.min)return`${cat} needs at least ${l.min} lots`;if(l.max!=null&&n>l.max)return`${cat} max ${l.max} lots${l.cap?' ('+inr(l.cap)+')':''}`;return''}
 /* per-account usage: blocked in pending applications + tied in unsold allotted shares (optionally excluding one IPO) */
 function acctUse(acctId,exceptIpo){return db.apps.filter(a=>a.acct===acctId&&a.ipo!==exceptIpo).reduce((s,a)=>s+blocked(a)+tied(a),0)}
@@ -36,8 +44,8 @@ a.sell=String(+v);a.sold='yes';save();toast('Marked sold · capital freed');rend
 /* ---- Bulk apply screen ---- */
 let AP={ipo:'',rows:{},mode:'grid'};
 function openApply(ipoId,mode){AP={ipo:ipoId||'',rows:{},mode:mode||'grid'};if(ipoId){initRows();gridInit()}go('apply')}
-function apIpo(){return AP.ipo?ipo(AP.ipo):null}
-function initRows(){const p=apIpo();AP.rows={};accs().forEach(c=>{const ex=db.apps.find(a=>a.ipo===AP.ipo&&a.acct===c.id);
+function apIpo(){if(!AP.ipo)return null;const p=ipo(AP.ipo);ipoFill(p);return p}
+function initRows(){fixMinLots();const p=apIpo();AP.rows={};accs().forEach(c=>{const ex=db.apps.find(a=>a.ipo===AP.ipo&&a.acct===c.id);
 const cat=ex?ex.cat:(c.lastCat||'bHNI');AP.rows[c.id]={on:!!ex,cat,lots:ex?+ex.lots:defLots(p,cat),ex:!!ex}})}
 function renderApply(v){if(!db.accounts.length){v.innerHTML='<div class="card">Add your accounts first (Accounts tab).</div>';return}
 const opts=[...(live?live.ipos.filter(x=>liveStatus(x)!=='closed'&&!db.ipos.some(p=>p.liveId===x.id)).map(x=>['live:'+x.id,'🔴 '+x.name+' ('+liveStatus(x)+')']):[]),
@@ -154,7 +162,7 @@ v.querySelectorAll('[data-app]').forEach(e=>e.onclick=()=>appForm(e.dataset.app)
 /* ---- Tick grid (default Apply view): Keep-style checklist, autosaves each tick ---- */
 const EXCL=['bHNI','sHNI','Retail'],GSHORT={bHNI:'bHNI',sHNI:'sHNI',Retail:'Retail',Shareholder:'Shr',Employee:'Emp',Policyholder:'Pol'};
 const gshort=c=>GSHORT[c]||(c.length>5?c.slice(0,4)+'.':c);
-function gridInit(){AP.g={};accs().forEach(c=>AP.g[c.id]={});db.apps.filter(a=>a.ipo===AP.ipo).forEach(a=>{(AP.g[a.acct]=AP.g[a.acct]||{})[a.cat]=+a.lots||1})}
+function gridInit(){fixMinLots();AP.g={};accs().forEach(c=>AP.g[c.id]={});db.apps.filter(a=>a.ipo===AP.ipo).forEach(a=>{(AP.g[a.acct]=AP.g[a.acct]||{})[a.cat]=+a.lots||1})}
 function gridCols(p){const base=['Retail','sHNI','bHNI','Shareholder'],extra=new Set(Array.isArray(p.quotas)?p.quotas:[]);
 if(+p.empDisc>0||p.empQuota==='yes')extra.add('Employee');db.apps.forEach(a=>{if(a.ipo===AP.ipo&&!base.includes(a.cat))extra.add(a.cat)});return[...base,...[...extra].sort(catSort)]}
 function addQuota(p){const f=$('#frm'),have=gridCols(p);f.innerHTML=`<h2>Add quota for ${esc(p.name)}</h2><p class="mut">Combinable with Retail, sHNI or bHNI. Default 1 lot.</p>
@@ -170,7 +178,7 @@ const appOf=(id,k)=>db.apps.find(a=>a.ipo===AP.ipo&&a.acct===id&&a.cat===k);
 const hasResult=a=>a&&a.allot&&a.allot!=='Awaiting';
 function gridRemove(id,k){const a=appOf(id,k);if(hasResult(a)&&!confirm(`${acc(id).name} · ${k} already has an allotment result (${a.allot}). Remove this application?`))return false;
 if(a)db.apps=db.apps.filter(x=>x!==a);delete AP.g[id][k];return true}
-function gridAdd(p,id,k){AP.g[id][k]=defLots(p,k);if(!appOf(id,k))db.apps.push({id:id_(),ipo:AP.ipo,acct:id,cat:k,lots:String(AP.g[id][k]),date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'});
+function gridAdd(p,id,k){if(HNI.includes(k)&&!priced(p)){toast('⚠️ Lot size / upper price missing for this IPO – edit the IPO first');return false}AP.g[id][k]=defLots(p,k);const ex=appOf(id,k);if(ex&&+ex.lots<AP.g[id][k])ex.lots=String(AP.g[id][k]);if(!appOf(id,k))db.apps.push({id:id_(),ipo:AP.ipo,acct:id,cat:k,lots:String(AP.g[id][k]),date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'});
 if(EXCL.includes(k)){const c=db.accounts.find(x=>x.id===id);if(c)c.lastCat=k}}
 const id_=()=>id();
 let savedT=null;function gridSaved(p){save();const f=$('#gfoot');if(f)f.innerHTML=gridSum(p);const e=$('#gsaved');if(e){e.textContent='Saved ✓';clearTimeout(savedT);savedT=setTimeout(()=>{const x=$('#gsaved');if(x)x.textContent=''},1500)}}
@@ -188,7 +196,7 @@ r[k]=x;const a=appOf(id,k);if(a)a.lots=String(x);const w=lotWarn(p,k,x);if(w)toa
 const toggle=(id,k)=>{const r=AP.g[id]=AP.g[id]||{};
 if(r[k]!=null){if(gridRemove(id,k)){paint(id,k);gridSaved(p)}return}
 if(EXCL.includes(k)){for(const x of EXCL.filter(x=>x!==k&&r[x]!=null)){if(!gridRemove(id,x))return;paint(id,x);toast(`${acc(id).name}: ${x} removed – only one of bHNI/sHNI/Retail per PAN`)}}
-gridAdd(p,id,k);paint(id,k);gridSaved(p)};
+if(gridAdd(p,id,k)===false)return;paint(id,k);gridSaved(p)};
 v.querySelectorAll('[data-gc]').forEach(td=>{const[id,k]=td.dataset.gc.split('|');let t=null,long=false;
 td.addEventListener('pointerdown',()=>{long=false;clearTimeout(t);t=setTimeout(()=>{if((AP.g[id]||{})[k]!=null){long=true;lots(id,k)}},550)});
 ['pointerup','pointerleave','pointercancel'].forEach(e=>td.addEventListener(e,()=>clearTimeout(t)));

@@ -71,7 +71,7 @@ function moreTab(v){v.innerHTML=`<div class="fchips">${[['accts','👤 Accounts'
 v.querySelectorAll('[data-ms]').forEach(b=>b.onclick=()=>{moreSub=b.dataset.ms;render()});const mb=$('#mb');
 if(moreSub==='accts')renderAccts(mb);else{renderData(mb);const pool=+pref('pool')||0;mb.insertAdjacentHTML('afterbegin',`<div class="card"><div class="row"><b>💰 Capital pool</b><button id="pool2">${pool?inr(pool)+' ✏️':'Set'}</button></div></div>`);
 $('#pool2').onclick=()=>{const x=prompt('Total capital pool (₹), blank to clear',pref('pool')||'');if(x===null)return;setPref('pool',String(x).replace(/[^0-9.]/g,''));render()}}}
-function render(){const v=$('#view'),t=today();
+function render(){fixMinLots();const v=$('#view'),t=today();
 if(tab==='ipos'){ipoTab(v);return}if(tab==='more'){moreTab(v);return}
 if(tab==='apply'){renderApply(v);return}if(tab==='allot'){renderAllot(v);return}if(tab==='who'){renderWho(v);return}
 if(tab==='dash'){const L=fApps(),tp=L.reduce((s,a)=>s+pnl(a),0);
@@ -133,7 +133,7 @@ if(liveId){const p=db.ipos.find(q=>q.liveId===liveId);ipoId=p?p.id:'live:'+liveI
 const a=db.apps.find(x=>x.id===i)||{ipo:ipoId||opts[0][0],acct:db.accounts[0].id,cat:'Retail',lots:1,date:today(),mandate:'Pending',allot:'Awaiting',refund:'no'};
 form(i?'Edit application':'Add application',[['ipo','IPO','sel',opts],['acct','Account','sel',accs().map(c=>[c.id,c.name+' (…'+c.pan+')'])],['cat','Category','sel',CATS],['lots','Lots','number','required min=1'],['date','Applied date','date'],['mandate','UPI mandate','sel',MAND],['allot','Allotment','sel',ALLOT],['shares','Shares allotted (number of shares, not lots)','number','min=0 step=1'],['refund','Refund received','sel',[['no','No'],['yes','Yes']]],['listp','Listing price (₹)','number'],['sell','Sell price (₹)','number'],['sold','Sold','sel',[['no','No'],['yes','Yes']]]],a,
 o=>{if(o.ipo.startsWith('live:'))o.ipo=linkLive(o.ipo.slice(5));if(o.allot==='Allotted'&&!o.shares)o.shares=ipo(o.ipo).lot;if(o.allot==='Not allotted')o.shares='0';if(i&&(o.allot!==a.allot||String(o.shares)!==String(a.shares)))o.allotSrc=o.allot==='Awaiting'?'':'manual';i?Object.assign(a,o):db.apps.push({id:id(),...o})},
-f=>{const h=()=>{const v=f.ipo.value,x=v.startsWith('live:')?live.ipos.find(y=>y.id===v.slice(5)):null,p=x?{type:x.type,lot:x.lot,hi:x.priceHigh}:ipo(v);
+f=>{const pOf=()=>{const v=f.ipo.value,x=v.startsWith('live:')?live.ipos.find(y=>y.id===v.slice(5)):null;return x?{type:x.type,lot:x.lot,hi:x.priceHigh}:ipo(v)};f.cat.addEventListener('change',()=>{const q=pOf();f.lots.value=priced(q)||!HNI.includes(f.cat.value)?defLots(q,f.cat.value):''});f.ipo.addEventListener('change',()=>{const q=pOf();if(priced(q))f.lots.value=Math.max(+f.lots.value||0,defLots(q,f.cat.value))});const h=()=>{const p=pOf();
 const n=+f.lots.value||0,r=catRules(p.type,p.lot,p.hi),c=r&&r[f.cat.value];let w='';if(c&&n&&(n<c[0]||(c[1]!=null&&n>c[1])))w=` ⚠️ ${f.cat.value} needs ${c[0]}${c[1]==null?'+':'–'+c[1]} lots`;
 $('#hint').textContent=`Lot ${p.lot||'?'} × ₹${p.hi||'?'} · Amount: ${inr(n*(+p.lot||0)*(+p.hi||0))}`+w+(r?`\n${ruleTxt(r)}`:'');$('#hint').style.whiteSpace='pre-line'};
 f.oninput=h;f.onchange=h;h()})}
