@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-20T17:52:40+00:00",
+ "generated": "2026-10-20T21:27:46+00:00",
  "ipos": [
   {
    "id": "JPL",
@@ -16,7 +16,7 @@
    "lot": 12,
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "PARASHLTH",
@@ -32,7 +32,7 @@
    "lot": 21,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "RKFAL",
@@ -142,6 +142,33 @@
    "status": "closed"
   },
   {
+   "id": "ZETWERK",
+   "symbol": "ZETWERK",
+   "series": "EQ",
+   "name": "Zetwerk Manufacturing Businesses Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "listing": null,
+   "priceLow": 143.0,
+   "priceHigh": 151.0,
+   "issuePrice": null,
+   "lot": 99,
+   "subscription": {
+    "qib": 4.73,
+    "nii": 1.4,
+    "bhni": 1.68,
+    "shni": 0.84,
+    "retail": 0.73,
+    "employee": 1.59,
+    "total": 3.06
+   },
+   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "closed"
+  },
+  {
    "id": "TONBO",
    "symbol": "TONBO",
    "series": "EQ",
@@ -149,9 +176,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
+   "listing": null,
    "priceLow": 665.0,
    "priceHigh": 700.0,
-   "issueSizeShares": 8526033.0,
+   "issuePrice": null,
    "lot": 21,
    "subscription": {
     "qib": 293.56,
@@ -175,9 +203,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
+   "listing": null,
    "priceLow": 558.0,
    "priceHigh": 586.0,
-   "issueSizeShares": 30282330.0,
+   "issuePrice": null,
    "lot": 25,
    "subscription": {
     "qib": 120.78,
@@ -201,9 +230,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
+   "listing": null,
    "priceLow": 327.0,
    "priceHigh": 344.0,
-   "issueSizeShares": 9750482.0,
+   "issuePrice": null,
    "lot": 43,
    "subscription": {
     "qib": 34.7,
@@ -217,32 +247,6 @@
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "ZETWERK",
-   "symbol": "ZETWERK",
-   "series": "EQ",
-   "name": "Zetwerk Manufacturing Businesses Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "priceLow": 143.0,
-   "priceHigh": 151.0,
-   "issueSizeShares": 185066845.0,
-   "lot": 99,
-   "subscription": {
-    "qib": 4.73,
-    "nii": 1.4,
-    "bhni": 1.68,
-    "shni": 0.84,
-    "retail": 0.73,
-    "employee": 1.59,
-    "total": 3.06
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "status": "closed"
   }
  ]
