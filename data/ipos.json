@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-21T05:51:56+00:00",
+ "generated": "2026-10-21T08:09:45+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -14,18 +14,18 @@
    "priceHigh": 693.0,
    "issueSizeShares": 12083331.0,
    "lot": 21,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open",
    "subscription": {
     "qib": 0.0,
-    "nii": 0.02,
-    "bhni": 0.01,
-    "shni": 0.06,
-    "retail": 0.27,
-    "total": 0.06
+    "nii": 0.05,
+    "bhni": 0.03,
+    "shni": 0.09,
+    "retail": 0.51,
+    "total": 0.11
    },
-   "subscriptionUpdated": "2026-10-21T11:18:00+05:30"
+   "subscriptionUpdated": "2026-10-21T13:36:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
   },
   {
    "id": "JPL",
@@ -39,20 +39,20 @@
    "priceHigh": 1119.0,
    "issueSizeShares": 197525934.0,
    "lot": 12,
+   "subscription": {
+    "qib": 4.88,
+    "nii": 0.74,
+    "bhni": 0.66,
+    "shni": 0.89,
+    "retail": 0.51,
+    "employee": 1.05,
+    "shareholder": 0.97,
+    "total": 1.7
+   },
+   "subscriptionUpdated": "2026-10-21T13:36:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
-   "status": "open",
-   "subscription": {
-    "qib": 3.77,
-    "nii": 0.4,
-    "bhni": 0.33,
-    "shni": 0.52,
-    "retail": 0.32,
-    "employee": 0.74,
-    "shareholder": 0.59,
-    "total": 1.23
-   },
-   "subscriptionUpdated": "2026-10-21T11:18:00+05:30"
+   "status": "open"
   },
   {
    "id": "RKFAL",
