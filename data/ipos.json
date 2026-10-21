@@ -1,23 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-20T21:27:46+00:00",
+ "generated": "2026-10-21T00:29:14+00:00",
  "ipos": [
-  {
-   "id": "JPL",
-   "symbol": "JPL",
-   "series": "EQ",
-   "name": "Jio Platforms Limited",
-   "type": "Mainboard",
-   "open": "2026-10-21",
-   "close": "2026-10-23",
-   "priceLow": 1065.0,
-   "priceHigh": 1119.0,
-   "issueSizeShares": 197525934.0,
-   "lot": 12,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "Kfin Technologies Limited ",
-   "status": "open"
-  },
   {
    "id": "PARASHLTH",
    "symbol": "PARASHLTH",
@@ -32,6 +16,22 @@
    "lot": 21,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
+  },
+  {
+   "id": "JPL",
+   "symbol": "JPL",
+   "series": "EQ",
+   "name": "Jio Platforms Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "priceLow": 1065.0,
+   "priceHigh": 1119.0,
+   "issueSizeShares": 197525934.0,
+   "lot": 12,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "Kfin Technologies Limited ",
    "status": "open"
   },
   {
@@ -59,10 +59,10 @@
    "type": "Mainboard",
    "open": "2026-10-13",
    "close": "2026-10-15",
-   "listing": null,
+   "listing": "2026-10-21",
    "priceLow": 258.0,
    "priceHigh": 271.0,
-   "issuePrice": null,
+   "issuePrice": 271.0,
    "lot": 55,
    "subscription": {
     "qib": 256.65,
@@ -86,10 +86,10 @@
    "type": "SME",
    "open": "2026-10-13",
    "close": "2026-10-15",
-   "listing": null,
+   "listing": "2026-10-21",
    "priceLow": 51.0,
    "priceHigh": 54.0,
-   "issuePrice": null,
+   "issuePrice": 54.0,
    "lot": 2000,
    "subscription": {
     "total": 0.56
