@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-22T08:10:17+00:00",
+ "generated": "2026-10-22T13:45:24+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -15,14 +15,14 @@
    "issueSizeShares": 12083331.0,
    "lot": 21,
    "subscription": {
-    "qib": 0.0,
-    "nii": 0.14,
-    "bhni": 0.1,
-    "shni": 0.24,
-    "retail": 1.14,
-    "total": 0.25
+    "qib": 0.06,
+    "nii": 0.25,
+    "bhni": 0.22,
+    "shni": 0.31,
+    "retail": 1.31,
+    "total": 0.34
    },
-   "subscriptionUpdated": "2026-10-22T13:36:00+05:30",
+   "subscriptionUpdated": "2026-10-22T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -40,19 +40,67 @@
    "issueSizeShares": 197525934.0,
    "lot": 12,
    "subscription": {
-    "qib": 9.66,
-    "nii": 3.7,
-    "bhni": 4.04,
-    "shni": 3.01,
-    "retail": 1.24,
-    "employee": 1.82,
-    "shareholder": 2.88,
-    "total": 3.98
+    "qib": 13.29,
+    "nii": 5.97,
+    "bhni": 6.76,
+    "shni": 4.38,
+    "retail": 1.54,
+    "employee": 2.1,
+    "shareholder": 4.04,
+    "total": 5.57
    },
-   "subscriptionUpdated": "2026-10-22T13:36:00+05:30",
+   "subscriptionUpdated": "2026-10-22T18:57:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "open"
+  },
+  {
+   "id": "EDELALTS",
+   "symbol": "EDELALTS",
+   "series": "EQ",
+   "name": "EAAA India Alternatives Limited",
+   "type": "Mainboard",
+   "open": "2026-10-26",
+   "close": "2026-10-28",
+   "priceLow": 1585.0,
+   "priceHigh": 1665.0,
+   "issueSizeShares": 7570977.0,
+   "status": "upcoming",
+   "lot": 9,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited"
+  },
+  {
+   "id": "BLSPOLY",
+   "symbol": "BLSPOLY",
+   "series": "EQ",
+   "name": "BLS Polymers Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 142.0,
+   "priceHigh": 150.0,
+   "issueSizeShares": 17000000.0,
+   "status": "upcoming",
+   "lot": 100,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited"
+  },
+  {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issueSizeShares": 20475082.0,
+   "status": "upcoming",
+   "lot": 45,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited"
   },
   {
    "id": "HDFIRE",
