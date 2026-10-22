@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-21T21:33:46+00:00",
+ "generated": "2026-10-22T00:32:58+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -109,10 +109,10 @@
    "type": "Mainboard",
    "open": "2026-10-14",
    "close": "2026-10-16",
-   "listing": null,
+   "listing": "2026-10-22",
    "priceLow": 275.0,
    "priceHigh": 289.0,
-   "issuePrice": null,
+   "issuePrice": 289.0,
    "lot": 51,
    "subscription": {
     "qib": 4.01,
@@ -135,10 +135,10 @@
    "type": "SME",
    "open": "2026-10-14",
    "close": "2026-10-16",
-   "listing": null,
+   "listing": "2026-10-22",
    "priceLow": 105.0,
    "priceHigh": 112.0,
-   "issuePrice": null,
+   "issuePrice": 112.0,
    "lot": 1200,
    "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
    "registrar": "MUFG Intime India Private Limited",
