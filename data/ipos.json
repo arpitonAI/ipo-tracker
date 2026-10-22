@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-22T13:45:24+00:00",
+ "generated": "2026-10-22T16:19:11+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -65,10 +65,10 @@
    "priceLow": 1585.0,
    "priceHigh": 1665.0,
    "issueSizeShares": 7570977.0,
-   "status": "upcoming",
    "lot": 9,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "BLSPOLY",
@@ -81,10 +81,10 @@
    "priceLow": 142.0,
    "priceHigh": 150.0,
    "issueSizeShares": 17000000.0,
-   "status": "upcoming",
    "lot": 100,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited"
+   "registrar": "KFin Technologies Limited",
+   "status": "upcoming"
   },
   {
    "id": "SFCTECH",
@@ -97,10 +97,10 @@
    "priceLow": 313.0,
    "priceHigh": 330.0,
    "issueSizeShares": 20475082.0,
-   "status": "upcoming",
    "lot": 45,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "HDFIRE",
