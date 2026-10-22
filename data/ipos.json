@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-22T00:32:58+00:00",
+ "generated": "2026-10-22T05:55:14+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -16,13 +16,13 @@
    "lot": 21,
    "subscription": {
     "qib": 0.0,
-    "nii": 0.08,
-    "bhni": 0.05,
-    "shni": 0.14,
-    "retail": 0.69,
-    "total": 0.15
+    "nii": 0.11,
+    "bhni": 0.07,
+    "shni": 0.2,
+    "retail": 0.99,
+    "total": 0.21
    },
-   "subscriptionUpdated": "2026-10-21T16:57:00+05:30",
+   "subscriptionUpdated": "2026-10-22T11:18:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -41,15 +41,15 @@
    "lot": 12,
    "subscription": {
     "qib": 9.42,
-    "nii": 1.68,
-    "bhni": 1.83,
-    "shni": 1.38,
-    "retail": 0.73,
-    "employee": 1.36,
-    "shareholder": 1.46,
-    "total": 3.16
+    "nii": 2.57,
+    "bhni": 2.75,
+    "shni": 2.21,
+    "retail": 1.04,
+    "employee": 1.65,
+    "shareholder": 2.19,
+    "total": 3.55
    },
-   "subscriptionUpdated": "2026-10-21T18:57:00+05:30",
+   "subscriptionUpdated": "2026-10-22T11:18:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "open"
