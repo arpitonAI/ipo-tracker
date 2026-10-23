@@ -35,8 +35,8 @@ return`<div class="btns"><button class="pri big2" id="bulk">➕ Apply to IPO</bu
 <div class="card"><div class="row"><b>💰 Capital</b><button id="pool">${pool?'Pool '+inr(pool)+' ✏️':'Set capital pool'}</button></div>
 <div class="grid"><div class="stat">Blocked<b>${inr(bl)}</b></div><div class="stat">In allotted shares<b>${inr(td)}</b></div>
 ${pool?`<div class="stat">Available<b class="${av>=0?'pos':'neg'}">${inr(av)}</b></div><div class="stat">bHNI @ ₹10L<b>${Math.max(0,Math.floor(av/1e6))} acct${Math.floor(av/1e6)===1?'':'s'}</b></div>`:''}</div>
-${Object.keys(per).length?`<div class="mut" style="margin-top:6px">Blocked per IPO</div>`+Object.entries(per).sort((a,b)=>b[1]-a[1]).map(([i,v])=>`<div class="row"><span>${esc(ipo(i).name)}</span><b>${inr(v)}</b></div>`).join(''):''}
-${Object.keys(tiedPer).length?`<div class="mut" style="margin-top:6px">Held shares (until marked sold)</div>`+Object.entries(tiedPer).map(([i,v])=>`<div class="row"><span>${esc(ipo(i).name)}</span><b>${inr(v)}</b></div>`).join(''):''}</div>`}
+${Object.keys(per).length?`<div class="mut" style="margin-top:6px">Blocked per IPO</div>`+Object.entries(per).sort((a,b)=>b[1]-a[1]).map(([i,v])=>`<div class="row"><span>${esc(ipo(i).name)}${overdue(ipo(i))?` <span class="warn">⚠️ ${pendOf(i).length} pending past allotment</span>`:''}</span><b>${inr(v)}</b></div>`).join(''):''}
+${Object.keys(tiedPer).length?`<div class="mut" style="margin-top:6px">Held shares (until marked sold)</div>`+Object.entries(tiedPer).map(([i,v])=>`<div class="row"><span>${esc(ipo(i).name)}${overdue(ipo(i))?` <span class="warn">⚠️ ${pendOf(i).length} pending past allotment</span>`:''}</span><b>${inr(v)}</b></div>`).join(''):''}</div>`}
 function bindCapital(){const b=$('#bulk');if(b)b.onclick=()=>openApply();const ab=$('#allotb');if(ab)ab.onclick=()=>openAllot();const p=$('#pool');if(p)p.onclick=()=>{const v=prompt('Total capital pool (₹), blank to clear',pref('pool')||'');if(v===null)return;
 setPref('pool',String(v).replace(/[^0-9.]/g,''));render()}}
 function markSold(aid){const a=db.apps.find(x=>x.id===aid);if(!a)return;const v=prompt(`Sell price per share for ${a.shares} shares (₹)`,a.sell||a.listp||'');if(v===null||!+v)return;
@@ -93,13 +93,14 @@ return`<div><b>${k}</b> of ${L.length} allotted · ${sh} sh<div class="mut">Debi
 function renderAllot(v){const ips=[...db.ipos].filter(p=>db.apps.some(a=>a.ipo===p.id)).sort((a,b)=>(b.close||'').localeCompare(a.close||''));
 const p=AL.ipo?ipo(AL.ipo):null,L=p?db.apps.filter(a=>a.ipo===AL.ipo).sort((a,b)=>cmpN(acc(a.acct).name,acc(b.acct).name)):[];
 let h=`<div class="card"><label>IPO</label><select id="ali"><option value="">Choose IPO…</option>${ips.map(q=>`<option value="${q.id}"${q.id===AL.ipo?' selected':''}>${esc(q.name)}</option>`).join('')}</select>
-${p?`<div class="mut">Lot ${esc(p.lot)} · issue price ₹${esc(issuePx(p,''))}${+p.finalPx?' (final)':' (upper band)'}${+p.empDisc?' · emp. ₹'+esc(issuePx(p,'Employee')):''}</div><div class="mut">Enter shares allotted. Blank = pending.</div>`:''}</div>`;
+${p?`<div class="mut">Lot ${esc(p.lot)} · issue price ₹${esc(issuePx(p,''))}${+p.finalPx?' (final)':' (upper band)'}${+p.empDisc?' · emp. ₹'+esc(issuePx(p,'Employee')):''}</div><div class="mut">Enter shares allotted. Blank = pending.</div>${L.some(a=>AL.v[a.id]===''||AL.v[a.id]==null)?`<div class="btns"><button id="alrest">❌ Mark all blank as Not allotted</button></div>`:''}`:''}</div>`;
 if(p)h+=L.map(a=>{const c=alCalc(a),lot=+p.lot||0;return`<div class="card alrow" data-row="${a.id}"><div class="row"><b>${esc(acc(a.acct).name)}</b><span class="badge">${esc(a.cat)}</span></div>
 <div class="mut">${a.lots} lot(s) · ${c.max} sh · applied ${inr(c.ap)}</div>
 <div class="alin"><input type="number" inputmode="numeric" min="0" max="${c.max}" step="1" placeholder="Shares" data-sh="${a.id}" value="${esc(AL.v[a.id])}"><button data-q="${a.id}" data-n="0">0</button><button data-q="${a.id}" data-n="${lot}">1 lot</button></div>
 <div class="mut" data-out="${a.id}">${alOut(c)}</div></div>`}).join('')+`<div class="apfoot" id="alf">${alFoot(L)}</div>`;
 v.innerHTML=h;$('#ali').onchange=e=>{AL.ipo=e.target.value;if(AL.ipo)initAllot();render()};if(!p)return;
 const upd=id=>{const a=db.apps.find(x=>x.id===id);v.querySelector(`[data-out="${id}"]`).innerHTML=alOut(alCalc(a));$('#alf').innerHTML=alFoot(L);bindS()};
+const rb=$('#alrest');if(rb)rb.onclick=()=>{L.forEach(a=>{if(AL.v[a.id]===''||AL.v[a.id]==null)AL.v[a.id]='0'});render()};
 v.querySelectorAll('[data-sh]').forEach(e=>e.oninput=()=>{AL.v[e.dataset.sh]=e.value.trim();upd(e.dataset.sh)});
 v.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{AL.v[b.dataset.q]=b.dataset.n;v.querySelector(`[data-sh="${b.dataset.q}"]`).value=b.dataset.n;upd(b.dataset.q)});
 const bindS=()=>{$('#alsave').onclick=()=>{let n=0;L.forEach(a=>{const c=alCalc(a);if(c.bad)return;
@@ -114,6 +115,11 @@ const XS=new Set(JSON.parse(sessionStorage.getItem('ipoTracker.x')||'[]'));const
 const chip=c=>`<span class="chip" style="background:${CATCLR[c]||'#64748b'}">${esc(c)}</span>`;
 function ipoStatus(p,L){const t=today();if(p.open&&p.open>t)return'Upcoming';if(!p.close||p.close>=t)return'Open';
 if(L.some(a=>a.allot==='Awaiting'))return'Closed · awaiting allotment';return p.listd&&p.listd<=t?'Listed':'Allotted'}
+/* allotment due (actual or estimated date reached) but applications still pending */
+const overdue=p=>{const d=estAllot(p);return!!d&&d<=today()};
+const pendOf=pid=>db.apps.filter(a=>a.ipo===pid&&a.allot==='Awaiting'&&a.mandate!=='Rejected');
+function pendPrompt(p){const P=pendOf(p.id);if(!P.length||!overdue(p))return'';
+return`<button class="pend" data-pend="${p.id}">⏳ <b>${P.length} pending</b> · allotment was due ${fd(estAllot(p))} · tap to mark</button>`}
 function ipoSumCard(p,pre,inner){const L=db.apps.filter(a=>a.ipo===p.id);if(!L.length)return'';const k=pre+p.id;
 const cats=[...new Set(L.map(a=>a.cat))].sort(catSort);
 const bl=L.reduce((s,a)=>s+blocked(a),0),ap=L.reduce((s,a)=>s+amt(a),0),known=L.filter(a=>a.allot!=='Awaiting'),got=L.filter(a=>a.allot==='Allotted');
@@ -122,7 +128,7 @@ const used=new Set(L.map(a=>a.acct)),miss=accs().filter(c=>!used.has(c.id));
 const ban=(id,head,body)=>`<div class="ban${XS.has(id)?' open':''}" data-x="${esc(id)}"><div class="banh">${head}<span class="car">▸</span></div><div class="banb">${body}</div></div>`;
 return(inner?'<div class="ipos">':`<div class="card ipos"><div class="row gopen" data-open="${p.id}"><b>${esc(p.name)} ›</b><span class="badge">${esc(ipoStatus(p,L))}</span></div>
 <div class="mut">${fd(p.open)} – ${fd(p.close)}${p.allotd?' · Allot '+fd(p.allotd):''}${p.listd?' · List '+fd(p.listd):''}</div>
-`)+`<div class="sumline">${esc(line)}</div><div class="mut">Applied <b>${inr(ap)}</b>${bl?` · Blocked <b>${inr(bl)}</b>`:''}${known.length?` · Allotted <b>${got.length}</b> of ${L.length}${known.length<L.length?` (${L.length-known.length} pending)`:''}`:''}</div>
+`)+`<div class="sumline">${esc(line)}</div><div class="mut">Applied <b>${inr(ap)}</b>${bl?` · Blocked <b>${inr(bl)}</b>`:''}${known.length?` · Allotted <b>${got.length}</b> of ${L.length}${known.length<L.length?` (${L.length-known.length} pending)`:''}`:''}</div>${pendPrompt(p)}${unmatchedBox(p.id)}
 ${cats.map(c=>{const C=L.filter(a=>a.cat===c).sort((a,b)=>cmpN(acc(a.acct).name,acc(b.acct).name)),sub=C.reduce((s,a)=>s+amt(a),0),g=C.filter(a=>a.allot==='Allotted').length;
 return ban(k+'|'+c,`${chip(c)}<span class="bant"><b>${C.length}</b> · ${inr(sub)}${g?` · ✅ ${g}`:''}</span>`,C.map(a=>`<div class="per"><div class="row"><span>${esc(acc(a.acct).name)}</span><b>${inr(amt(a))}</b></div>
 <div class="mut">${a.lots} lot${+a.lots>1?'s':''} · ${appliedSh(a)} sh · ${a.allot==='Allotted'?`✅ ${+a.shares||0} sh allotted`:a.allot==='Not allotted'?'❌ Not allotted':'⏳ Awaiting'}</div></div>`).join(''))}).join('')}
@@ -132,7 +138,7 @@ const act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Aw
 const A=P.filter(act).sort((a,b)=>(a.close||'9').localeCompare(b.close||'9')),Z=P.filter(p=>!act(p)).sort((a,b)=>(b.close||'').localeCompare(a.close||''));
 if(!P.length)return'';return`<h3 class="sec">Applications by IPO</h3>${A.map(p=>ipoSumCard(p,'d:')).join('')||'<div class="card mut">No active IPOs</div>'}
 ${Z.length?`<div class="ban card${XS.has('past')?' open':''}" data-x="past"><div class="banh"><b>Past IPOs (${Z.length})</b><span class="car">▸</span></div><div class="banb">${Z.map(p=>ipoSumCard(p,'d:')).join('')}</div></div>`:''}`}
-function bindBan(v){v.querySelectorAll('[data-open]').forEach(e=>e.onclick=()=>openApply(e.dataset.open));v.querySelectorAll('[data-x]').forEach(e=>{e.querySelector('.banh').onclick=ev=>{ev.stopPropagation();const k=e.dataset.x;e.classList.toggle('open');e.classList.contains('open')?XS.add(k):XS.delete(k);xsave()}})}
+function bindBan(v){bindUnmatched(v);v.querySelectorAll('[data-pend]').forEach(b=>b.onclick=ev=>{ev.stopPropagation();openAllot(b.dataset.pend)});v.querySelectorAll('[data-open]').forEach(e=>e.onclick=()=>openApply(e.dataset.open));v.querySelectorAll('[data-x]').forEach(e=>{e.querySelector('.banh').onclick=ev=>{ev.stopPropagation();const k=e.dataset.x;e.classList.toggle('open');e.classList.contains('open')?XS.add(k):XS.delete(k);xsave()}})}
 /* ---- Who applied tab ---- */
 function whoIpos(){const t=today(),P=db.ipos.filter(p=>db.apps.some(a=>a.ipo===p.id));const act=p=>(!p.close||p.close>=t)||db.apps.some(a=>a.ipo===p.id&&a.allot==='Awaiting');
 return[...P.filter(act).sort((a,b)=>(b.open||'').localeCompare(a.open||'')),...P.filter(p=>!act(p)).sort((a,b)=>(b.close||'').localeCompare(a.close||''))]}

@@ -77,3 +77,7 @@ main:has(.tgrid){padding-left:8px;padding-right:8px}
 .tgrid.c6 .gn,.tgrid.c7 .gn{font-size:13px}.tgrid td{height:44px}.tgrid th{font-size:12px;overflow:hidden;text-overflow:clip;white-space:nowrap}
 .gx{width:26px;height:26px}.tgrid.c6 .gx,.tgrid.c7 .gx{width:24px;height:24px}.gx.on::after{left:7px;top:2px}
 .lb{top:1px;right:0}
+.pend{display:block;width:100%;margin:8px 0 2px;padding:10px;border:1px solid #f59e0b;background:#fffbeb;color:#92400e;border-radius:10px;text-align:left;font-size:14px;min-height:40px}
+.unm{margin:8px 0;padding:8px 10px;border:1px solid #f59e0b;background:#fffbeb;border-radius:10px}
+.unm select{flex:1;min-width:0}.unm .xs,.unm .pri.xs{padding:6px 10px;min-height:36px}
+.warn{color:#b45309;font-size:12px;white-space:nowrap}
