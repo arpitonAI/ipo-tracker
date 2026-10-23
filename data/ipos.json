@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-22T21:24:18+00:00",
+ "generated": "2026-10-23T00:29:42+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -200,10 +200,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "listing": null,
+   "listing": "2026-10-23",
    "priceLow": 143.0,
    "priceHigh": 151.0,
-   "issuePrice": null,
+   "issuePrice": 151.0,
    "lot": 99,
    "subscription": {
     "qib": 4.73,
@@ -227,10 +227,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "listing": null,
+   "listing": "2026-10-23",
    "priceLow": 665.0,
    "priceHigh": 700.0,
-   "issuePrice": null,
+   "issuePrice": 700.0,
    "lot": 21,
    "subscription": {
     "qib": 293.56,
@@ -254,10 +254,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "listing": null,
+   "listing": "2026-10-23",
    "priceLow": 558.0,
    "priceHigh": 586.0,
-   "issuePrice": null,
+   "issuePrice": 586.0,
    "lot": 25,
    "subscription": {
     "qib": 120.78,
@@ -281,10 +281,10 @@
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
-   "listing": null,
+   "listing": "2026-10-23",
    "priceLow": 327.0,
    "priceHigh": 344.0,
-   "issuePrice": null,
+   "issuePrice": 344.0,
    "lot": 43,
    "subscription": {
     "qib": 34.7,
