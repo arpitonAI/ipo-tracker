@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-23T13:22:51+00:00",
+ "generated": "2026-10-23T16:08:36+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -22,7 +22,7 @@
     "retail": 2.0,
     "total": 2.23
    },
-   "subscriptionUpdated": "2026-10-23T18:48:00+05:30",
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -40,16 +40,16 @@
    "issueSizeShares": 197525934.0,
    "lot": 12,
    "subscription": {
-    "qib": 69.77,
+    "qib": 70.55,
     "nii": 14.0,
     "bhni": 15.89,
-    "shni": 10.21,
-    "retail": 2.71,
-    "employee": 2.92,
+    "shni": 10.22,
+    "retail": 2.72,
+    "employee": 2.93,
     "shareholder": 7.6,
-    "total": 21.99
+    "total": 22.19
    },
-   "subscriptionUpdated": "2026-10-23T18:48:00+05:30",
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "open"
@@ -64,7 +64,7 @@
    "close": "2026-10-28",
    "priceLow": 1585.0,
    "priceHigh": 1665.0,
-   "issueSizeShares": 7570977.0,
+   "issueSizeShares": 5299684.0,
    "lot": 9,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
@@ -113,10 +113,10 @@
    "priceLow": 153.0,
    "priceHigh": 162.0,
    "issueSizeShares": 17000000.0,
-   "status": "upcoming",
    "lot": 91,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "Bigshare Services Private Limited"
+   "registrar": "Bigshare Services Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "HDFIRE",
