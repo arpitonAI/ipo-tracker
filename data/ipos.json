@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-23T08:08:20+00:00",
+ "generated": "2026-10-23T13:22:51+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -15,14 +15,14 @@
    "issueSizeShares": 12083331.0,
    "lot": 21,
    "subscription": {
-    "qib": 0.38,
-    "nii": 0.42,
-    "bhni": 0.38,
-    "shni": 0.51,
-    "retail": 1.71,
-    "total": 0.64
+    "qib": 3.09,
+    "nii": 0.66,
+    "bhni": 0.59,
+    "shni": 0.8,
+    "retail": 2.0,
+    "total": 2.23
    },
-   "subscriptionUpdated": "2026-10-23T13:36:00+05:30",
+   "subscriptionUpdated": "2026-10-23T18:48:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -40,16 +40,16 @@
    "issueSizeShares": 197525934.0,
    "lot": 12,
    "subscription": {
-    "qib": 20.71,
-    "nii": 11.64,
-    "bhni": 13.49,
-    "shni": 7.95,
-    "retail": 2.23,
-    "employee": 2.62,
-    "shareholder": 6.4,
-    "total": 9.03
+    "qib": 69.77,
+    "nii": 14.0,
+    "bhni": 15.89,
+    "shni": 10.21,
+    "retail": 2.71,
+    "employee": 2.92,
+    "shareholder": 7.6,
+    "total": 21.99
    },
-   "subscriptionUpdated": "2026-10-23T13:33:00+05:30",
+   "subscriptionUpdated": "2026-10-23T18:48:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
    "status": "open"
@@ -71,6 +71,22 @@
    "status": "upcoming"
   },
   {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issueSizeShares": 20475082.0,
+   "lot": 45,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
+  },
+  {
    "id": "BLSPOLY",
    "symbol": "BLSPOLY",
    "series": "EQ",
@@ -87,20 +103,20 @@
    "status": "upcoming"
   },
   {
-   "id": "SFCTECH",
-   "symbol": "SFCTECH",
+   "id": "MKSONS",
+   "symbol": "MKSONS",
    "series": "EQ",
-   "name": "SFC Environmental Technologies Limited",
+   "name": "M. K. Sons Fine Jewels Limited",
    "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 313.0,
-   "priceHigh": 330.0,
-   "issueSizeShares": 20475082.0,
-   "lot": 45,
+   "open": "2026-10-28",
+   "close": "2026-10-30",
+   "priceLow": 153.0,
+   "priceHigh": 162.0,
+   "issueSizeShares": 17000000.0,
+   "status": "upcoming",
+   "lot": 91,
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "upcoming"
+   "registrar": "Bigshare Services Private Limited"
   },
   {
    "id": "HDFIRE",
