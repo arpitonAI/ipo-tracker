@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-24T00:25:24+00:00",
+ "generated": "2026-10-24T05:36:04+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -157,33 +157,6 @@
    "status": "closed"
   },
   {
-   "id": "ZETWERK",
-   "symbol": "ZETWERK",
-   "series": "EQ",
-   "name": "Zetwerk Manufacturing Businesses Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 143.0,
-   "priceHigh": 151.0,
-   "issuePrice": 151.0,
-   "lot": 99,
-   "subscription": {
-    "qib": 4.73,
-    "nii": 1.4,
-    "bhni": 1.68,
-    "shni": 0.84,
-    "retail": 0.73,
-    "employee": 1.59,
-    "total": 3.06
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
    "id": "TONBO",
    "symbol": "TONBO",
    "series": "EQ",
@@ -211,30 +184,30 @@
    "status": "closed"
   },
   {
-   "id": "BONFIG",
-   "symbol": "BONFIG",
+   "id": "ZETWERK",
+   "symbol": "ZETWERK",
    "series": "EQ",
-   "name": "Bonfiglioli Transmissions Limited",
+   "name": "Zetwerk Manufacturing Businesses Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 558.0,
-   "priceHigh": 586.0,
-   "issuePrice": 586.0,
-   "lot": 25,
+   "priceLow": 143.0,
+   "priceHigh": 151.0,
+   "issuePrice": 151.0,
+   "lot": 99,
    "subscription": {
-    "qib": 120.78,
-    "nii": 40.4,
-    "bhni": 46.44,
-    "shni": 28.31,
-    "retail": 5.91,
-    "employee": 7.43,
-    "total": 46.06
+    "qib": 4.73,
+    "nii": 1.4,
+    "bhni": 1.68,
+    "shni": 0.84,
+    "retail": 0.73,
+    "employee": 1.59,
+    "total": 3.06
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
+   "registrar": "KFin Technologies Limited",
    "status": "closed"
   },
   {
@@ -258,6 +231,33 @@
     "retail": 3.03,
     "employee": 0.37,
     "total": 14.2
+   },
+   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "BONFIG",
+   "symbol": "BONFIG",
+   "series": "EQ",
+   "name": "Bonfiglioli Transmissions Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "listing": "2026-10-23",
+   "priceLow": 558.0,
+   "priceHigh": 586.0,
+   "issuePrice": 586.0,
+   "lot": 25,
+   "subscription": {
+    "qib": 120.78,
+    "nii": 40.4,
+    "bhni": 46.44,
+    "shni": 28.31,
+    "retail": 5.91,
+    "employee": 7.43,
+    "total": 46.06
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
