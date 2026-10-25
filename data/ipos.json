@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-25T00:57:23+00:00",
+ "generated": "2026-10-25T05:55:21+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -19,22 +19,6 @@
    "status": "upcoming"
   },
   {
-   "id": "SFCTECH",
-   "symbol": "SFCTECH",
-   "series": "EQ",
-   "name": "SFC Environmental Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 313.0,
-   "priceHigh": 330.0,
-   "issueSizeShares": 20475082.0,
-   "lot": 45,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "upcoming"
-  },
-  {
    "id": "BLSPOLY",
    "symbol": "BLSPOLY",
    "series": "EQ",
@@ -48,6 +32,22 @@
    "lot": 100,
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
+   "status": "upcoming"
+  },
+  {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issueSizeShares": 20475082.0,
+   "lot": 45,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
    "status": "upcoming"
   },
   {
