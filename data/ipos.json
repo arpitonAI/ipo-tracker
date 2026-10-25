@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-25T20:40:41+00:00",
+ "generated": "2026-10-25T23:07:10+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -276,10 +276,7 @@
    "priceLow": 660.0,
    "priceHigh": 693.0,
    "issuePrice": null,
-   "status": "closed",
    "lot": 21,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "subscription": {
     "qib": 3.09,
     "nii": 0.66,
@@ -288,7 +285,10 @@
     "retail": 2.0,
     "total": 2.23
    },
-   "subscriptionUpdated": "2026-10-23T19:00:00+05:30"
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
   },
   {
    "id": "JPL",
@@ -302,10 +302,7 @@
    "priceLow": 1065.0,
    "priceHigh": 1119.0,
    "issuePrice": null,
-   "status": "closed",
    "lot": 12,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "Kfin Technologies Limited ",
    "subscription": {
     "qib": 70.55,
     "nii": 14.0,
@@ -316,7 +313,10 @@
     "shareholder": 7.6,
     "total": 22.19
    },
-   "subscriptionUpdated": "2026-10-23T19:00:00+05:30"
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "Kfin Technologies Limited ",
+   "status": "closed"
   }
  ]
 }
