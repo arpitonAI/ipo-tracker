@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-25T17:01:04+00:00",
+ "generated": "2026-10-25T20:40:41+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -16,6 +16,22 @@
    "lot": 9,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
+  },
+  {
+   "id": "BLSPOLY",
+   "symbol": "BLSPOLY",
+   "series": "EQ",
+   "name": "BLS Polymers Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 142.0,
+   "priceHigh": 150.0,
+   "issueSizeShares": 17000000.0,
+   "lot": 100,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
    "status": "upcoming"
   },
   {
@@ -32,22 +48,6 @@
    "lot": 45,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "upcoming"
-  },
-  {
-   "id": "BLSPOLY",
-   "symbol": "BLSPOLY",
-   "series": "EQ",
-   "name": "BLS Polymers Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 142.0,
-   "priceHigh": 150.0,
-   "issueSizeShares": 17000000.0,
-   "lot": 100,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "status": "upcoming"
   },
   {
@@ -184,30 +184,30 @@
    "status": "closed"
   },
   {
-   "id": "TONBO",
-   "symbol": "TONBO",
+   "id": "SMT",
+   "symbol": "SMT",
    "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
+   "name": "Sahajanand Medical Technologies Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issuePrice": 700.0,
-   "lot": 21,
+   "priceLow": 327.0,
+   "priceHigh": 344.0,
+   "issuePrice": 344.0,
+   "lot": 43,
    "subscription": {
-    "qib": 293.56,
-    "nii": 170.94,
-    "bhni": 184.73,
-    "shni": 143.38,
-    "retail": 31.07,
-    "employee": 54.33,
-    "total": 135.9
+    "qib": 34.7,
+    "nii": 14.64,
+    "bhni": 16.37,
+    "shni": 11.19,
+    "retail": 3.03,
+    "employee": 0.37,
+    "total": 14.2
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
+   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   },
   {
@@ -238,31 +238,85 @@
    "status": "closed"
   },
   {
-   "id": "SMT",
-   "symbol": "SMT",
+   "id": "TONBO",
+   "symbol": "TONBO",
    "series": "EQ",
-   "name": "Sahajanand Medical Technologies Limited",
+   "name": "Tonbo Imaging India Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 327.0,
-   "priceHigh": 344.0,
-   "issuePrice": 344.0,
-   "lot": 43,
+   "priceLow": 665.0,
+   "priceHigh": 700.0,
+   "issuePrice": 700.0,
+   "lot": 21,
    "subscription": {
-    "qib": 34.7,
-    "nii": 14.64,
-    "bhni": 16.37,
-    "shni": 11.19,
-    "retail": 3.03,
-    "employee": 0.37,
-    "total": 14.2
+    "qib": 293.56,
+    "nii": 170.94,
+    "bhni": 184.73,
+    "shni": 143.38,
+    "retail": 31.07,
+    "employee": 54.33,
+    "total": 135.9
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
+   "registrar": "KFin Technologies Limited",
    "status": "closed"
+  },
+  {
+   "id": "PARASHLTH",
+   "symbol": "PARASHLTH",
+   "series": "EQ",
+   "name": "Paras Healthcare Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "listing": null,
+   "priceLow": 660.0,
+   "priceHigh": 693.0,
+   "issuePrice": null,
+   "status": "closed",
+   "lot": 21,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "subscription": {
+    "qib": 3.09,
+    "nii": 0.66,
+    "bhni": 0.59,
+    "shni": 0.8,
+    "retail": 2.0,
+    "total": 2.23
+   },
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30"
+  },
+  {
+   "id": "JPL",
+   "symbol": "JPL",
+   "series": "EQ",
+   "name": "Jio Platforms Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "listing": null,
+   "priceLow": 1065.0,
+   "priceHigh": 1119.0,
+   "issuePrice": null,
+   "status": "closed",
+   "lot": 12,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "Kfin Technologies Limited ",
+   "subscription": {
+    "qib": 70.55,
+    "nii": 14.0,
+    "bhni": 15.89,
+    "shni": 10.22,
+    "retail": 2.72,
+    "employee": 2.93,
+    "shareholder": 7.6,
+    "total": 22.19
+   },
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30"
   }
  ]
 }
