@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-26T17:56:46+00:00",
+ "generated": "2026-10-26T19:06:50+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -41,7 +41,7 @@
    "lot": 100,
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "SFCTECH",
@@ -57,7 +57,7 @@
    "lot": 45,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "MKSONS",
@@ -182,57 +182,30 @@
    "status": "closed"
   },
   {
-   "id": "ZETWERK",
-   "symbol": "ZETWERK",
+   "id": "TONBO",
+   "symbol": "TONBO",
    "series": "EQ",
-   "name": "Zetwerk Manufacturing Businesses Limited",
+   "name": "Tonbo Imaging India Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 143.0,
-   "priceHigh": 151.0,
-   "issuePrice": 151.0,
-   "lot": 99,
+   "priceLow": 665.0,
+   "priceHigh": 700.0,
+   "issuePrice": 700.0,
+   "lot": 21,
    "subscription": {
-    "qib": 4.73,
-    "nii": 1.4,
-    "bhni": 1.68,
-    "shni": 0.84,
-    "retail": 0.73,
-    "employee": 1.59,
-    "total": 3.06
+    "qib": 293.56,
+    "nii": 170.94,
+    "bhni": 184.73,
+    "shni": 143.38,
+    "retail": 31.07,
+    "employee": 54.33,
+    "total": 135.9
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "SMT",
-   "symbol": "SMT",
-   "series": "EQ",
-   "name": "Sahajanand Medical Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 327.0,
-   "priceHigh": 344.0,
-   "issuePrice": 344.0,
-   "lot": 43,
-   "subscription": {
-    "qib": 34.7,
-    "nii": 14.64,
-    "bhni": 16.37,
-    "shni": 11.19,
-    "retail": 3.03,
-    "employee": 0.37,
-    "total": 14.2
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   },
   {
@@ -263,56 +236,57 @@
    "status": "closed"
   },
   {
-   "id": "TONBO",
-   "symbol": "TONBO",
+   "id": "SMT",
+   "symbol": "SMT",
    "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
+   "name": "Sahajanand Medical Technologies Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issuePrice": 700.0,
-   "lot": 21,
+   "priceLow": 327.0,
+   "priceHigh": 344.0,
+   "issuePrice": 344.0,
+   "lot": 43,
    "subscription": {
-    "qib": 293.56,
-    "nii": 170.94,
-    "bhni": 184.73,
-    "shni": 143.38,
-    "retail": 31.07,
-    "employee": 54.33,
-    "total": 135.9
+    "qib": 34.7,
+    "nii": 14.64,
+    "bhni": 16.37,
+    "shni": 11.19,
+    "retail": 3.03,
+    "employee": 0.37,
+    "total": 14.2
+   },
+   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "ZETWERK",
+   "symbol": "ZETWERK",
+   "series": "EQ",
+   "name": "Zetwerk Manufacturing Businesses Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "listing": "2026-10-23",
+   "priceLow": 143.0,
+   "priceHigh": 151.0,
+   "issuePrice": 151.0,
+   "lot": 99,
+   "subscription": {
+    "qib": 4.73,
+    "nii": 1.4,
+    "bhni": 1.68,
+    "shni": 0.84,
+    "retail": 0.73,
+    "employee": 1.59,
+    "total": 3.06
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "PARASHLTH",
-   "symbol": "PARASHLTH",
-   "series": "EQ",
-   "name": "Paras Healthcare Limited",
-   "type": "Mainboard",
-   "open": "2026-10-21",
-   "close": "2026-10-23",
-   "listing": null,
-   "priceLow": 660.0,
-   "priceHigh": 693.0,
-   "issuePrice": null,
-   "lot": 21,
-   "subscription": {
-    "qib": 3.09,
-    "nii": 0.66,
-    "bhni": 0.59,
-    "shni": 0.8,
-    "retail": 2.0,
-    "total": 2.23
-   },
-   "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   },
   {
@@ -341,6 +315,32 @@
    "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
+   "status": "closed"
+  },
+  {
+   "id": "PARASHLTH",
+   "symbol": "PARASHLTH",
+   "series": "EQ",
+   "name": "Paras Healthcare Limited",
+   "type": "Mainboard",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "listing": null,
+   "priceLow": 660.0,
+   "priceHigh": 693.0,
+   "issuePrice": null,
+   "lot": 21,
+   "subscription": {
+    "qib": 3.09,
+    "nii": 0.66,
+    "bhni": 0.59,
+    "shni": 0.8,
+    "retail": 2.0,
+    "total": 2.23
+   },
+   "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   }
  ]
