@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-26T08:20:02+00:00",
+ "generated": "2026-10-26T15:20:41+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -14,34 +14,18 @@
    "priceHigh": 1665.0,
    "issueSizeShares": 5299684.0,
    "lot": 9,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open",
    "subscription": {
     "qib": 0.08,
-    "nii": 0.13,
-    "bhni": 0.19,
+    "nii": 0.32,
+    "bhni": 0.47,
     "shni": 0.02,
-    "retail": 0.03,
-    "total": 0.06
+    "retail": 0.04,
+    "total": 0.11
    },
-   "subscriptionUpdated": "2026-10-26T13:48:00+05:30"
-  },
-  {
-   "id": "BLSPOLY",
-   "symbol": "BLSPOLY",
-   "series": "EQ",
-   "name": "BLS Polymers Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 142.0,
-   "priceHigh": 150.0,
-   "issueSizeShares": 17000000.0,
-   "lot": 100,
+   "subscriptionUpdated": "2026-10-26T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "upcoming"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
   },
   {
    "id": "SFCTECH",
@@ -53,10 +37,26 @@
    "close": "2026-10-29",
    "priceLow": 313.0,
    "priceHigh": 330.0,
-   "issueSizeShares": 20475082.0,
+   "issueSizeShares": 14159744.0,
    "lot": 45,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
+  },
+  {
+   "id": "BLSPOLY",
+   "symbol": "BLSPOLY",
+   "series": "EQ",
+   "name": "BLS Polymers Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 142.0,
+   "priceHigh": 150.0,
+   "issueSizeShares": 11900000.0,
+   "lot": 100,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
    "status": "upcoming"
   },
   {
@@ -74,6 +74,22 @@
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
    "status": "upcoming"
+  },
+  {
+   "id": "BCSSL",
+   "symbol": "BCSSL",
+   "series": "EQ",
+   "name": "Bombay Coated and Special Steels Limited",
+   "type": "Mainboard",
+   "open": "2026-10-29",
+   "close": "2026-11-02",
+   "priceLow": 78.0,
+   "priceHigh": 82.0,
+   "issueSizeShares": 23468846.0,
+   "status": "upcoming",
+   "lot": 182,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited"
   },
   {
    "id": "HDFIRE",
