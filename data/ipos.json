@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-27T04:34:01+00:00",
+ "generated": "2026-10-27T08:31:59+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -15,32 +15,16 @@
    "issueSizeShares": 5299684.0,
    "lot": 9,
    "subscription": {
-    "qib": 0.08,
-    "nii": 0.32,
-    "bhni": 0.47,
-    "shni": 0.02,
-    "retail": 0.04,
-    "total": 0.11
+    "qib": 0.45,
+    "nii": 0.37,
+    "bhni": 0.51,
+    "shni": 0.07,
+    "retail": 0.09,
+    "total": 0.25
    },
-   "subscriptionUpdated": "2026-10-26T17:00:00+05:30",
+   "subscriptionUpdated": "2026-10-27T13:57:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
-  },
-  {
-   "id": "BLSPOLY",
-   "symbol": "BLSPOLY",
-   "series": "EQ",
-   "name": "BLS Polymers Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 142.0,
-   "priceHigh": 150.0,
-   "issueSizeShares": 11900000.0,
-   "lot": 100,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "status": "open"
   },
   {
@@ -57,7 +41,41 @@
    "lot": 45,
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
+   "status": "open",
+   "subscription": {
+    "qib": 0.0,
+    "nii": 0.04,
+    "bhni": 0.02,
+    "shni": 0.1,
+    "retail": 0.12,
+    "total": 0.07
+   },
+   "subscriptionUpdated": "2026-10-27T13:57:00+05:30"
+  },
+  {
+   "id": "BLSPOLY",
+   "symbol": "BLSPOLY",
+   "series": "EQ",
+   "name": "BLS Polymers Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 142.0,
+   "priceHigh": 150.0,
+   "issueSizeShares": 11900000.0,
+   "lot": 100,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "open",
+   "subscription": {
+    "qib": 11.62,
+    "nii": 6.66,
+    "bhni": 4.85,
+    "shni": 10.28,
+    "retail": 4.31,
+    "total": 6.9
+   },
+   "subscriptionUpdated": "2026-10-27T13:57:00+05:30"
   },
   {
    "id": "MKSONS",
