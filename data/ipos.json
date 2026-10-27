@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-27T17:05:08+00:00",
+ "generated": "2026-10-27T18:37:58+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -21,6 +21,31 @@
     "shni": 0.12,
     "retail": 0.11,
     "total": 0.33
+   },
+   "subscriptionUpdated": "2026-10-27T17:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
+  },
+  {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issueSizeShares": 14159744.0,
+   "lot": 45,
+   "subscription": {
+    "qib": 0.0,
+    "nii": 0.09,
+    "bhni": 0.06,
+    "shni": 0.16,
+    "retail": 0.16,
+    "total": 0.1
    },
    "subscriptionUpdated": "2026-10-27T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
@@ -53,31 +78,6 @@
    "status": "open"
   },
   {
-   "id": "SFCTECH",
-   "symbol": "SFCTECH",
-   "series": "EQ",
-   "name": "SFC Environmental Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 313.0,
-   "priceHigh": 330.0,
-   "issueSizeShares": 14159744.0,
-   "lot": 45,
-   "subscription": {
-    "qib": 0.0,
-    "nii": 0.09,
-    "bhni": 0.06,
-    "shni": 0.16,
-    "retail": 0.16,
-    "total": 0.1
-   },
-   "subscriptionUpdated": "2026-10-27T17:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
-  },
-  {
    "id": "MKSONS",
    "symbol": "MKSONS",
    "series": "EQ",
@@ -91,7 +91,7 @@
    "lot": 91,
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "BCSSL",
