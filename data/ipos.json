@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-28T09:10:52+00:00",
+ "generated": "2026-10-28T15:59:56+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -15,14 +15,14 @@
    "issueSizeShares": 5299684.0,
    "lot": 9,
    "subscription": {
-    "qib": 4.2,
-    "nii": 2.89,
-    "bhni": 4.0,
-    "shni": 0.69,
-    "retail": 0.24,
-    "total": 1.94
+    "qib": 13.13,
+    "nii": 4.58,
+    "bhni": 5.91,
+    "shni": 1.9,
+    "retail": 1.03,
+    "total": 5.25
    },
-   "subscriptionUpdated": "2026-10-28T14:36:00+05:30",
+   "subscriptionUpdated": "2026-10-28T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -40,14 +40,14 @@
    "issueSizeShares": 14159744.0,
    "lot": 45,
    "subscription": {
-    "qib": 0.0,
-    "nii": 0.24,
-    "bhni": 0.16,
-    "shni": 0.41,
-    "retail": 0.29,
-    "total": 0.2
+    "qib": 0.08,
+    "nii": 0.37,
+    "bhni": 0.28,
+    "shni": 0.57,
+    "retail": 0.34,
+    "total": 0.27
    },
-   "subscriptionUpdated": "2026-10-28T14:36:00+05:30",
+   "subscriptionUpdated": "2026-10-28T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -65,14 +65,14 @@
    "issueSizeShares": 11900000.0,
    "lot": 100,
    "subscription": {
-    "qib": 12.11,
-    "nii": 52.73,
-    "bhni": 44.18,
-    "shni": 69.82,
-    "retail": 23.45,
-    "total": 26.48
+    "qib": 12.2,
+    "nii": 78.75,
+    "bhni": 70.21,
+    "shni": 95.82,
+    "retail": 29.77,
+    "total": 35.25
    },
-   "subscriptionUpdated": "2026-10-28T14:39:00+05:30",
+   "subscriptionUpdated": "2026-10-28T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -89,18 +89,18 @@
    "priceHigh": 162.0,
    "issueSizeShares": 11900000.0,
    "lot": 91,
+   "subscription": {
+    "qib": 0.96,
+    "nii": 1.19,
+    "bhni": 1.72,
+    "shni": 0.14,
+    "retail": 0.23,
+    "total": 0.65
+   },
+   "subscriptionUpdated": "2026-10-28T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
-   "status": "open",
-   "subscription": {
-    "qib": 0.33,
-    "nii": 0.88,
-    "bhni": 1.29,
-    "shni": 0.07,
-    "retail": 0.17,
-    "total": 0.37
-   },
-   "subscriptionUpdated": "2026-10-28T14:36:00+05:30"
+   "status": "open"
   },
   {
    "id": "BCSSL",
@@ -112,10 +112,23 @@
    "close": "2026-11-02",
    "priceLow": 78.0,
    "priceHigh": 82.0,
-   "issueSizeShares": 23468846.0,
+   "issueSizeShares": 16533012.0,
    "lot": 182,
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
+   "status": "upcoming"
+  },
+  {
+   "id": "MAXENGS",
+   "symbol": "MAXENGS",
+   "series": "SME",
+   "name": "Maxwell Engineering Solutions Limited",
+   "type": "SME",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "priceLow": 150.0,
+   "priceHigh": 158.0,
+   "issueSizeShares": 3648000.0,
    "status": "upcoming"
   },
   {
