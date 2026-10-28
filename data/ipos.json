@@ -1,32 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-28T17:40:29+00:00",
+ "generated": "2026-10-28T18:45:08+00:00",
  "ipos": [
-  {
-   "id": "EDELALTS",
-   "symbol": "EDELALTS",
-   "series": "EQ",
-   "name": "EAAA India Alternatives Limited",
-   "type": "Mainboard",
-   "open": "2026-10-26",
-   "close": "2026-10-28",
-   "priceLow": 1585.0,
-   "priceHigh": 1665.0,
-   "issueSizeShares": 5299684.0,
-   "lot": 9,
-   "subscription": {
-    "qib": 13.13,
-    "nii": 4.58,
-    "bhni": 5.91,
-    "shni": 1.9,
-    "retail": 1.03,
-    "total": 5.25
-   },
-   "subscriptionUpdated": "2026-10-28T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
-  },
   {
    "id": "SFCTECH",
    "symbol": "SFCTECH",
@@ -116,7 +91,7 @@
    "lot": 182,
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "HGSINDIALT",
@@ -129,7 +104,9 @@
    "priceLow": 114.0,
    "priceHigh": 120.0,
    "issueSizeShares": 2880000.0,
-   "status": "upcoming"
+   "status": "upcoming",
+   "lot": 1200,
+   "registrar": "Kfin Technologies Limited"
   },
   {
    "id": "MAXENGS",
@@ -394,6 +371,31 @@
    "subscriptionUpdated": "2026-10-23T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Kfin Technologies Limited ",
+   "status": "closed"
+  },
+  {
+   "id": "EDELALTS",
+   "symbol": "EDELALTS",
+   "series": "EQ",
+   "name": "EAAA India Alternatives Limited",
+   "type": "Mainboard",
+   "open": "2026-10-26",
+   "close": "2026-10-28",
+   "priceLow": 1585.0,
+   "priceHigh": 1665.0,
+   "issueSizeShares": 5299684.0,
+   "lot": 9,
+   "subscription": {
+    "qib": 13.13,
+    "nii": 4.58,
+    "bhni": 5.91,
+    "shni": 1.9,
+    "retail": 1.03,
+    "total": 5.25
+   },
+   "subscriptionUpdated": "2026-10-28T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   }
  ]
