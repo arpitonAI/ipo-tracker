@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-28T18:45:08+00:00",
+ "generated": "2026-10-28T23:04:26+00:00",
  "ipos": [
   {
    "id": "SFCTECH",
@@ -104,9 +104,9 @@
    "priceLow": 114.0,
    "priceHigh": 120.0,
    "issueSizeShares": 2880000.0,
-   "status": "upcoming",
    "lot": 1200,
-   "registrar": "Kfin Technologies Limited"
+   "registrar": "Kfin Technologies Limited",
+   "status": "upcoming"
   },
   {
    "id": "MAXENGS",
