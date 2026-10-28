@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-28T15:59:56+00:00",
+ "generated": "2026-10-28T17:40:29+00:00",
  "ipos": [
   {
    "id": "EDELALTS",
@@ -116,6 +116,19 @@
    "lot": 182,
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
+   "status": "upcoming"
+  },
+  {
+   "id": "HGSINDIALT",
+   "symbol": "HGSINDIALT",
+   "series": "SME",
+   "name": "HGS (India) Limited",
+   "type": "SME",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "priceLow": 114.0,
+   "priceHigh": 120.0,
+   "issueSizeShares": 2880000.0,
    "status": "upcoming"
   },
   {
