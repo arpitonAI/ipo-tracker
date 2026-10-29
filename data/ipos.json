@@ -1,57 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-29T17:48:41+00:00",
+ "generated": "2026-10-29T18:54:38+00:00",
  "ipos": [
-  {
-   "id": "SFCTECH",
-   "symbol": "SFCTECH",
-   "series": "EQ",
-   "name": "SFC Environmental Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 313.0,
-   "priceHigh": 330.0,
-   "issueSizeShares": 14159744.0,
-   "lot": 45,
-   "subscription": {
-    "qib": 18.81,
-    "nii": 12.81,
-    "bhni": 14.49,
-    "shni": 9.44,
-    "retail": 2.71,
-    "total": 9.47
-   },
-   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
-  },
-  {
-   "id": "BLSPOLY",
-   "symbol": "BLSPOLY",
-   "series": "EQ",
-   "name": "BLS Polymers Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "priceLow": 142.0,
-   "priceHigh": 150.0,
-   "issueSizeShares": 11900000.0,
-   "lot": 100,
-   "subscription": {
-    "qib": 200.25,
-    "nii": 559.2,
-    "bhni": 592.83,
-    "shni": 491.95,
-    "retail": 128.36,
-    "total": 241.22
-   },
-   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "open"
-  },
   {
    "id": "MKSONS",
    "symbol": "MKSONS",
@@ -103,21 +53,6 @@
    "status": "open"
   },
   {
-   "id": "HGSINDIALT",
-   "symbol": "HGSINDIALT",
-   "series": "SME",
-   "name": "HGS (India) Limited",
-   "type": "SME",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "priceLow": 114.0,
-   "priceHigh": 120.0,
-   "issueSizeShares": 2066400.0,
-   "lot": 1200,
-   "registrar": "Kfin Technologies Limited",
-   "status": "upcoming"
-  },
-  {
    "id": "MAXENGS",
    "symbol": "MAXENGS",
    "series": "SME",
@@ -127,10 +62,25 @@
    "close": "2026-11-03",
    "priceLow": 150.0,
    "priceHigh": 158.0,
-   "issueSizeShares": 2624000.0,
+   "issueSizeShares": null,
    "lot": 800,
    "registrar": "KFin Technologies Limited",
-   "status": "upcoming"
+   "status": "open"
+  },
+  {
+   "id": "HGSINDIALT",
+   "symbol": "HGSINDIALT",
+   "series": "SME",
+   "name": "HGS (India) Limited",
+   "type": "SME",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "priceLow": 114.0,
+   "priceHigh": 120.0,
+   "issueSizeShares": null,
+   "lot": 1200,
+   "registrar": "Kfin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "VPFL",
@@ -146,53 +96,6 @@
    "lot": 1200,
    "registrar": "Cameo Corporate Services Limited",
    "status": "upcoming"
-  },
-  {
-   "id": "HDFIRE",
-   "symbol": "HDFIRE",
-   "series": "EQ",
-   "name": "HD Fire Protect Limited",
-   "type": "Mainboard",
-   "open": "2026-10-13",
-   "close": "2026-10-15",
-   "listing": "2026-10-21",
-   "priceLow": 258.0,
-   "priceHigh": 271.0,
-   "issuePrice": 271.0,
-   "lot": 55,
-   "subscription": {
-    "qib": 256.65,
-    "nii": 203.21,
-    "bhni": 236.17,
-    "shni": 137.28,
-    "retail": 30.49,
-    "employee": 23.61,
-    "total": 131.7
-   },
-   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "LOANFRONT",
-   "symbol": "LOANFRONT",
-   "series": "SME",
-   "name": "Vaibhav Vyapaar Limited",
-   "type": "SME",
-   "open": "2026-10-13",
-   "close": "2026-10-15",
-   "listing": "2026-10-21",
-   "priceLow": 51.0,
-   "priceHigh": 54.0,
-   "issuePrice": 54.0,
-   "lot": 2000,
-   "subscription": {
-    "total": 0.56
-   },
-   "subscriptionUpdated": "2026-10-15T19:00:00+05:30",
-   "registrar": "Kfin Technologies Limited",
-   "status": "closed"
   },
   {
    "id": "FUSIONCX",
@@ -265,6 +168,33 @@
    "status": "closed"
   },
   {
+   "id": "TONBO",
+   "symbol": "TONBO",
+   "series": "EQ",
+   "name": "Tonbo Imaging India Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "listing": "2026-10-23",
+   "priceLow": 665.0,
+   "priceHigh": 700.0,
+   "issuePrice": 700.0,
+   "lot": 21,
+   "subscription": {
+    "qib": 293.56,
+    "nii": 170.94,
+    "bhni": 184.73,
+    "shni": 143.38,
+    "retail": 31.07,
+    "employee": 54.33,
+    "total": 135.9
+   },
+   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "closed"
+  },
+  {
    "id": "SMT",
    "symbol": "SMT",
    "series": "EQ",
@@ -316,33 +246,6 @@
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "TONBO",
-   "symbol": "TONBO",
-   "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issuePrice": 700.0,
-   "lot": 21,
-   "subscription": {
-    "qib": 293.56,
-    "nii": 170.94,
-    "bhni": 184.73,
-    "shni": 143.38,
-    "retail": 31.07,
-    "employee": 54.33,
-    "total": 135.9
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "status": "closed"
   },
   {
@@ -407,9 +310,10 @@
    "type": "Mainboard",
    "open": "2026-10-26",
    "close": "2026-10-28",
+   "listing": null,
    "priceLow": 1585.0,
    "priceHigh": 1665.0,
-   "issueSizeShares": 5299684.0,
+   "issuePrice": null,
    "lot": 9,
    "subscription": {
     "qib": 13.13,
@@ -422,6 +326,56 @@
    "subscriptionUpdated": "2026-10-28T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issueSizeShares": 14159744.0,
+   "lot": 45,
+   "subscription": {
+    "qib": 18.81,
+    "nii": 12.81,
+    "bhni": 14.49,
+    "shni": 9.44,
+    "retail": 2.71,
+    "total": 9.47
+   },
+   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "BLSPOLY",
+   "symbol": "BLSPOLY",
+   "series": "EQ",
+   "name": "BLS Polymers Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "priceLow": 142.0,
+   "priceHigh": 150.0,
+   "issueSizeShares": 11900000.0,
+   "lot": 100,
+   "subscription": {
+    "qib": 200.25,
+    "nii": 559.2,
+    "bhni": 592.83,
+    "shni": 491.95,
+    "retail": 128.36,
+    "total": 241.22
+   },
+   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
    "status": "closed"
   }
  ]
