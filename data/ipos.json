@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-29T16:06:03+00:00",
+ "generated": "2026-10-29T17:48:41+00:00",
  "ipos": [
   {
    "id": "SFCTECH",
@@ -143,9 +143,9 @@
    "priceLow": 88.0,
    "priceHigh": 94.0,
    "issueSizeShares": 6030000.0,
-   "status": "upcoming",
    "lot": 1200,
-   "registrar": "Cameo Corporate Services Limited"
+   "registrar": "Cameo Corporate Services Limited",
+   "status": "upcoming"
   },
   {
    "id": "HDFIRE",
