@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-29T05:19:36+00:00",
+ "generated": "2026-10-29T09:10:27+00:00",
  "ipos": [
   {
    "id": "SFCTECH",
@@ -15,14 +15,14 @@
    "issueSizeShares": 14159744.0,
    "lot": 45,
    "subscription": {
-    "qib": 0.08,
-    "nii": 0.77,
-    "bhni": 0.75,
-    "shni": 0.81,
-    "retail": 0.43,
-    "total": 0.4
+    "qib": 4.74,
+    "nii": 2.86,
+    "bhni": 3.19,
+    "shni": 2.19,
+    "retail": 0.73,
+    "total": 2.33
    },
-   "subscriptionUpdated": "2026-10-29T10:45:00+05:30",
+   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -40,14 +40,14 @@
    "issueSizeShares": 11900000.0,
    "lot": 100,
    "subscription": {
-    "qib": 12.24,
-    "nii": 154.14,
-    "bhni": 150.55,
-    "shni": 161.32,
-    "retail": 46.08,
-    "total": 59.57
+    "qib": 76.86,
+    "nii": 442.14,
+    "bhni": 466.4,
+    "shni": 393.6,
+    "retail": 98.76,
+    "total": 166.08
    },
-   "subscriptionUpdated": "2026-10-29T10:45:00+05:30",
+   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -65,14 +65,14 @@
    "issueSizeShares": 11900000.0,
    "lot": 91,
    "subscription": {
-    "qib": 0.96,
-    "nii": 1.4,
-    "bhni": 1.9,
-    "shni": 0.39,
-    "retail": 0.37,
-    "total": 0.76
+    "qib": 0.98,
+    "nii": 1.82,
+    "bhni": 2.25,
+    "shni": 0.96,
+    "retail": 0.67,
+    "total": 1.0
    },
-   "subscriptionUpdated": "2026-10-29T10:45:00+05:30",
+   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
    "status": "open"
@@ -89,18 +89,18 @@
    "priceHigh": 82.0,
    "issueSizeShares": 16533012.0,
    "lot": 182,
+   "subscription": {
+    "qib": 6.55,
+    "nii": 0.45,
+    "bhni": 0.3,
+    "shni": 0.74,
+    "retail": 0.9,
+    "total": 2.44
+   },
+   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
-   "status": "open",
-   "subscription": {
-    "qib": 3.28,
-    "nii": 0.07,
-    "bhni": 0.02,
-    "shni": 0.16,
-    "retail": 0.19,
-    "total": 1.06
-   },
-   "subscriptionUpdated": "2026-10-29T10:45:00+05:30"
+   "status": "open"
   },
   {
    "id": "HGSINDIALT",
@@ -128,9 +128,9 @@
    "priceLow": 150.0,
    "priceHigh": 158.0,
    "issueSizeShares": 3648000.0,
-   "status": "upcoming",
    "lot": 800,
-   "registrar": "KFin Technologies Limited"
+   "registrar": "KFin Technologies Limited",
+   "status": "upcoming"
   },
   {
    "id": "HDFIRE",
