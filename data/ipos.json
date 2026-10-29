@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-29T09:10:27+00:00",
+ "generated": "2026-10-29T16:06:03+00:00",
  "ipos": [
   {
    "id": "SFCTECH",
@@ -15,14 +15,14 @@
    "issueSizeShares": 14159744.0,
    "lot": 45,
    "subscription": {
-    "qib": 4.74,
-    "nii": 2.86,
-    "bhni": 3.19,
-    "shni": 2.19,
-    "retail": 0.73,
-    "total": 2.33
+    "qib": 18.81,
+    "nii": 12.81,
+    "bhni": 14.49,
+    "shni": 9.44,
+    "retail": 2.71,
+    "total": 9.47
    },
-   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
+   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -40,14 +40,14 @@
    "issueSizeShares": 11900000.0,
    "lot": 100,
    "subscription": {
-    "qib": 76.86,
-    "nii": 442.14,
-    "bhni": 466.4,
-    "shni": 393.6,
-    "retail": 98.76,
-    "total": 166.08
+    "qib": 200.25,
+    "nii": 559.2,
+    "bhni": 592.83,
+    "shni": 491.95,
+    "retail": 128.36,
+    "total": 241.22
    },
-   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
+   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -65,14 +65,14 @@
    "issueSizeShares": 11900000.0,
    "lot": 91,
    "subscription": {
-    "qib": 0.98,
-    "nii": 1.82,
-    "bhni": 2.25,
-    "shni": 0.96,
-    "retail": 0.67,
-    "total": 1.0
+    "qib": 0.99,
+    "nii": 2.2,
+    "bhni": 2.52,
+    "shni": 1.56,
+    "retail": 0.85,
+    "total": 1.18
    },
-   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
+   "subscriptionUpdated": "2026-10-29T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
    "status": "open"
@@ -91,13 +91,13 @@
    "lot": 182,
    "subscription": {
     "qib": 6.55,
-    "nii": 0.45,
-    "bhni": 0.3,
-    "shni": 0.74,
-    "retail": 0.9,
-    "total": 2.44
+    "nii": 0.72,
+    "bhni": 0.49,
+    "shni": 1.19,
+    "retail": 1.24,
+    "total": 2.67
    },
-   "subscriptionUpdated": "2026-10-29T14:36:00+05:30",
+   "subscriptionUpdated": "2026-10-29T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -112,7 +112,7 @@
    "close": "2026-11-03",
    "priceLow": 114.0,
    "priceHigh": 120.0,
-   "issueSizeShares": 2880000.0,
+   "issueSizeShares": 2066400.0,
    "lot": 1200,
    "registrar": "Kfin Technologies Limited",
    "status": "upcoming"
@@ -127,10 +127,25 @@
    "close": "2026-11-03",
    "priceLow": 150.0,
    "priceHigh": 158.0,
-   "issueSizeShares": 3648000.0,
+   "issueSizeShares": 2624000.0,
    "lot": 800,
    "registrar": "KFin Technologies Limited",
    "status": "upcoming"
+  },
+  {
+   "id": "VPFL",
+   "symbol": "VPFL",
+   "series": "SME",
+   "name": "Vedant Poly Fabs Limited",
+   "type": "SME",
+   "open": "2026-11-02",
+   "close": "2026-11-04",
+   "priceLow": 88.0,
+   "priceHigh": 94.0,
+   "issueSizeShares": 6030000.0,
+   "status": "upcoming",
+   "lot": 1200,
+   "registrar": "Cameo Corporate Services Limited"
   },
   {
    "id": "HDFIRE",
