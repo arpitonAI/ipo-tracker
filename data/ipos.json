@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-29T23:12:58+00:00",
+ "generated": "2026-10-30T05:18:58+00:00",
  "ipos": [
   {
    "id": "MKSONS",
@@ -16,13 +16,13 @@
    "lot": 91,
    "subscription": {
     "qib": 0.99,
-    "nii": 2.2,
-    "bhni": 2.52,
-    "shni": 1.56,
-    "retail": 0.85,
-    "total": 1.18
+    "nii": 3.46,
+    "bhni": 3.87,
+    "shni": 2.63,
+    "retail": 1.22,
+    "total": 1.64
    },
-   "subscriptionUpdated": "2026-10-29T17:00:00+05:30",
+   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
    "status": "open"
@@ -41,13 +41,13 @@
    "lot": 182,
    "subscription": {
     "qib": 6.55,
-    "nii": 0.72,
-    "bhni": 0.49,
-    "shni": 1.19,
-    "retail": 1.24,
-    "total": 2.67
+    "nii": 0.95,
+    "bhni": 0.66,
+    "shni": 1.54,
+    "retail": 1.75,
+    "total": 2.98
    },
-   "subscriptionUpdated": "2026-10-29T17:00:00+05:30",
+   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -65,7 +65,11 @@
    "issueSizeShares": null,
    "lot": 800,
    "registrar": "KFin Technologies Limited",
-   "status": "open"
+   "status": "open",
+   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
+   "subscription": {
+    "total": 0.55
+   }
   },
   {
    "id": "HGSINDIALT",
@@ -80,7 +84,11 @@
    "issueSizeShares": null,
    "lot": 1200,
    "registrar": "Kfin Technologies Limited",
-   "status": "open"
+   "status": "open",
+   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
+   "subscription": {
+    "total": 0.03
+   }
   },
   {
    "id": "VPFL",
