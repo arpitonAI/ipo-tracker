@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-30T05:18:58+00:00",
+ "generated": "2026-10-30T09:21:36+00:00",
  "ipos": [
   {
    "id": "MKSONS",
@@ -15,14 +15,14 @@
    "issueSizeShares": 11900000.0,
    "lot": 91,
    "subscription": {
-    "qib": 0.99,
-    "nii": 3.46,
-    "bhni": 3.87,
-    "shni": 2.63,
-    "retail": 1.22,
-    "total": 1.64
+    "qib": 1.05,
+    "nii": 10.38,
+    "bhni": 11.3,
+    "shni": 8.52,
+    "retail": 2.47,
+    "total": 3.76
    },
-   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
+   "subscriptionUpdated": "2026-10-30T14:48:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
    "status": "open"
@@ -41,13 +41,13 @@
    "lot": 182,
    "subscription": {
     "qib": 6.55,
-    "nii": 0.95,
-    "bhni": 0.66,
-    "shni": 1.54,
-    "retail": 1.75,
-    "total": 2.98
+    "nii": 1.47,
+    "bhni": 1.01,
+    "shni": 2.41,
+    "retail": 2.62,
+    "total": 3.52
    },
-   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
+   "subscriptionUpdated": "2026-10-30T14:48:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "open"
@@ -64,12 +64,12 @@
    "priceHigh": 158.0,
    "issueSizeShares": null,
    "lot": 800,
-   "registrar": "KFin Technologies Limited",
-   "status": "open",
-   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
    "subscription": {
     "total": 0.55
-   }
+   },
+   "subscriptionUpdated": "2026-10-30T14:48:00+05:30",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "HGSINDIALT",
@@ -83,12 +83,12 @@
    "priceHigh": 120.0,
    "issueSizeShares": null,
    "lot": 1200,
-   "registrar": "Kfin Technologies Limited",
-   "status": "open",
-   "subscriptionUpdated": "2026-10-30T10:45:00+05:30",
    "subscription": {
     "total": 0.03
-   }
+   },
+   "subscriptionUpdated": "2026-10-30T14:48:00+05:30",
+   "registrar": "Kfin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "VPFL",
