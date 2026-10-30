@@ -1,32 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-10-30T17:28:51+00:00",
+ "generated": "2026-10-30T18:30:49+00:00",
  "ipos": [
-  {
-   "id": "MKSONS",
-   "symbol": "MKSONS",
-   "series": "EQ",
-   "name": "M. K. Sons Fine Jewels Limited",
-   "type": "Mainboard",
-   "open": "2026-10-28",
-   "close": "2026-10-30",
-   "priceLow": 153.0,
-   "priceHigh": 162.0,
-   "issueSizeShares": 11900000.0,
-   "lot": 91,
-   "subscription": {
-    "qib": 1.84,
-    "nii": 14.12,
-    "bhni": 15.33,
-    "shni": 11.71,
-    "retail": 3.08,
-    "total": 5.09
-   },
-   "subscriptionUpdated": "2026-10-30T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "Bigshare Services Private Limited",
-   "status": "open"
-  },
   {
    "id": "BCSSL",
    "symbol": "BCSSL",
@@ -106,49 +81,6 @@
    "status": "upcoming"
   },
   {
-   "id": "FUSIONCX",
-   "symbol": "FUSIONCX",
-   "series": "EQ",
-   "name": "Fusion CX Limited",
-   "type": "Mainboard",
-   "open": "2026-10-14",
-   "close": "2026-10-16",
-   "listing": "2026-10-22",
-   "priceLow": 275.0,
-   "priceHigh": 289.0,
-   "issuePrice": 289.0,
-   "lot": 51,
-   "subscription": {
-    "qib": 4.01,
-    "nii": 4.5,
-    "bhni": 4.49,
-    "shni": 4.52,
-    "retail": 5.7,
-    "total": 4.45
-   },
-   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "RAVITA",
-   "symbol": "RAVITA",
-   "series": "SME",
-   "name": "Ravita Engineering Services Limited",
-   "type": "SME",
-   "open": "2026-10-14",
-   "close": "2026-10-16",
-   "listing": "2026-10-22",
-   "priceLow": 105.0,
-   "priceHigh": 112.0,
-   "issuePrice": 112.0,
-   "lot": 1200,
-   "subscriptionUpdated": "2026-10-16T19:00:00+05:30",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
    "id": "ZETWERK",
    "symbol": "ZETWERK",
    "series": "EQ",
@@ -176,30 +108,30 @@
    "status": "closed"
   },
   {
-   "id": "TONBO",
-   "symbol": "TONBO",
+   "id": "BONFIG",
+   "symbol": "BONFIG",
    "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
+   "name": "Bonfiglioli Transmissions Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issuePrice": 700.0,
-   "lot": 21,
+   "priceLow": 558.0,
+   "priceHigh": 586.0,
+   "issuePrice": 586.0,
+   "lot": 25,
    "subscription": {
-    "qib": 293.56,
-    "nii": 170.94,
-    "bhni": 184.73,
-    "shni": 143.38,
-    "retail": 31.07,
-    "employee": 54.33,
-    "total": 135.9
+    "qib": 120.78,
+    "nii": 40.4,
+    "bhni": 46.44,
+    "shni": 28.31,
+    "retail": 5.91,
+    "employee": 7.43,
+    "total": 46.06
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
+   "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
   },
   {
@@ -230,30 +162,30 @@
    "status": "closed"
   },
   {
-   "id": "BONFIG",
-   "symbol": "BONFIG",
+   "id": "TONBO",
+   "symbol": "TONBO",
    "series": "EQ",
-   "name": "Bonfiglioli Transmissions Limited",
+   "name": "Tonbo Imaging India Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 558.0,
-   "priceHigh": 586.0,
-   "issuePrice": 586.0,
-   "lot": 25,
+   "priceLow": 665.0,
+   "priceHigh": 700.0,
+   "issuePrice": 700.0,
+   "lot": 21,
    "subscription": {
-    "qib": 120.78,
-    "nii": 40.4,
-    "bhni": 46.44,
-    "shni": 28.31,
-    "retail": 5.91,
-    "employee": 7.43,
-    "total": 46.06
+    "qib": 293.56,
+    "nii": 170.94,
+    "bhni": 184.73,
+    "shni": 143.38,
+    "retail": 31.07,
+    "employee": 54.33,
+    "total": 135.9
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
+   "registrar": "KFin Technologies Limited",
    "status": "closed"
   },
   {
@@ -384,6 +316,31 @@
    "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
+   "status": "closed"
+  },
+  {
+   "id": "MKSONS",
+   "symbol": "MKSONS",
+   "series": "EQ",
+   "name": "M. K. Sons Fine Jewels Limited",
+   "type": "Mainboard",
+   "open": "2026-10-28",
+   "close": "2026-10-30",
+   "priceLow": 153.0,
+   "priceHigh": 162.0,
+   "issueSizeShares": 11900000.0,
+   "lot": 91,
+   "subscription": {
+    "qib": 1.84,
+    "nii": 14.12,
+    "bhni": 15.33,
+    "shni": 11.71,
+    "retail": 3.08,
+    "total": 5.09
+   },
+   "subscriptionUpdated": "2026-10-30T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "Bigshare Services Private Limited",
    "status": "closed"
   }
  ]
