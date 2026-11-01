@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-01T18:20:58+00:00",
+ "generated": "2026-11-01T22:40:24+00:00",
  "ipos": [
   {
    "id": "BCSSL",
@@ -28,25 +28,6 @@
    "status": "open"
   },
   {
-   "id": "MAXENGS",
-   "symbol": "MAXENGS",
-   "series": "SME",
-   "name": "Maxwell Engineering Solutions Limited",
-   "type": "SME",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "priceLow": 150.0,
-   "priceHigh": 158.0,
-   "issueSizeShares": null,
-   "lot": 800,
-   "subscription": {
-    "total": 0.55
-   },
-   "subscriptionUpdated": "2026-10-30T17:03:00+05:30",
-   "registrar": "KFin Technologies Limited",
-   "status": "open"
-  },
-  {
    "id": "HGSINDIALT",
    "symbol": "HGSINDIALT",
    "series": "SME",
@@ -66,6 +47,25 @@
    "status": "open"
   },
   {
+   "id": "MAXENGS",
+   "symbol": "MAXENGS",
+   "series": "SME",
+   "name": "Maxwell Engineering Solutions Limited",
+   "type": "SME",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "priceLow": 150.0,
+   "priceHigh": 158.0,
+   "issueSizeShares": null,
+   "lot": 800,
+   "subscription": {
+    "total": 0.55
+   },
+   "subscriptionUpdated": "2026-10-30T17:03:00+05:30",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
+  },
+  {
    "id": "VPFL",
    "symbol": "VPFL",
    "series": "SME",
@@ -75,32 +75,32 @@
    "close": "2026-11-04",
    "priceLow": 88.0,
    "priceHigh": 94.0,
-   "issueSizeShares": 6030000.0,
+   "issueSizeShares": null,
    "lot": 1200,
    "registrar": "Cameo Corporate Services Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
-   "id": "ZETWERK",
-   "symbol": "ZETWERK",
+   "id": "TONBO",
+   "symbol": "TONBO",
    "series": "EQ",
-   "name": "Zetwerk Manufacturing Businesses Limited",
+   "name": "Tonbo Imaging India Limited",
    "type": "Mainboard",
    "open": "2026-10-15",
    "close": "2026-10-19",
    "listing": "2026-10-23",
-   "priceLow": 143.0,
-   "priceHigh": 151.0,
-   "issuePrice": 151.0,
-   "lot": 99,
+   "priceLow": 665.0,
+   "priceHigh": 700.0,
+   "issuePrice": 700.0,
+   "lot": 21,
    "subscription": {
-    "qib": 4.73,
-    "nii": 1.4,
-    "bhni": 1.68,
-    "shni": 0.84,
-    "retail": 0.73,
-    "employee": 1.59,
-    "total": 3.06
+    "qib": 293.56,
+    "nii": 170.94,
+    "bhni": 184.73,
+    "shni": 143.38,
+    "retail": 31.07,
+    "employee": 54.33,
+    "total": 135.9
    },
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
@@ -135,6 +135,33 @@
    "status": "closed"
   },
   {
+   "id": "ZETWERK",
+   "symbol": "ZETWERK",
+   "series": "EQ",
+   "name": "Zetwerk Manufacturing Businesses Limited",
+   "type": "Mainboard",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "listing": "2026-10-23",
+   "priceLow": 143.0,
+   "priceHigh": 151.0,
+   "issuePrice": 151.0,
+   "lot": 99,
+   "subscription": {
+    "qib": 4.73,
+    "nii": 1.4,
+    "bhni": 1.68,
+    "shni": 0.84,
+    "retail": 0.73,
+    "employee": 1.59,
+    "total": 3.06
+   },
+   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "closed"
+  },
+  {
    "id": "SMT",
    "symbol": "SMT",
    "series": "EQ",
@@ -159,33 +186,6 @@
    "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "TONBO",
-   "symbol": "TONBO",
-   "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issuePrice": 700.0,
-   "lot": 21,
-   "subscription": {
-    "qib": 293.56,
-    "nii": 170.94,
-    "bhni": 184.73,
-    "shni": 143.38,
-    "retail": 31.07,
-    "employee": 54.33,
-    "total": 135.9
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "status": "closed"
   },
   {
@@ -250,10 +250,10 @@
    "type": "Mainboard",
    "open": "2026-10-26",
    "close": "2026-10-28",
-   "listing": null,
+   "listing": "2026-11-02",
    "priceLow": 1585.0,
    "priceHigh": 1665.0,
-   "issuePrice": null,
+   "issuePrice": 1665.0,
    "lot": 9,
    "subscription": {
     "qib": 13.13,
@@ -264,32 +264,6 @@
     "total": 5.25
    },
    "subscriptionUpdated": "2026-10-28T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "SFCTECH",
-   "symbol": "SFCTECH",
-   "series": "EQ",
-   "name": "SFC Environmental Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "listing": null,
-   "priceLow": 313.0,
-   "priceHigh": 330.0,
-   "issuePrice": null,
-   "lot": 45,
-   "subscription": {
-    "qib": 18.81,
-    "nii": 12.81,
-    "bhni": 14.49,
-    "shni": 9.44,
-    "retail": 2.71,
-    "total": 9.47
-   },
-   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "closed"
@@ -319,6 +293,58 @@
    "retailMax": "Rs. 2,00,000",
    "registrar": "KFin Technologies Limited",
    "status": "closed"
+  },
+  {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "listing": null,
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issuePrice": null,
+   "lot": 45,
+   "subscription": {
+    "qib": 18.81,
+    "nii": 12.81,
+    "bhni": 14.49,
+    "shni": 9.44,
+    "retail": 2.71,
+    "total": 9.47
+   },
+   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "MKSONS",
+   "symbol": "MKSONS",
+   "series": "EQ",
+   "name": "M. K. Sons Fine Jewels Limited",
+   "type": "Mainboard",
+   "open": "2026-10-28",
+   "close": "2026-10-30",
+   "listing": null,
+   "priceLow": 153.0,
+   "priceHigh": 162.0,
+   "issuePrice": null,
+   "status": "closed",
+   "lot": 91,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "Bigshare Services Private Limited",
+   "subscription": {
+    "qib": 1.84,
+    "nii": 14.12,
+    "bhni": 15.33,
+    "shni": 11.71,
+    "retail": 3.08,
+    "total": 5.09
+   },
+   "subscriptionUpdated": "2026-10-30T19:00:00+05:30"
   }
  ]
 }
