@@ -1,32 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-02T10:22:52+00:00",
+ "generated": "2026-11-02T20:27:05+00:00",
  "ipos": [
-  {
-   "id": "BCSSL",
-   "symbol": "BCSSL",
-   "series": "EQ",
-   "name": "Bombay Coated and Special Steels Limited",
-   "type": "Mainboard",
-   "open": "2026-10-29",
-   "close": "2026-11-02",
-   "priceLow": 78.0,
-   "priceHigh": 82.0,
-   "issueSizeShares": 16533012.0,
-   "lot": 182,
-   "subscription": {
-    "qib": 35.34,
-    "nii": 156.03,
-    "bhni": 182.91,
-    "shni": 102.26,
-    "retail": 28.0,
-    "total": 57.39
-   },
-   "subscriptionUpdated": "2026-11-02T15:48:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "open"
-  },
   {
    "id": "HGSINDIALT",
    "symbol": "HGSINDIALT",
@@ -42,7 +17,7 @@
    "subscription": {
     "total": 0.03
    },
-   "subscriptionUpdated": "2026-11-02T15:48:00+05:30",
+   "subscriptionUpdated": "2026-11-02T17:00:00+05:30",
    "registrar": "Kfin Technologies Limited",
    "status": "open"
   },
@@ -61,7 +36,7 @@
    "subscription": {
     "total": 0.55
    },
-   "subscriptionUpdated": "2026-11-02T15:48:00+05:30",
+   "subscriptionUpdated": "2026-11-02T17:00:00+05:30",
    "registrar": "KFin Technologies Limited",
    "status": "open"
   },
@@ -77,120 +52,12 @@
    "priceHigh": 94.0,
    "issueSizeShares": null,
    "lot": 1200,
-   "registrar": "Cameo Corporate Services Limited",
-   "status": "open",
-   "subscriptionUpdated": "2026-11-02T15:48:00+05:30",
    "subscription": {
     "total": 0.37
-   }
-  },
-  {
-   "id": "TONBO",
-   "symbol": "TONBO",
-   "series": "EQ",
-   "name": "Tonbo Imaging India Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 665.0,
-   "priceHigh": 700.0,
-   "issuePrice": 700.0,
-   "lot": 21,
-   "subscription": {
-    "qib": 293.56,
-    "nii": 170.94,
-    "bhni": 184.73,
-    "shni": 143.38,
-    "retail": 31.07,
-    "employee": 54.33,
-    "total": 135.9
    },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "ZETWERK",
-   "symbol": "ZETWERK",
-   "series": "EQ",
-   "name": "Zetwerk Manufacturing Businesses Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 143.0,
-   "priceHigh": 151.0,
-   "issuePrice": 151.0,
-   "lot": 99,
-   "subscription": {
-    "qib": 4.73,
-    "nii": 1.4,
-    "bhni": 1.68,
-    "shni": 0.84,
-    "retail": 0.73,
-    "employee": 1.59,
-    "total": 3.06
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "closed"
-  },
-  {
-   "id": "SMT",
-   "symbol": "SMT",
-   "series": "EQ",
-   "name": "Sahajanand Medical Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 327.0,
-   "priceHigh": 344.0,
-   "issuePrice": 344.0,
-   "lot": 43,
-   "subscription": {
-    "qib": 34.7,
-    "nii": 14.64,
-    "bhni": 16.37,
-    "shni": 11.19,
-    "retail": 3.03,
-    "employee": 0.37,
-    "total": 14.2
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
-   "id": "BONFIG",
-   "symbol": "BONFIG",
-   "series": "EQ",
-   "name": "Bonfiglioli Transmissions Limited",
-   "type": "Mainboard",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "listing": "2026-10-23",
-   "priceLow": 558.0,
-   "priceHigh": 586.0,
-   "issuePrice": 586.0,
-   "lot": 25,
-   "subscription": {
-    "qib": 120.78,
-    "nii": 40.4,
-    "bhni": 46.44,
-    "shni": 28.31,
-    "retail": 5.91,
-    "employee": 7.43,
-    "total": 46.06
-   },
-   "subscriptionUpdated": "2026-10-19T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
+   "subscriptionUpdated": "2026-11-02T17:00:00+05:30",
+   "registrar": "Cameo Corporate Services Limited",
+   "status": "open"
   },
   {
    "id": "PARASHLTH",
@@ -273,32 +140,6 @@
    "status": "closed"
   },
   {
-   "id": "SFCTECH",
-   "symbol": "SFCTECH",
-   "series": "EQ",
-   "name": "SFC Environmental Technologies Limited",
-   "type": "Mainboard",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "listing": null,
-   "priceLow": 313.0,
-   "priceHigh": 330.0,
-   "issuePrice": null,
-   "lot": 45,
-   "subscription": {
-    "qib": 18.81,
-    "nii": 12.81,
-    "bhni": 14.49,
-    "shni": 9.44,
-    "retail": 2.71,
-    "total": 9.47
-   },
-   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
-   "status": "closed"
-  },
-  {
    "id": "BLSPOLY",
    "symbol": "BLSPOLY",
    "series": "EQ",
@@ -325,6 +166,32 @@
    "status": "closed"
   },
   {
+   "id": "SFCTECH",
+   "symbol": "SFCTECH",
+   "series": "EQ",
+   "name": "SFC Environmental Technologies Limited",
+   "type": "Mainboard",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "listing": null,
+   "priceLow": 313.0,
+   "priceHigh": 330.0,
+   "issuePrice": null,
+   "lot": 45,
+   "subscription": {
+    "qib": 18.81,
+    "nii": 12.81,
+    "bhni": 14.49,
+    "shni": 9.44,
+    "retail": 2.71,
+    "total": 9.47
+   },
+   "subscriptionUpdated": "2026-10-29T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "closed"
+  },
+  {
    "id": "MKSONS",
    "symbol": "MKSONS",
    "series": "EQ",
@@ -348,6 +215,31 @@
    "subscriptionUpdated": "2026-10-30T19:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "Bigshare Services Private Limited",
+   "status": "closed"
+  },
+  {
+   "id": "BCSSL",
+   "symbol": "BCSSL",
+   "series": "EQ",
+   "name": "Bombay Coated and Special Steels Limited",
+   "type": "Mainboard",
+   "open": "2026-10-29",
+   "close": "2026-11-02",
+   "priceLow": 78.0,
+   "priceHigh": 82.0,
+   "issueSizeShares": 16533012.0,
+   "lot": 182,
+   "subscription": {
+    "qib": 35.5,
+    "nii": 158.32,
+    "bhni": 183.52,
+    "shni": 107.91,
+    "retail": 33.73,
+    "total": 60.77
+   },
+   "subscriptionUpdated": "2026-11-02T19:00:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
    "status": "closed"
   }
  ]
