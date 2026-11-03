@@ -1,26 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-03T10:21:16+00:00",
+ "generated": "2026-11-03T17:57:48+00:00",
  "ipos": [
-  {
-   "id": "HGSINDIALT",
-   "symbol": "HGSINDIALT",
-   "series": "SME",
-   "name": "HGS (India) Limited",
-   "type": "SME",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "priceLow": 114.0,
-   "priceHigh": 120.0,
-   "issueSizeShares": null,
-   "lot": 1200,
-   "subscription": {
-    "total": 0.03
-   },
-   "subscriptionUpdated": "2026-11-03T15:45:00+05:30",
-   "registrar": "Kfin Technologies Limited",
-   "status": "open"
-  },
   {
    "id": "MAXENGS",
    "symbol": "MAXENGS",
@@ -36,8 +17,27 @@
    "subscription": {
     "total": 0.55
    },
-   "subscriptionUpdated": "2026-11-03T15:45:00+05:30",
+   "subscriptionUpdated": "2026-11-03T19:00:00+05:30",
    "registrar": "KFin Technologies Limited",
+   "status": "open"
+  },
+  {
+   "id": "HGSINDIALT",
+   "symbol": "HGSINDIALT",
+   "series": "SME",
+   "name": "HGS (India) Limited",
+   "type": "SME",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "priceLow": 114.0,
+   "priceHigh": 120.0,
+   "issueSizeShares": null,
+   "lot": 1200,
+   "subscription": {
+    "total": 0.03
+   },
+   "subscriptionUpdated": "2026-11-03T19:00:00+05:30",
+   "registrar": "Kfin Technologies Limited",
    "status": "open"
   },
   {
@@ -55,7 +55,7 @@
    "subscription": {
     "total": 0.37
    },
-   "subscriptionUpdated": "2026-11-03T15:45:00+05:30",
+   "subscriptionUpdated": "2026-11-03T17:00:00+05:30",
    "registrar": "Cameo Corporate Services Limited",
    "status": "open"
   },
