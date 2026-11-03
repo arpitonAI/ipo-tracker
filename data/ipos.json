@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-03T03:53:35+00:00",
+ "generated": "2026-11-03T10:21:16+00:00",
  "ipos": [
   {
    "id": "HGSINDIALT",
@@ -17,7 +17,7 @@
    "subscription": {
     "total": 0.03
    },
-   "subscriptionUpdated": "2026-11-02T17:00:00+05:30",
+   "subscriptionUpdated": "2026-11-03T15:45:00+05:30",
    "registrar": "Kfin Technologies Limited",
    "status": "open"
   },
@@ -36,7 +36,7 @@
    "subscription": {
     "total": 0.55
    },
-   "subscriptionUpdated": "2026-11-02T17:00:00+05:30",
+   "subscriptionUpdated": "2026-11-03T15:45:00+05:30",
    "registrar": "KFin Technologies Limited",
    "status": "open"
   },
@@ -55,7 +55,7 @@
    "subscription": {
     "total": 0.37
    },
-   "subscriptionUpdated": "2026-11-02T17:00:00+05:30",
+   "subscriptionUpdated": "2026-11-03T15:45:00+05:30",
    "registrar": "Cameo Corporate Services Limited",
    "status": "open"
   },
