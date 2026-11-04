@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-03T20:00:58+00:00",
+ "generated": "2026-11-04T01:09:03+00:00",
  "ipos": [
   {
    "id": "VPFL",
@@ -154,29 +154,17 @@
    "status": "closed"
   },
   {
-   "id": "MKSONS",
-   "symbol": "MKSONS",
+   "id": "MKJEWELS",
+   "symbol": "MKJEWELS",
    "series": "EQ",
    "name": "M. K. Sons Fine Jewels Limited",
    "type": "Mainboard",
    "open": "2026-10-28",
    "close": "2026-10-30",
-   "listing": null,
+   "listing": "2026-11-04",
    "priceLow": 153.0,
    "priceHigh": 162.0,
-   "issuePrice": null,
-   "lot": 91,
-   "subscription": {
-    "qib": 1.84,
-    "nii": 14.12,
-    "bhni": 15.33,
-    "shni": 11.71,
-    "retail": 3.08,
-    "total": 5.09
-   },
-   "subscriptionUpdated": "2026-10-30T19:00:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "Bigshare Services Private Limited",
+   "issuePrice": 162.0,
    "status": "closed"
   },
   {
