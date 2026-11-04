@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-04T01:09:03+00:00",
+ "generated": "2026-11-04T08:52:32+00:00",
  "ipos": [
   {
    "id": "VPFL",
@@ -17,7 +17,7 @@
    "subscription": {
     "total": 0.37
    },
-   "subscriptionUpdated": "2026-11-03T17:00:00+05:30",
+   "subscriptionUpdated": "2026-11-04T14:18:00+05:30",
    "registrar": "Cameo Corporate Services Limited",
    "status": "open"
   },
@@ -201,9 +201,10 @@
    "type": "SME",
    "open": "2026-10-30",
    "close": "2026-11-03",
+   "listing": null,
    "priceLow": 114.0,
    "priceHigh": 120.0,
-   "issueSizeShares": null,
+   "issuePrice": null,
    "lot": 1200,
    "subscription": {
     "total": 0.03
