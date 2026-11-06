@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-05T20:32:03+00:00",
+ "generated": "2026-11-06T01:26:45+00:00",
  "ipos": [
   {
    "id": "PARASHLTH",
@@ -182,10 +182,10 @@
    "type": "SME",
    "open": "2026-10-30",
    "close": "2026-11-03",
-   "listing": null,
+   "listing": "2026-11-06",
    "priceLow": 114.0,
    "priceHigh": 120.0,
-   "issuePrice": null,
+   "issuePrice": 120.0,
    "lot": 1200,
    "subscription": {
     "total": 0.03
@@ -202,10 +202,10 @@
    "type": "SME",
    "open": "2026-10-30",
    "close": "2026-11-03",
-   "listing": null,
+   "listing": "2026-11-06",
    "priceLow": 150.0,
    "priceHigh": 158.0,
-   "issuePrice": null,
+   "issuePrice": 158.0,
    "lot": 800,
    "subscription": {
     "total": 0.55
