@@ -1,7 +1,22 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-16T10:26:01+00:00",
+ "generated": "2026-11-16T20:36:58+00:00",
  "ipos": [
+  {
+   "id": "WATRANA",
+   "symbol": "WATRANA",
+   "series": "SME",
+   "name": "Watrana Rentals Limited",
+   "type": "SME",
+   "open": "2026-11-19",
+   "close": "2026-11-23",
+   "priceLow": 232.0,
+   "priceHigh": 245.0,
+   "issueSizeShares": 4902000.0,
+   "status": "upcoming",
+   "lot": 600,
+   "registrar": "Maashitla Securities Private Limited"
+  },
   {
    "id": "MAXENGS",
    "symbol": "MAXENGS",
