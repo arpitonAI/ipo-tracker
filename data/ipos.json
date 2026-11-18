@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-18T10:55:37+00:00",
+ "generated": "2026-11-18T19:12:59+00:00",
  "ipos": [
   {
    "id": "WATRANA",
@@ -12,30 +12,10 @@
    "close": "2026-11-23",
    "priceLow": 232.0,
    "priceHigh": 245.0,
-   "issueSizeShares": 4902000.0,
+   "issueSizeShares": 3516000.0,
    "lot": 600,
    "registrar": "Maashitla Securities Private Limited",
-   "status": "upcoming"
-  },
-  {
-   "id": "VPFL",
-   "symbol": "VPFL",
-   "series": "SME",
-   "name": "Vedant Poly Fabs Limited",
-   "type": "SME",
-   "open": "2026-11-02",
-   "close": "2026-11-04",
-   "listing": "2026-11-09",
-   "priceLow": 88.0,
-   "priceHigh": 94.0,
-   "issuePrice": 94.0,
-   "lot": 1200,
-   "subscription": {
-    "total": 0.37
-   },
-   "subscriptionUpdated": "2026-11-04T19:00:00+05:30",
-   "registrar": "Cameo Corporate Services Limited",
-   "status": "closed"
+   "status": "open"
   }
  ]
 }
