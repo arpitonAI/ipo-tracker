@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-19T10:58:13+00:00",
+ "generated": "2026-11-19T19:22:39+00:00",
  "ipos": [
   {
    "id": "WATRANA",
@@ -14,12 +14,12 @@
    "priceHigh": 245.0,
    "issueSizeShares": 3516000.0,
    "lot": 600,
-   "registrar": "Maashitla Securities Private Limited",
-   "status": "open",
-   "subscriptionUpdated": "2026-11-19T16:24:00+05:30",
    "subscription": {
     "total": 3.14
-   }
+   },
+   "subscriptionUpdated": "2026-11-19T17:00:00+05:30",
+   "registrar": "Maashitla Securities Private Limited",
+   "status": "open"
   }
  ]
 }
