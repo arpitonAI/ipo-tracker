@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-20T18:55:48+00:00",
+ "generated": "2026-11-20T19:27:08+00:00",
  "ipos": [
   {
    "id": "MAHACOAL",
@@ -13,10 +13,7 @@
    "priceLow": 129.0,
    "priceHigh": 136.0,
    "issueSizeShares": 493068045.0,
-   "status": "open",
    "lot": 110,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
    "subscription": {
     "qib": 1.37,
     "nii": 0.18,
@@ -27,7 +24,10 @@
     "shareholder": 0.28,
     "total": 0.48
    },
-   "subscriptionUpdated": "2026-11-20T17:03:00+05:30"
+   "subscriptionUpdated": "2026-11-20T17:03:00+05:30",
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "status": "open"
   },
   {
    "id": "WATRANA",
