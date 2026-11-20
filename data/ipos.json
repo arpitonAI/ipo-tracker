@@ -1,7 +1,34 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-20T10:46:24+00:00",
+ "generated": "2026-11-20T18:55:48+00:00",
  "ipos": [
+  {
+   "id": "MAHACOAL",
+   "symbol": "MAHACOAL",
+   "series": "EQ",
+   "name": "Mahanadi Coalfields Limited",
+   "type": "Mainboard",
+   "open": "2026-11-19",
+   "close": "2026-11-23",
+   "priceLow": 129.0,
+   "priceHigh": 136.0,
+   "issueSizeShares": 493068045.0,
+   "status": "open",
+   "lot": 110,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "KFin Technologies Limited",
+   "subscription": {
+    "qib": 1.37,
+    "nii": 0.18,
+    "bhni": 0.13,
+    "shni": 0.27,
+    "retail": 0.24,
+    "employee": 0.09,
+    "shareholder": 0.28,
+    "total": 0.48
+   },
+   "subscriptionUpdated": "2026-11-20T17:03:00+05:30"
+  },
   {
    "id": "WATRANA",
    "symbol": "WATRANA",
@@ -17,7 +44,7 @@
    "subscription": {
     "total": 3.14
    },
-   "subscriptionUpdated": "2026-11-20T16:12:00+05:30",
+   "subscriptionUpdated": "2026-11-20T17:03:00+05:30",
    "registrar": "Maashitla Securities Private Limited",
    "status": "open"
   },
@@ -32,9 +59,9 @@
    "priceLow": 130.0,
    "priceHigh": 142.0,
    "issueSizeShares": 6596000.0,
-   "status": "upcoming",
    "lot": 1000,
-   "registrar": "Mas Services Limited"
+   "registrar": "Mas Services Limited",
+   "status": "upcoming"
   }
  ]
 }
