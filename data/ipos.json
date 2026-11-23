@@ -1,53 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-23T11:34:45+00:00",
+ "generated": "2026-11-23T22:55:05+00:00",
  "ipos": [
-  {
-   "id": "MAHACOAL",
-   "symbol": "MAHACOAL",
-   "series": "EQ",
-   "name": "Mahanadi Coalfields Limited",
-   "type": "Mainboard",
-   "open": "2026-11-19",
-   "close": "2026-11-23",
-   "priceLow": 129.0,
-   "priceHigh": 136.0,
-   "issueSizeShares": 493068045.0,
-   "lot": 110,
-   "subscription": {
-    "qib": 4.95,
-    "nii": 0.66,
-    "bhni": 0.62,
-    "shni": 0.75,
-    "retail": 0.46,
-    "employee": 0.22,
-    "shareholder": 0.56,
-    "total": 1.52
-   },
-   "subscriptionUpdated": "2026-11-23T17:03:00+05:30",
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "KFin Technologies Limited",
-   "status": "open"
-  },
-  {
-   "id": "WATRANA",
-   "symbol": "WATRANA",
-   "series": "SME",
-   "name": "Watrana Rentals Limited",
-   "type": "SME",
-   "open": "2026-11-19",
-   "close": "2026-11-23",
-   "priceLow": 232.0,
-   "priceHigh": 245.0,
-   "issueSizeShares": 3516000.0,
-   "lot": 600,
-   "subscription": {
-    "total": 3.14
-   },
-   "subscriptionUpdated": "2026-11-23T17:03:00+05:30",
-   "registrar": "Maashitla Securities Private Limited",
-   "status": "open"
-  },
   {
    "id": "SHREESIDHI",
    "symbol": "SHREESIDHI",
@@ -62,6 +16,26 @@
    "lot": 1000,
    "registrar": "Mas Services Limited",
    "status": "upcoming"
+  },
+  {
+   "id": "WATRANA",
+   "symbol": "WATRANA",
+   "series": "SME",
+   "name": "Watrana Rentals Limited",
+   "type": "SME",
+   "open": "2026-11-19",
+   "close": "2026-11-23",
+   "listing": null,
+   "priceLow": 232.0,
+   "priceHigh": 245.0,
+   "issuePrice": null,
+   "lot": 600,
+   "subscription": {
+    "total": 3.14
+   },
+   "subscriptionUpdated": "2026-11-23T19:00:00+05:30",
+   "registrar": "Maashitla Securities Private Limited",
+   "status": "closed"
   }
  ]
 }
