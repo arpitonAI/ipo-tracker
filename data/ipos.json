@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-25T11:55:47+00:00",
+ "generated": "2026-11-25T20:52:10+00:00",
  "ipos": [
   {
    "id": "SHREESIDHI",
@@ -21,6 +21,25 @@
    "status": "open"
   },
   {
+   "id": "FOODLINK",
+   "symbol": "FOODLINK",
+   "series": "EQ",
+   "name": "Foodlink F&B Holdings (India) Limited",
+   "type": "Mainboard",
+   "open": "2026-11-26",
+   "close": "2026-11-30",
+   "priceLow": 181.0,
+   "priceHigh": 191.0,
+   "issueSizeShares": 10474048.0,
+   "status": "open",
+   "lot": 78,
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "subscription": {
+    "total": 0.0
+   }
+  },
+  {
    "id": "AIRPRO",
    "symbol": "AIRPRO",
    "series": "SME",
@@ -31,9 +50,9 @@
    "priceLow": 99.0,
    "priceHigh": 99.0,
    "issueSizeShares": 3600000.0,
-   "status": "upcoming",
    "lot": 1200,
-   "registrar": "MUFG Intime India Private Limited"
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "AJPACK",
@@ -46,9 +65,9 @@
    "priceLow": 175.0,
    "priceHigh": 180.0,
    "issueSizeShares": 3000000.0,
-   "status": "upcoming",
    "lot": 800,
-   "registrar": "Mufg Intime India Private Limited"
+   "registrar": "Mufg Intime India Private Limited",
+   "status": "upcoming"
   },
   {
    "id": "WATRANA",
