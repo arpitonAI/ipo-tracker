@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-25T20:52:10+00:00",
+ "generated": "2026-11-25T22:18:17+00:00",
  "ipos": [
   {
    "id": "SHREESIDHI",
@@ -31,13 +31,13 @@
    "priceLow": 181.0,
    "priceHigh": 191.0,
    "issueSizeShares": 10474048.0,
-   "status": "open",
    "lot": 78,
-   "retailMax": "Rs. 2,00,000",
-   "registrar": "MUFG Intime India Private Limited",
    "subscription": {
     "total": 0.0
-   }
+   },
+   "retailMax": "Rs. 2,00,000",
+   "registrar": "MUFG Intime India Private Limited",
+   "status": "open"
   },
   {
    "id": "AIRPRO",
