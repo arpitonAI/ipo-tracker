@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-24T22:57:56+00:00",
+ "generated": "2026-11-25T05:22:40+00:00",
  "ipos": [
   {
    "id": "SHREESIDHI",
@@ -15,7 +15,10 @@
    "issueSizeShares": 6596000.0,
    "lot": 1000,
    "registrar": "Mas Services Limited",
-   "status": "open"
+   "status": "open",
+   "subscription": {
+    "total": 0.03
+   }
   },
   {
    "id": "WATRANA",
