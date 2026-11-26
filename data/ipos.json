@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-26T11:44:39+00:00",
+ "generated": "2026-11-26T20:33:56+00:00",
  "ipos": [
   {
    "id": "SHREESIDHI",
@@ -59,7 +59,7 @@
    "issueSizeShares": 3600000.0,
    "lot": 1200,
    "registrar": "MUFG Intime India Private Limited",
-   "status": "upcoming"
+   "status": "open"
   },
   {
    "id": "AJPACK",
