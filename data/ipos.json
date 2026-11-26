@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-26T04:50:36+00:00",
+ "generated": "2026-11-26T11:44:39+00:00",
  "ipos": [
   {
    "id": "SHREESIDHI",
@@ -17,9 +17,9 @@
    "subscription": {
     "total": 0.03
    },
+   "subscriptionUpdated": "2026-11-26T17:00:00+05:30",
    "registrar": "Mas Services Limited",
-   "status": "open",
-   "subscriptionUpdated": "2026-11-26T10:18:00+05:30"
+   "status": "open"
   },
   {
    "id": "FOODLINK",
@@ -34,17 +34,17 @@
    "issueSizeShares": 10474048.0,
    "lot": 78,
    "subscription": {
-    "qib": 0.0,
-    "nii": 0.03,
-    "bhni": 0.0,
-    "shni": 0.07,
-    "retail": 0.35,
-    "total": 0.07
+    "qib": 1.01,
+    "nii": 0.4,
+    "bhni": 0.33,
+    "shni": 0.53,
+    "retail": 2.33,
+    "total": 1.08
    },
+   "subscriptionUpdated": "2026-11-26T17:00:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
-   "status": "open",
-   "subscriptionUpdated": "2026-11-26T10:18:00+05:30"
+   "status": "open"
   },
   {
    "id": "AIRPRO",
