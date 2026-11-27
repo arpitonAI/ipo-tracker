@@ -1,6 +1,6 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-26T22:12:45+00:00",
+ "generated": "2026-11-27T04:53:38+00:00",
  "ipos": [
   {
    "id": "SHREESIDHI",
@@ -17,7 +17,7 @@
    "subscription": {
     "total": 0.03
    },
-   "subscriptionUpdated": "2026-11-26T17:00:00+05:30",
+   "subscriptionUpdated": "2026-11-27T10:21:00+05:30",
    "registrar": "Mas Services Limited",
    "status": "open"
   },
@@ -35,13 +35,13 @@
    "lot": 78,
    "subscription": {
     "qib": 1.01,
-    "nii": 0.4,
-    "bhni": 0.33,
-    "shni": 0.53,
-    "retail": 2.33,
-    "total": 1.08
+    "nii": 0.48,
+    "bhni": 0.4,
+    "shni": 0.62,
+    "retail": 2.79,
+    "total": 1.19
    },
-   "subscriptionUpdated": "2026-11-26T17:00:00+05:30",
+   "subscriptionUpdated": "2026-11-27T10:18:00+05:30",
    "retailMax": "Rs. 2,00,000",
    "registrar": "MUFG Intime India Private Limited",
    "status": "open"
@@ -59,7 +59,11 @@
    "issueSizeShares": 3600000.0,
    "lot": 1200,
    "registrar": "MUFG Intime India Private Limited",
-   "status": "open"
+   "status": "open",
+   "subscriptionUpdated": "2026-11-27T10:21:00+05:30",
+   "subscription": {
+    "total": 0.08
+   }
   },
   {
    "id": "AJPACK",
