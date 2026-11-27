@@ -1,26 +1,7 @@
 {
  "source": "NSE India public IPO pages (nseindia.com)",
- "generated": "2026-11-27T11:38:38+00:00",
+ "generated": "2026-11-27T20:18:50+00:00",
  "ipos": [
-  {
-   "id": "SHREESIDHI",
-   "symbol": "SHREESIDHI",
-   "series": "SME",
-   "name": "Shree Siddhivinayak Greentech Industries Limited",
-   "type": "SME",
-   "open": "2026-11-25",
-   "close": "2026-11-27",
-   "priceLow": 130.0,
-   "priceHigh": 142.0,
-   "issueSizeShares": 6596000.0,
-   "lot": 1000,
-   "subscription": {
-    "total": 0.03
-   },
-   "subscriptionUpdated": "2026-11-27T17:06:00+05:30",
-   "registrar": "Mas Services Limited",
-   "status": "open"
-  },
   {
    "id": "FOODLINK",
    "symbol": "FOODLINK",
